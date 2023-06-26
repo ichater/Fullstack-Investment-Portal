@@ -7,17 +7,17 @@ assignees: ''
 
 ---
 
-**What**
+##What##
 > A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-**Describe the solution you'd like**
+##Describe the solution you'd like##
 > A clear and concise description of what you want to happen.
 
-**Potential issues/pitfalls**
+##Potential issues/pitfalls##
 > What are some things worth considering? What are some things that could go wrong?
 
-**In**
+##In##
 > What work will be requires
 
-**Out**
+##Out##
 > What are we not doing
