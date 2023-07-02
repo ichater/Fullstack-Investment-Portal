@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Adviser {
+    id     String @id 
+    firstName   String
+    lastName    String
+    slug             String
+    bio              String
+    email    String  @unique
+    profileImage    String
+    secondaryImages  String[]
+    clients    Client[]
+    role    ROLE   
+    reviews Review[]
+}
+model Client {
+    id     String @id 
+    firstName   String
+    lastName    String
+    slug    String
+    email    String  @unique
+    profileImage    String
+    adviserId    String
+    adviser    Adviser  @relation(fields: [ adviserId], references: [id])
+    role    ROLE 
+    access ACCESS 
+    accounts    Account[]
+    reviews Review[]
+}
+enum ROLE {
+    ADVISER
+    CLIENT
+}
+
+enum ACCESS {
+    READONLY
+    READWRITE
+}
+
+model Account {
+   id     String @id 
+   clientId   String
+   client    Client   @relation(fields: [clientId], references: [id])
+   Value   Int
+   shares    Shares[]
+   ManagedInvestments   ManagedInvestments[]
+}
+model Review {
+   id   String @id 
+   text   String
+   rating Int
+   clientId   String
+   client    Client @relation(fields: [clientId], references: [id])
+   adviserId    String
+   adviser    Adviser  @relation(fields: [ adviserId], references: [id])
+}
+model Shares{
+   id   String @id 
+   asxCode String
+   name String
+   category String
+   accountId   String
+   account Account@relation(fields: [accountId], references: [id])
+}
+model ManagedInvestments {
+   id String @id
+   name String
+   apir String @unique
+   nabOwned Boolean
+   mer Int
+   category INVESTMENTCATEGORY
+   accountId   String
+   account Account@relation(fields: [accountId], references: [id])
+}
+enum INVESTMENTCATEGORY {
+    FUND
+    SMA
+}
