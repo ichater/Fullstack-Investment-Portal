@@ -63,15 +63,15 @@ model Account {
    clientId   String
    client    Client   @relation(fields: [clientId], references: [id])
    value   Int
-   shares    Shares[] @relation("AccountShares")
-   managedInvestments   ManagedInvestments[] @relation("AccountManagedInvestments")
+   shares    Shares[]
+   managedInvestments   ManagedInvestments[] 
 }
 model Shares{
    id   String @id 
    asxCode String
    name String
    category String
-   account Account[] @relation("AccountShares")
+   account Account[]
 }
 model ManagedInvestments {
    id String @id
@@ -80,7 +80,7 @@ model ManagedInvestments {
    nabOwned Boolean
    mer Int
    category INVESTMENTCATEGORY
-   account Account[] @relation("AccountManagedInvestments")
+   accounts Account[] 
 }
 enum INVESTMENTCATEGORY {
     FUND
