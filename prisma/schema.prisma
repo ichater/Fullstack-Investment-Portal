@@ -48,14 +48,6 @@ enum ACCESS {
     READWRITE
 }
 
-model Account {
-   id     String @id 
-   clientId   String
-   client    Client   @relation(fields: [clientId], references: [id])
-   Value   Int
-   shares    Shares[]
-   ManagedInvestments   ManagedInvestments[]
-}
 model Review {
    id   String @id 
    text   String
@@ -65,13 +57,21 @@ model Review {
    adviserId    String
    adviser    Adviser  @relation(fields: [ adviserId], references: [id])
 }
+
+model Account {
+   id     String @id 
+   clientId   String
+   client    Client   @relation(fields: [clientId], references: [id])
+   value   Int
+   shares    Shares[] @relation("AccountShares")
+   managedInvestments   ManagedInvestments[] @relation("AccountManagedInvestments")
+}
 model Shares{
    id   String @id 
    asxCode String
    name String
    category String
-   accountId   String
-   account Account@relation(fields: [accountId], references: [id])
+   account Account[] @relation("AccountShares")
 }
 model ManagedInvestments {
    id String @id
@@ -80,8 +80,7 @@ model ManagedInvestments {
    nabOwned Boolean
    mer Int
    category INVESTMENTCATEGORY
-   accountId   String
-   account Account@relation(fields: [accountId], references: [id])
+   account Account[] @relation("AccountManagedInvestments")
 }
 enum INVESTMENTCATEGORY {
     FUND
