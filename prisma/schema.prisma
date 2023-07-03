@@ -78,7 +78,7 @@ model ManagedInvestments {
    name String
    apir String @unique
    nabOwned Boolean
-   mer Int
+   mer Float
    category INVESTMENTCATEGORY
    accounts Account[] 
 }
