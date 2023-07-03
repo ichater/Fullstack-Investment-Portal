@@ -1,4 +1,4 @@
-import { Account, ManagedInvestments, Shares } from "@prisma/client";
+import { Account, ManagedInvestment, Share } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
 export class AccountBuilder {
@@ -22,14 +22,14 @@ class AccountInstance {
   clientId: string;
   id: string;
   value: number;
-  managedInvestments: ManagedInvestments[];
-  shares: Shares[];
+  managedInvestments: ManagedInvestment[];
+  shares: Share[];
   constructor(
     clientId: string = "",
     id: string = uuidv4(),
     value: number = 100000,
-    managedInvestments: ManagedInvestments[] = [],
-    shares: Shares[] = []
+    managedInvestments: ManagedInvestment[] = [],
+    shares: Share[] = []
   ) {
     this.clientId = clientId;
     this.id = id;

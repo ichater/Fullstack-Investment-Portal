@@ -37,7 +37,7 @@ export default async function handler(
       })
     );
 
-    const createdInvestments = await prisma.managedInvestments.createMany({
+    const createdInvestments = await prisma.managedInvestment.createMany({
       data,
     });
 

@@ -9,7 +9,7 @@ export default async function handler(
     const unparsedShares = req.body;
 
     try {
-      const addedShares = await prisma.shares.createMany({
+      const addedShares = await prisma.share.createMany({
         data: unparsedShares,
       });
 

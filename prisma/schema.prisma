@@ -63,17 +63,17 @@ model Account {
    clientId   String
    client    Client   @relation(fields: [clientId], references: [id])
    value   Int
-   shares    Shares[]
-   managedInvestments   ManagedInvestments[] 
+   shares    Share[]
+   managedInvestments   ManagedInvestment[] 
 }
-model Shares{
+model Share{
    id   String @id 
    asxCode String
    name String
    category String
    account Account[]
 }
-model ManagedInvestments {
+model ManagedInvestment {
    id String @id
    name String
    apir String @unique
