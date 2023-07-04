@@ -59,20 +59,44 @@ model Review {
 }
 
 model Account {
-   id     String @id 
+   id         String @id 
    clientId   String
-   client    Client   @relation(fields: [clientId], references: [id])
-   value   Int
-   shares    Share[]
-   managedInvestments   ManagedInvestment[] 
+   client     Client   @relation(fields: [clientId], references: [id])
+   value      Float  
+   shares     ShareInAccount[]
+   managedInvestments   ManagedInvestmentInAccount[] 
 }
+
+model ShareInAccount {
+    accountId    String
+    account      Account @relation(fields:[accountId], references: [id])
+    shareId      String
+    share        Share @relation(fields: [shareId], references: [id])
+    value        Float
+
+    @@id([accountId,shareId])
+}
+
+
 model Share{
    id   String @id 
    asxCode String
    name String
    category String
-   account Account[]
+   account ShareInAccount[]
 }
+
+
+model ManagedInvestmentInAccount {
+    accountId         String
+    account           Account @relation(fields:[accountId], references: [id])
+    investmentId      String
+    managedInvestment    ManagedInvestment @relation(fields: [investmentId], references: [id])
+    value             Float
+
+    @@id([accountId,investmentId])
+}
+
 model ManagedInvestment {
    id String @id
    name String
@@ -80,7 +104,7 @@ model ManagedInvestment {
    nabOwned Boolean
    mer Float
    category INVESTMENTCATEGORY
-   accounts Account[] 
+   accounts ManagedInvestmentInAccount[] 
 }
 enum INVESTMENTCATEGORY {
     FUND
