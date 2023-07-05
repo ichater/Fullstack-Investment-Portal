@@ -15,7 +15,7 @@ export default function Navbar() {
           <AuthModal isLogIn={true} />
         </ul>
       </nav>
-      <Link href="./adviser-list">
+      <Link href="./advisers">
         <button className="nav-btn nav-text">Adviser List</button>
       </Link>
     </div>
