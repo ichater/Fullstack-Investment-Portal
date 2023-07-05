@@ -1,0 +1,83 @@
+.navbar_wrapper {
+  background-color: #24252a;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.nav_links {
+  list-style: none;
+}
+
+.nav_links li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0px 30px;
+  transition: all 0.3s ease 0s;
+}
+.nav_links li:hover {
+  color: #0088a9;
+}
+
+.nav-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.nav-btn {
+  padding: 9px 25px;
+  background-color: rgba(0, 136, 169, 1);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.nav-btn:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}
+
+.logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.modal-toggle {
+  background-color: green;
+  border-radius: 15px;
+  width: 4rem;
+  height: 1.5rem;
+  transition: all 0.5s ease 0s;
+}
+
+.modal-toggle_slider {
+  background-color: white;
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 100%;
+  border: 1px solid green;
+  transition: all 0.5s ease 0s;
+}
+
+.modal-toggle_slider:hover::after {
+  display: block;
+  background-color: rgba(0, 136, 169, 0.8);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 100%;
+  border: 1px solid green;
+  transition: all 0.5s ease 0s;
+}
+
+.modal-toggle_group {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}

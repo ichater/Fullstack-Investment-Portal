@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "navbar.css";
+
+/* imported fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 :root {
   --foreground-rgb: 0, 0, 0;
