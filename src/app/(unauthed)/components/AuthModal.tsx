@@ -31,10 +31,9 @@ export type ToggleState = "client" | "adviser";
 
 export default function AuthModal({ isLogIn }: Props) {
   const [open, setOpen] = useState(false);
+  const [toggleState, setToggleState] = useState<ToggleState>("adviser");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [toggleState, setToggleState] = useState<ToggleState>("adviser");
-
   return (
     <>
       {" "}

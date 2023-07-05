@@ -8,7 +8,9 @@ export default function Navbar() {
       <img className="logo" src="images/dollar_sign_icon.svg" alt="logo" />
       <nav>
         <ul className="nav_links nav-text">
-          <li>Home</li>
+          <Link href="/">
+            <li>Home</li>
+          </Link>
           <AuthModal isLogIn={false} />
           <AuthModal isLogIn={true} />
         </ul>

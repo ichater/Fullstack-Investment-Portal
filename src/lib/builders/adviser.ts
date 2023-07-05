@@ -58,7 +58,7 @@ class AdviserInstance {
     slug: string = `${firstName}-${lastName}`,
     // For ease of association with other builder classes
     id: string = slug,
-    bio: string = "John Smith financial advice at your service",
+    bio: string = `${firstName} ${lastName} is a seasoned financial adviser with over 10 years of experience in the industry. He is dedicated to helping individuals and families achieve their financial goals through comprehensive financial planning and investment strategies. With a strong background in wealth management, retirement planning, and risk management, John provides personalized solutions tailored to each client's unique needs and aspirations. `,
     email: string = "jsmith@finadvice.com.au",
     profileImage: string = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     secondaryImages: string[] = [],

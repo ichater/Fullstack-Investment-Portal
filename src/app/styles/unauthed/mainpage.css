@@ -1,0 +1,28 @@
+.main-page_wrapper {
+  margin: 3rem auto;
+  width: 70%;
+  background-color: var(--background-dark);
+  padding: 3rem;
+  border-radius: 25px;
+}
+
+.main-page_header {
+  color: var(--main-white);
+  background-color: var(--adviser-blue);
+  width: fit-content;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+}
+
+.main-page_wrapper p {
+  color: var(--main-white);
+  margin-right: 4rem;
+}
+
+.main-page_wrapper a {
+  color: var(--main-white);
+  transition: 0.5s 0s;
+}
+.main-page_wrapper a:hover {
+  color: rgba(0, 136, 169, 1);
+}

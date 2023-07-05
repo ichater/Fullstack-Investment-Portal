@@ -9,6 +9,14 @@
   list-style: none;
 }
 
+.nav_links a {
+  text-decoration: none;
+}
+
+.nav_links a:visited {
+  color: var(--main-white);
+}
+
 .nav_links li {
   cursor: pointer;
   display: inline-block;
@@ -16,13 +24,13 @@
   transition: all 0.3s ease 0s;
 }
 .nav_links li:hover {
-  color: #0088a9;
+  color: var(--adviser-blue);
 }
 
 .nav-text {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  color: #edf0f1;
+  color: var(--main-white);
   text-decoration: none;
   font-size: 1rem;
 }
@@ -52,27 +60,20 @@
   background-color: green;
   border-radius: 15px;
   width: 4rem;
-  height: 1.5rem;
+  height: 2rem;
   transition: all 0.5s ease 0s;
+  cursor: pointer;
 }
 
 .modal-toggle_slider {
   background-color: white;
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
   border-radius: 100%;
   border: 1px solid green;
   transition: all 0.5s ease 0s;
-}
-
-.modal-toggle_slider:hover::after {
-  display: block;
-  background-color: rgba(0, 136, 169, 0.8);
-  height: 2rem;
-  width: 2rem;
-  border-radius: 100%;
-  border: 1px solid green;
-  transition: all 0.5s ease 0s;
+  cursor: pointer;
+  margin: 0 -5px;
 }
 
 .modal-toggle_group {
