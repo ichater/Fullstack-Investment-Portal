@@ -1,6 +1,7 @@
 @import "navbar.css";
 @import "./unauthed/mainpage.css";
 @import "./unauthed/advisers.css";
+@import "./globalcomponents/investmentdisplay.css";
 
 /* imported fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
