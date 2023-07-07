@@ -1,5 +1,5 @@
 import React from "react";
-import InvestmentDisplay from "./components/InvestmentDisplay";
+import InvestmentDisplay from "@/app/components/investmentcomponents/InvestmentDisplay";
 
 export default function page() {
   return (

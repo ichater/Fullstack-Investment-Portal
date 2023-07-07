@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { ToggleState } from "../AuthModal";
+import { ToggleState } from "./AuthModal";
 
 type Props = {
   toggleState: ToggleState;

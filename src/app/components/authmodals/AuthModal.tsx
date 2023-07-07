@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import ClientAdviserToggle from "./authmodals/ClientAdviserToggle";
+import ClientAdviserToggle from "./ClientAdviserToggle";
 
 type Props = {
   isLogIn: boolean;
