@@ -22,7 +22,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/prismaInstance/*": ["./server/db/*"],
-      "@/builders/*": ["./src/lib/builders/*"]
+      "@/builders/*": ["./src/lib/builders/*"],
+      "@/utils/*": ["./src/lib/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
