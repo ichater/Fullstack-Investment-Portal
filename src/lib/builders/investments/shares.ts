@@ -1,3 +1,4 @@
+import { generateString } from "@/lib/utils/randomstringgenerator";
 import { Share } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
@@ -26,10 +27,10 @@ class ShareInstance {
   asxCode: string;
   category: string;
   constructor(
-    asxCode: string = "abc123",
-    id: string = uuidv4(),
     name: string = "theShare",
-    category: string = "ASX"
+    asxCode: string = generateString(3).toLocaleUpperCase(),
+    id: string = uuidv4(),
+    category: string = `${generateString(5)} ASX`
   ) {
     this.id = id;
     this.asxCode = asxCode;

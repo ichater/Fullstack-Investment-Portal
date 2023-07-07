@@ -4,12 +4,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import ShareSearchDisplay from "./investmentsearchform/ShareSearchDisplay";
-import FundSearchDisplay from "./investmentsearchform/FundSearchDisplay";
-import GenericSearchDisplay from "./investmentsearchform/GenericSearchDisplay";
-import InvestmentSubmitBtn from "./investmentsearchform/InvestmentSubmitBtn";
+import ShareSearchDisplay from "./investment-search-form/ShareSearchDisplay";
+import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
+import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
+import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
 
-export default function InvestmentSearch() {
+export default function InvestmentSearchForm() {
   const [investmentType, setInvestmentType] = useState("");
   const [investmentsPerPage, setinvestmentsPerPage] = useState(50);
 

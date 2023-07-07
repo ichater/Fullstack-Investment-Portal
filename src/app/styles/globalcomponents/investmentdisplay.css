@@ -63,3 +63,37 @@
   justify-content: center;
   align-items: center;
 }
+
+.investment-search-results_wrapper {
+  width: 100%;
+}
+
+.investment-search-result_table {
+  margin-top: 2rem;
+  border: 1px solid black;
+  width: 100%;
+  padding: 0px;
+  border-collapse: collapse;
+}
+
+.investment-search-result_table_head {
+  background-color: var(--adviser-blue-faded);
+}
+
+.investment-search-result_table_head th {
+  padding: 1rem;
+  color: var(--main-white);
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.investment-display_row {
+  padding: 0;
+}
+
+.investment-display_row td {
+  border-bottom: 1px solid var(--adviser-blue-faded);
+  margin: 0px;
+  padding: 1rem 2rem;
+  /* text-align: center; */
+}
