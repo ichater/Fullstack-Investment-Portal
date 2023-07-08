@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -14,33 +14,17 @@ import {
   PageState,
   ShareFormState,
 } from "@/app/types";
+import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
-type Props = {
-  setInvestmentType: React.Dispatch<React.SetStateAction<InvestmentType>>;
-  investmentType: InvestmentType;
-  setPageState: React.Dispatch<React.SetStateAction<PageState>>;
-  pageState: PageState;
-  setShareFormState: React.Dispatch<React.SetStateAction<ShareFormState>>;
-  shareFormState: ShareFormState;
-  setFundFormState: React.Dispatch<
-    React.SetStateAction<ManagedInvestmentFormState>
-  >;
-  fundFormState: ManagedInvestmentFormState;
-};
+export default function InvestmentSearchForm() {
+  const { investmentType, setInvestmentType } = useContext(
+    InvestmentDisplayContext
+  );
 
-export default function InvestmentSearchForm({
-  investmentType,
-  setInvestmentType,
-  pageState,
-  setPageState,
-  setShareFormState,
-  shareFormState,
-  setFundFormState,
-  fundFormState,
-}: Props) {
   const handleChange = (event: SelectChangeEvent) => {
     setInvestmentType(event.target.value as InvestmentType);
   };
+
   return (
     <div className="investment-search_wrapper">
       <div
@@ -67,33 +51,22 @@ export default function InvestmentSearchForm({
         </FormControl>
         {investmentType === "shares" && (
           <>
-            <ShareSearchDisplay setShareFormState={setShareFormState} />
-            <GenericSearchDisplay
-              pageState={pageState}
-              setPageState={setPageState}
-            />
+            <ShareSearchDisplay />
+            <GenericSearchDisplay />
           </>
         )}
         {investmentType === "funds" && (
           <>
             {" "}
-            <FundSearchDisplay setFundFormState={setFundFormState} />
-            <GenericSearchDisplay
-              pageState={pageState}
-              setPageState={setPageState}
-            />
+            <FundSearchDisplay />
+            <GenericSearchDisplay />
           </>
         )}
       </div>
       {investmentType && (
         <div className="investment-submit_wrapper">
           {" "}
-          <InvestmentSubmitBtn
-            investmentType={investmentType}
-            pageState={pageState}
-            shareFormState={shareFormState}
-            fundFormState={fundFormState}
-          />{" "}
+          <InvestmentSubmitBtn />{" "}
         </div>
       )}
     </div>

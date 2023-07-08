@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
@@ -6,17 +6,26 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 
-import Select from "@mui/material/Select";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
 import { ManagedInvestmentFormState } from "@/app/types";
+import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
-type Props = {
-  setFundFormState: React.Dispatch<
-    React.SetStateAction<ManagedInvestmentFormState>
-  >;
-};
+export default function FundSearchDisplay() {
+  const { setFundFormState, fundFormState } = useContext(
+    InvestmentDisplayContext
+  );
 
-export default function FundSearchDisplay({ setFundFormState }: Props) {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFundFormState((fundFormState) => ({
+      ...fundFormState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const { name, category, nabOwned } = fundFormState;
+
+  console.log(fundFormState);
   return (
     <>
       <TextField
@@ -24,6 +33,9 @@ export default function FundSearchDisplay({ setFundFormState }: Props) {
         id="outlined-search"
         label="Fund Name"
         type="search"
+        name="name"
+        value={name}
+        onChange={handleChangeInput}
       />
 
       <FormControl sx={{ m: 1, minWidth: 120 }}>

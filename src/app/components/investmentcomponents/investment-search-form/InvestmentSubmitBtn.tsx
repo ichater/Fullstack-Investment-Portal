@@ -1,23 +1,13 @@
+import React, { useContext } from "react";
 import {
   InvestmentType,
   ManagedInvestmentFormState,
-  PageState,
   ShareFormState,
 } from "@/app/types";
-import React from "react";
+import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
-type Props = {
-  investmentType: InvestmentType;
-  pageState: PageState;
-  shareFormState: ShareFormState;
-  fundFormState: ManagedInvestmentFormState;
-};
-
-export default function InvestmentSubmitBtn({
-  investmentType,
-  pageState,
-  shareFormState,
-  fundFormState,
-}: Props) {
+export default function InvestmentSubmitBtn() {
+  const { pageState, investmentType, shareFormState, fundFormState } =
+    useContext(InvestmentDisplayContext);
   return <button className="investment-submit-btn">Search</button>;
 }

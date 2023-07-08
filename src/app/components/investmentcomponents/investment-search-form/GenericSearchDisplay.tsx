@@ -1,22 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { PageState } from "@/app/types";
+import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
-type Props = {
-  setPageState: React.Dispatch<React.SetStateAction<PageState>>;
-  pageState: number;
-};
+export default function GenericSearchDisplay() {
+  const { setPageState, pageState } = useContext(InvestmentDisplayContext);
 
-export default function GenericSearchDisplay({
-  setPageState,
-  pageState,
-}: Props) {
   const handleChange = (event: SelectChangeEvent) =>
     setPageState(parseInt(event.target.value) as PageState);
+
   return (
     <>
       {" "}
