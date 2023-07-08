@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
@@ -10,8 +10,10 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
 import { ManagedInvestmentFormState } from "@/app/types";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
+import { ManagedInvestmentCategory } from "@/app/types/investment-ui/managedinvestmenttype";
 
 export default function FundSearchDisplay() {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
   const { setFundFormState, fundFormState } = useContext(
     InvestmentDisplayContext
   );
@@ -23,9 +25,15 @@ export default function FundSearchDisplay() {
     }));
   };
 
-  const { name, category, nabOwned } = fundFormState;
+  const handleChange = (event: SelectChangeEvent) => {
+    setFundFormState({
+      ...fundFormState,
+      category: event.target.value as ManagedInvestmentCategory,
+    });
+  };
 
-  console.log(fundFormState);
+  const { name, category } = fundFormState;
+
   return (
     <>
       <TextField
@@ -43,9 +51,11 @@ export default function FundSearchDisplay() {
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
+          value={category}
           label="type"
+          onChange={handleChange}
         >
-          <MenuItem value="">
+          <MenuItem value={""}>
             <em>Select investment Type</em>
           </MenuItem>
           <MenuItem value={"fund"}>Managed Funds</MenuItem>
@@ -56,7 +66,18 @@ export default function FundSearchDisplay() {
       <FormControlLabel
         className="nab-owned-radio"
         value="end"
-        control={<Checkbox />}
+        control={
+          <Checkbox
+            checked={isChecked}
+            onChange={() => {
+              setFundFormState({
+                ...fundFormState,
+                nabOwned: isChecked === true ? true : "",
+              });
+              setIsChecked((isChecked) => !isChecked);
+            }}
+          />
+        }
         label="Nab Owned"
       />
     </>

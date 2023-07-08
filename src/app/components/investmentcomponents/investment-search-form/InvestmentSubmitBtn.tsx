@@ -1,9 +1,4 @@
 import React, { useContext } from "react";
-import {
-  InvestmentType,
-  ManagedInvestmentFormState,
-  ShareFormState,
-} from "@/app/types";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentSubmitBtn() {
