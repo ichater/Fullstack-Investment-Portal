@@ -8,13 +8,23 @@ import ShareSearchDisplay from "./investment-search-form/ShareSearchDisplay";
 import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
 import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
+import { InvestmentType, PageState } from "@/app/types";
 
-export default function InvestmentSearchForm() {
-  const [investmentType, setInvestmentType] = useState("");
-  const [investmentsPerPage, setinvestmentsPerPage] = useState(50);
+type Props = {
+  setInvestmentType: React.Dispatch<React.SetStateAction<InvestmentType>>;
+  investmentType: InvestmentType;
+  setPageState: React.Dispatch<React.SetStateAction<PageState>>;
+  pageState: PageState;
+};
 
+export default function InvestmentSearchForm({
+  investmentType,
+  setInvestmentType,
+  pageState,
+  setPageState,
+}: Props) {
   const handleChange = (event: SelectChangeEvent) => {
-    setInvestmentType(event.target.value);
+    setInvestmentType(event.target.value as InvestmentType);
   };
   return (
     <div className="investment-search_wrapper">
@@ -44,8 +54,8 @@ export default function InvestmentSearchForm() {
           <>
             <ShareSearchDisplay />
             <GenericSearchDisplay
-              investmentsPerPage={investmentsPerPage}
-              setinvestmentsPerPage={setinvestmentsPerPage}
+              pageState={pageState}
+              setPageState={setPageState}
             />
           </>
         )}
@@ -54,8 +64,8 @@ export default function InvestmentSearchForm() {
             {" "}
             <FundSearchDisplay />
             <GenericSearchDisplay
-              investmentsPerPage={investmentsPerPage}
-              setinvestmentsPerPage={setinvestmentsPerPage}
+              pageState={pageState}
+              setPageState={setPageState}
             />
           </>
         )}

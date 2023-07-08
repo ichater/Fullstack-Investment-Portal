@@ -4,27 +4,28 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { PageState } from "@/app/types";
 
 type Props = {
-  setinvestmentsPerPage: React.Dispatch<React.SetStateAction<number>>;
-  investmentsPerPage: number;
+  setPageState: React.Dispatch<React.SetStateAction<PageState>>;
+  pageState: number;
 };
 
 export default function GenericSearchDisplay({
-  setinvestmentsPerPage,
-  investmentsPerPage,
+  setPageState,
+  pageState,
 }: Props) {
   const handleChange = (event: SelectChangeEvent) =>
-    setinvestmentsPerPage(parseInt(event.target.value));
+    setPageState(parseInt(event.target.value) as PageState);
   return (
     <>
       {" "}
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-helper-label">per page</InputLabel>
+      <FormControl sx={{ minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-helper-label">num</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={investmentsPerPage.toString()}
+          value={pageState.toString()}
           label="type"
           onChange={handleChange}
         >
@@ -34,9 +35,8 @@ export default function GenericSearchDisplay({
           <MenuItem value={10}>10</MenuItem>
           <MenuItem value={25}>25</MenuItem>
           <MenuItem value={50}>50</MenuItem>
-          <MenuItem value={100}>100</MenuItem>
         </Select>
-        <FormHelperText>Investment Type</FormHelperText>
+        <FormHelperText>per page</FormHelperText>
       </FormControl>
     </>
   );
