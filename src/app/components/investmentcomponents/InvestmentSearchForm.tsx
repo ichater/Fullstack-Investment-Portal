@@ -8,12 +8,7 @@ import ShareSearchDisplay from "./investment-search-form/ShareSearchDisplay";
 import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
 import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
-import {
-  InvestmentType,
-  ManagedInvestmentFormState,
-  PageState,
-  ShareFormState,
-} from "@/app/types";
+import { InvestmentType } from "@/app/types";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentSearchForm() {
@@ -49,21 +44,11 @@ export default function InvestmentSearchForm() {
           </Select>
           <FormHelperText>Investment Type</FormHelperText>
         </FormControl>
-        {investmentType === "shares" && (
-          <>
-            <ShareSearchDisplay />
-            <GenericSearchDisplay />
-          </>
-        )}
-        {investmentType === "funds" && (
-          <>
-            {" "}
-            <FundSearchDisplay />
-            <GenericSearchDisplay />
-          </>
-        )}
+        {investmentType === "shares" && <ShareSearchDisplay />}
+        {investmentType === "funds" && <FundSearchDisplay />}
+        {!!investmentType && <GenericSearchDisplay />}
       </div>
-      {investmentType && (
+      {!!investmentType && (
         <div className="investment-submit_wrapper">
           {" "}
           <InvestmentSubmitBtn />{" "}

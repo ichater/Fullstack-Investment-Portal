@@ -56,7 +56,6 @@ export default function InvestmentDisplayProvider({
       name: "",
       nabOwned: "",
     });
-
   return (
     <InvestmentDisplayContext.Provider
       value={{
