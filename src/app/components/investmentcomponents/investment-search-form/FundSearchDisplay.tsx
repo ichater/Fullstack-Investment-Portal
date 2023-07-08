@@ -8,8 +8,15 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import Select from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
+import { ManagedInvestmentFormState } from "@/app/types";
 
-export default function FundSearchDisplay() {
+type Props = {
+  setFundFormState: React.Dispatch<
+    React.SetStateAction<ManagedInvestmentFormState>
+  >;
+};
+
+export default function FundSearchDisplay({ setFundFormState }: Props) {
   return (
     <>
       <TextField

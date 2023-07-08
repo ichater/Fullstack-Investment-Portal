@@ -1,7 +1,12 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
+import { ShareFormState } from "@/app/types";
 
-export default function ShareSearchDisplay() {
+type Props = {
+  setShareFormState: React.Dispatch<React.SetStateAction<ShareFormState>>;
+};
+
+export default function ShareSearchDisplay({ setShareFormState }: Props) {
   return (
     <>
       {" "}

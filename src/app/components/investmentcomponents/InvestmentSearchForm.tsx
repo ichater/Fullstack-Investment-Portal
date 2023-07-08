@@ -8,13 +8,24 @@ import ShareSearchDisplay from "./investment-search-form/ShareSearchDisplay";
 import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
 import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
-import { InvestmentType, PageState } from "@/app/types";
+import {
+  InvestmentType,
+  ManagedInvestmentFormState,
+  PageState,
+  ShareFormState,
+} from "@/app/types";
 
 type Props = {
   setInvestmentType: React.Dispatch<React.SetStateAction<InvestmentType>>;
   investmentType: InvestmentType;
   setPageState: React.Dispatch<React.SetStateAction<PageState>>;
   pageState: PageState;
+  setShareFormState: React.Dispatch<React.SetStateAction<ShareFormState>>;
+  shareFormState: ShareFormState;
+  setFundFormState: React.Dispatch<
+    React.SetStateAction<ManagedInvestmentFormState>
+  >;
+  fundFormState: ManagedInvestmentFormState;
 };
 
 export default function InvestmentSearchForm({
@@ -22,6 +33,10 @@ export default function InvestmentSearchForm({
   setInvestmentType,
   pageState,
   setPageState,
+  setShareFormState,
+  shareFormState,
+  setFundFormState,
+  fundFormState,
 }: Props) {
   const handleChange = (event: SelectChangeEvent) => {
     setInvestmentType(event.target.value as InvestmentType);
@@ -52,7 +67,7 @@ export default function InvestmentSearchForm({
         </FormControl>
         {investmentType === "shares" && (
           <>
-            <ShareSearchDisplay />
+            <ShareSearchDisplay setShareFormState={setShareFormState} />
             <GenericSearchDisplay
               pageState={pageState}
               setPageState={setPageState}
@@ -62,7 +77,7 @@ export default function InvestmentSearchForm({
         {investmentType === "funds" && (
           <>
             {" "}
-            <FundSearchDisplay />
+            <FundSearchDisplay setFundFormState={setFundFormState} />
             <GenericSearchDisplay
               pageState={pageState}
               setPageState={setPageState}
@@ -73,7 +88,12 @@ export default function InvestmentSearchForm({
       {investmentType && (
         <div className="investment-submit_wrapper">
           {" "}
-          <InvestmentSubmitBtn />{" "}
+          <InvestmentSubmitBtn
+            investmentType={investmentType}
+            pageState={pageState}
+            shareFormState={shareFormState}
+            fundFormState={fundFormState}
+          />{" "}
         </div>
       )}
     </div>

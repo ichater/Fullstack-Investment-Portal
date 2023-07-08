@@ -13,11 +13,11 @@ import {
 export default function InvestmentDisplay() {
   const [investmentType, setInvestmentType] = useState<InvestmentType>("");
   const [pageState, setPageState] = useState<PageState>(10);
-  const [shareSearchState, setShareSearchState] = useState<ShareFormState>({
+  const [shareFormState, setShareFormState] = useState<ShareFormState>({
     asx: "",
     name: "",
   });
-  const [fundSearchState, setFundSearchState] =
+  const [fundFormState, setFundFormState] =
     useState<ManagedInvestmentFormState>({
       category: "",
       name: "",
@@ -33,6 +33,10 @@ export default function InvestmentDisplay() {
           setPageState={setPageState}
           investmentType={investmentType}
           setInvestmentType={setInvestmentType}
+          setShareFormState={setShareFormState}
+          shareFormState={shareFormState}
+          setFundFormState={setFundFormState}
+          fundFormState={fundFormState}
         />
         <InvestmentSearchResults />
       </div>
