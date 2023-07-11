@@ -20,13 +20,12 @@ export const useInvestmentSearch = () => {
         `http://localhost:3000/api/investments/getshares?name=${name}&asx=${asx}`
       );
 
-      const investments = investmentsPageParser({
-        arr: response.data.data as Share[],
-        num: pageState,
-      });
-      //   console.log(investments);
+      const investments = investmentsPageParser(
+        response.data.data as Share[],
+        pageState
+      );
       return setDisplayedInvestments({
-        investments: investments,
+        investments,
         error: null,
         loading: false,
       });
@@ -54,16 +53,16 @@ export const useInvestmentSearch = () => {
         `http://localhost:3000/api/investments/getmanagedinvestments?name=${name}&nab=${nabOwned}&category=${category}`
       );
 
-      const investments = investmentsPageParser({
-        arr: response.data.data as ManagedInvestment[],
-        num: pageState,
-      });
-      //   console.log(investments);
-      return setDisplayedInvestments((displayedInvestments) => ({
-        investments: investments,
+      const investments = investmentsPageParser(
+        response.data.data as ManagedInvestment[],
+        pageState
+      );
+
+      return setDisplayedInvestments({
+        investments,
         loading: false,
         error: null,
-      }));
+      });
     } catch (error: any) {
       return setDisplayedInvestments({
         investments: [],

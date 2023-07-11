@@ -1,25 +1,23 @@
 import { PageState } from "@/types";
 import { ManagedInvestment, Share } from "@prisma/client";
 
-export function investmentsPageParser({
-  arr,
-  num,
-}: {
-  arr: Share[] | ManagedInvestment[];
-  num: PageState;
-}): Share[][] | ManagedInvestment[][] {
+export function investmentsPageParser(
+  investmentArray: Share[] | ManagedInvestment[],
+  pageState: PageState
+): Share[][] | ManagedInvestment[][] {
   let returnArr: Share[][] | ManagedInvestment[][] = [];
-  if (num > arr.length) {
-    returnArr[0] = arr;
+  if (pageState > investmentArray.length) {
+    returnArr[0] = investmentArray;
     return returnArr;
   }
 
-  const pages = arr.length / num;
+  const pages = investmentArray.length / pageState;
 
   for (let i = 0; i < pages; i++) {
     returnArr[i] = [];
-    for (let j = 0; j < num; j++) {
-      returnArr[i][j] = arr[i * num + j];
+    for (let j = 0; j < pageState; j++) {
+      if (!investmentArray[i * pageState + j]) break;
+      returnArr[i][j] = investmentArray[i * pageState + j];
     }
   }
 

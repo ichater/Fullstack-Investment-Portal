@@ -96,5 +96,28 @@
   border-bottom: 1px solid var(--adviser-blue-faded);
   margin: 0px;
   padding: 1rem 2rem;
-  /* text-align: center; */
+}
+
+.page-number_wrapper {
+  margin-top: 0.5rem;
+  justify-content: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.page-number_select {
+  border: 1px solid var(--adviser-blue);
+  border-radius: 10px;
+  padding: 0.5rem;
+  color: var(--adviser-blue);
+  margin: 0.5rem;
+  cursor: pointer;
+  width: 2rem;
+  transition: 0.5s 0s;
+}
+
+.page-number_select:hover {
+  color: var(--main-white);
+  background-color: var(--confirm-green);
 }
