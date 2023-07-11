@@ -1,0 +1,123 @@
+.investment-display_container {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.investment-display_header {
+  background-color: var(--adviser-blue);
+  color: var(--main-white);
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  border-radius: 10px;
+}
+
+.investment-search_wrapper {
+  border: 1px solid var(--adviser-blue);
+  border-radius: 25px;
+  padding: 1rem;
+  width: 100%;
+  min-height: 5rem;
+}
+
+.investment-search_top {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  padding: 0rem 1rem;
+}
+
+.investment-text-input {
+  margin-top: 0.6rem;
+}
+
+.investment-submit_wrapper {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.investment-submit-btn {
+  background-color: var(--confirm-green);
+  color: var(--main-white);
+  font-size: 1.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--main-white);
+  cursor: pointer;
+  transition: 0.5s 0s;
+  height: 4rem;
+  width: 10rem;
+}
+
+.investment-submit-btn:hover {
+  background-color: var(--confirm-green-hover);
+  border: 1px solid rgba(54, 172, 71, 0.2);
+  font-size: 1.75rem;
+}
+
+.nab-owned-radio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.investment-search-results_wrapper {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.investment-search-result_table {
+  margin-top: 2rem;
+  border: 1px solid rgb(13, 77, 186);
+  width: 100%;
+  padding: 0px;
+  border-collapse: collapse;
+}
+
+.investment-search-result_table_head {
+  background-color: var(--adviser-blue-faded);
+}
+
+.investment-search-result_table_head th {
+  padding: 1rem;
+  color: var(--main-white);
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.investment-display_row {
+  padding: 0;
+}
+
+.investment-display_row td {
+  border-bottom: 1px solid var(--adviser-blue-faded);
+  margin: 0px;
+  padding: 1rem 2rem;
+}
+
+.page-number_wrapper {
+  margin-top: 0.5rem;
+  justify-content: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.page-number_select {
+  border: 1px solid var(--adviser-blue);
+  border-radius: 10px;
+  padding: 0.5rem;
+  color: var(--adviser-blue);
+  margin: 0.5rem;
+  cursor: pointer;
+  width: 2rem;
+  transition: 0.5s 0s;
+}
+
+.page-number_select:hover {
+  color: var(--main-white);
+  background-color: var(--confirm-green);
+}

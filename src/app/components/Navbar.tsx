@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import AuthModal from "./AuthModal";
+import AuthModal from "./authmodals/AuthModal";
 
 export default function Navbar() {
   return (

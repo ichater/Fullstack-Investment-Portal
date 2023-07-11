@@ -1,3 +1,4 @@
+import { generateString } from "@/lib/utils/randomstringgenerator";
 import { INVESTMENTCATEGORY, ManagedInvestment } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
@@ -41,8 +42,8 @@ class ManagedInvestmentInstance {
   constructor(
     name: string = "SomeFund",
     id: string = uuidv4(),
-    apir: string = "NUN0033AU",
-    mer: number = 1.21,
+    apir: string = "NUN101AU",
+    mer: number = 1.05,
     nabOwned: boolean = false,
     category: INVESTMENTCATEGORY = INVESTMENTCATEGORY.FUND
   ) {
