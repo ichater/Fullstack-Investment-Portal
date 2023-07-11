@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/prismaInstance/client";
-import { queryParamParser } from "@/utils/queryparamparser";
+import { queryParamParserApi } from "@/lib/utils/queryparamparser";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,8 +10,8 @@ export default async function handler(
     try {
       const { name, asx } = req.query;
 
-      const parsedAsx: string = queryParamParser(asx);
-      const parsedName: string = queryParamParser(name);
+      const parsedAsx: string = queryParamParserApi(asx);
+      const parsedName: string = queryParamParserApi(name);
 
       const data = await prisma.share.findMany({
         where: {

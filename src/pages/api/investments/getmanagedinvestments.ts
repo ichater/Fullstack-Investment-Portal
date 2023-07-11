@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { queryParamParser } from "@/utils/queryparamparser";
+
 import { prisma } from "@/prismaInstance/client";
 import { INVESTMENTCATEGORY } from "@prisma/client";
+import { queryParamParserApi } from "@/lib/utils/queryparamparser";
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,9 +12,9 @@ export default async function handler(
     try {
       const { name, category, nab } = req.query;
 
-      const parsedName = queryParamParser(name);
-      const parsedCategory = queryParamParser(category);
-      const parsedNabOwned = queryParamParser(nab);
+      const parsedName = queryParamParserApi(name);
+      const parsedCategory = queryParamParserApi(category);
+      const parsedNabOwned = queryParamParserApi(nab);
 
       let whereCondition = {};
 

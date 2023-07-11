@@ -5,8 +5,13 @@ import { useRouter } from "next/navigation";
 export default function InvestmentSubmitBtn() {
   const router = useRouter();
 
-  const { pageState, investmentType, shareFormState, fundFormState } =
-    useContext(InvestmentDisplayContext);
+  const {
+    investmentType,
+    pageState,
+    shareFormState,
+    fundFormState,
+    setSubmitClicked,
+  } = useContext(InvestmentDisplayContext);
 
   const { asx } = shareFormState;
 
@@ -14,6 +19,7 @@ export default function InvestmentSubmitBtn() {
   const shareNameSlug: string = shareFormState.name
     ? `&name=${shareFormState.name}`
     : "";
+
   const shareSlug: string = asxSlug + shareNameSlug;
 
   const { category, nabOwned } = fundFormState;
@@ -25,18 +31,22 @@ export default function InvestmentSubmitBtn() {
   const fundCategorySlug: string = category ? `&category=${category}` : "";
   const fundSlug: string = fundNameSlug + nabOwnedSlug + fundCategorySlug;
 
-  console.log(fundSlug);
-
   function handleSubmit() {
     router.push(
       `/investments?investment-type=${investmentType}${
         investmentType === "shares" ? shareSlug : fundSlug
       }&per_page=${pageState}&page=1`
     );
+
+    setSubmitClicked(true);
   }
 
   return (
-    <button onClick={handleSubmit} className="investment-submit-btn">
+    <button
+      type="button"
+      onClick={handleSubmit}
+      className="investment-submit-btn"
+    >
       Search
     </button>
   );

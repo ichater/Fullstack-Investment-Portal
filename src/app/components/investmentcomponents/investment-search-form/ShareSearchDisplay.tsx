@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import TextField from "@mui/material/TextField";
-import { ShareFormState } from "@/app/types";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
 export default function ShareSearchDisplay() {

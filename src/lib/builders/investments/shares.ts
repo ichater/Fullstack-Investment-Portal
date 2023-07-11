@@ -7,6 +7,10 @@ export class ShareBuilder {
   constructor(name: string) {
     this.share = new ShareInstance(name);
   }
+  setId(id: string) {
+    this.share.id = id;
+    return this;
+  }
   setasxCode(code: string) {
     this.share.asxCode = code;
     return this;

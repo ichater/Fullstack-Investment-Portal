@@ -16,6 +16,7 @@ export default function FundSearchDisplay() {
     InvestmentDisplayContext
   );
 
+  console.log(fundFormState);
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFundFormState((fundFormState) => ({
       ...fundFormState,
