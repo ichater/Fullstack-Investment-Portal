@@ -25,8 +25,6 @@ interface InvestmentDisplayType {
   fundFormState: ManagedInvestmentFormState;
   pageNumber: number;
   setPageNumber: React.Dispatch<React.SetStateAction<number>>;
-  submitClicked: boolean;
-  setSubmitClicked: React.Dispatch<React.SetStateAction<boolean>>;
   displayedInvestments: DisplayedInvestments;
   setDisplayedInvestments: React.Dispatch<
     React.SetStateAction<DisplayedInvestments>
@@ -44,7 +42,7 @@ const emptyShareState: ShareFormState = {
   name: "",
 };
 
-const emptyDisplayedInvestments = {
+const emptyDisplayedInvestments: DisplayedInvestments = {
   investments: [],
   error: null,
   loading: false,
@@ -61,8 +59,6 @@ export const InvestmentDisplayContext = createContext<InvestmentDisplayType>({
   fundFormState: emptyFundState,
   pageNumber: 0,
   setPageNumber: (): any => {},
-  submitClicked: false,
-  setSubmitClicked: (): any => {},
   displayedInvestments: emptyDisplayedInvestments,
   setDisplayedInvestments: (): any => {},
 });
@@ -130,8 +126,6 @@ export default function InvestmentDisplayProvider({
 
   const [pageNumber, setPageNumber] = useState<number>(pageNumberParam);
 
-  const [submitClicked, setSubmitClicked] = useState<boolean>(false);
-
   const [displayedInvestments, setDisplayedInvestments] =
     useState<DisplayedInvestments>(emptyDisplayedInvestments);
 
@@ -148,8 +142,6 @@ export default function InvestmentDisplayProvider({
         setFundFormState,
         pageNumber,
         setPageNumber,
-        submitClicked,
-        setSubmitClicked,
         displayedInvestments,
         setDisplayedInvestments,
       }}

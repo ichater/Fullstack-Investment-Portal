@@ -1,4 +1,4 @@
-import { PageState } from "@/app/types";
+import { PageState } from "@/types";
 
 export const queryParamParserApi = (
   param: string | string[] | undefined

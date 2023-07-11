@@ -7,13 +7,8 @@ export default function InvestmentSubmitBtn() {
   const router = useRouter();
   const { getShares, getManagedInvestments } = useInvestmentSearch();
 
-  const {
-    investmentType,
-    pageState,
-    shareFormState,
-    fundFormState,
-    setSubmitClicked,
-  } = useContext(InvestmentDisplayContext);
+  const { investmentType, pageState, shareFormState, fundFormState } =
+    useContext(InvestmentDisplayContext);
 
   const { asx } = shareFormState;
 

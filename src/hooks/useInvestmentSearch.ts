@@ -3,9 +3,12 @@ import axios from "axios";
 import { ManagedInvestmentFormState, ShareFormState } from "@/types";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 import { ManagedInvestment, Share } from "@prisma/client";
+import { investmentsPageParser } from "@/lib/utils/investmentdataparser";
 
 export const useInvestmentSearch = () => {
-  const { setDisplayedInvestments } = useContext(InvestmentDisplayContext);
+  const { setDisplayedInvestments, pageState } = useContext(
+    InvestmentDisplayContext
+  );
 
   async function getShares({ asx, name }: ShareFormState) {
     setDisplayedInvestments((displayedInvestments) => ({
@@ -16,9 +19,14 @@ export const useInvestmentSearch = () => {
       const response = await axios.get(
         `http://localhost:3000/api/investments/getshares?name=${name}&asx=${asx}`
       );
-      console.log(response.data.data);
+
+      const investments = investmentsPageParser({
+        arr: response.data.data as Share[],
+        num: pageState,
+      });
+      //   console.log(investments);
       return setDisplayedInvestments({
-        investments: response.data.data as Share[],
+        investments: investments,
         error: null,
         loading: false,
       });
@@ -45,12 +53,14 @@ export const useInvestmentSearch = () => {
       const response = await axios.get(
         `http://localhost:3000/api/investments/getmanagedinvestments?name=${name}&nab=${nabOwned}&category=${category}`
       );
-      console.log(
-        response.data.data,
-        `http://localhost:3000/api/investments/getmanagedinvestments?name=${name}&nab=${nabOwned}&category=${category}`
-      );
+
+      const investments = investmentsPageParser({
+        arr: response.data.data as ManagedInvestment[],
+        num: pageState,
+      });
+      //   console.log(investments);
       return setDisplayedInvestments((displayedInvestments) => ({
-        investments: response.data.data as ManagedInvestment[],
+        investments: investments,
         loading: false,
         error: null,
       }));
