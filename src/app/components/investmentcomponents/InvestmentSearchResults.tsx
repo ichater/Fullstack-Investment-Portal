@@ -1,34 +1,39 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import FundResultDisplay from "./investment-search-display/FundResultDisplay";
-import { tempFundData } from "@/lib/tempdata/tempFundData";
-import { useSearchParams } from "next/navigation";
-import { PageState } from "@/app/types";
-import { queryParamParserPageState } from "@/lib/utils/queryparamparser";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 import ShareResultDisplay from "./investment-search-display/ShareResultDisplay";
-import { tempShareData } from "@/lib/tempdata/tempShares";
+import { ManagedInvestment, Share } from "@prisma/client";
 
 export default function InvestmentResults() {
-  const { investmentType, investmentsPerpage, pageNumber } = useContext(
-    InvestmentDisplayContext
-  );
+  const { investmentType, pageState, pageNumber, displayedInvestments } =
+    useContext(InvestmentDisplayContext);
+
+  if (displayedInvestments.loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!displayedInvestments.investments.length) {
+    return <div>No investments to show</div>;
+  }
 
   return (
-    <div className="investment-search-results_wrapper">
-      {investmentType === "funds" && (
-        <FundResultDisplay
-          investmentsPerpage={investmentsPerpage}
-          pageNumber={pageNumber}
-          funds={tempFundData}
-        />
-      )}
-      {investmentType === "shares" && (
-        <ShareResultDisplay
-          investmentsPerpage={investmentsPerpage}
-          pageNumber={pageNumber}
-          shares={tempShareData}
-        />
-      )}
-    </div>
+    <>
+      {investmentType === "funds" &&
+        displayedInvestments.investments.length && (
+          <FundResultDisplay
+            pageState={pageState}
+            pageNumber={pageNumber}
+            funds={displayedInvestments.investments as ManagedInvestment[]}
+          />
+        )}
+      {investmentType === "shares" &&
+        displayedInvestments.investments.length && (
+          <ShareResultDisplay
+            pageState={pageState}
+            pageNumber={pageNumber}
+            shares={displayedInvestments.investments as Share[]}
+          />
+        )}
+    </>
   );
 }

@@ -1,23 +1,23 @@
 import { Share } from "@prisma/client";
 import React from "react";
 import ShareRow from "./ShareRow";
-import { PageState } from "@/app/types";
+import { PageState } from "@/types";
 
 type Props = {
   shares: Share[];
-  investmentsPerpage: PageState;
+  pageState: PageState;
   pageNumber: number;
 };
 
 export default function ShareResultDisplay({
   shares,
-  investmentsPerpage,
+  pageState,
   pageNumber,
 }: Props) {
   const filteredShares = shares.filter(
     (_, index) =>
-      index >= investmentsPerpage * pageNumber - investmentsPerpage &&
-      index < investmentsPerpage * pageNumber
+      index >= pageState * pageNumber - pageState &&
+      index < pageState * pageNumber
   );
 
   return (

@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 import { useRouter } from "next/navigation";
+import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
 
 export default function InvestmentSubmitBtn() {
   const router = useRouter();
+  const { getShares, getManagedInvestments } = useInvestmentSearch();
 
   const {
     investmentType,
@@ -37,8 +39,8 @@ export default function InvestmentSubmitBtn() {
         investmentType === "shares" ? shareSlug : fundSlug
       }&per_page=${pageState}&page=1`
     );
-
-    setSubmitClicked(true);
+    if (investmentType === "shares") getShares(shareFormState);
+    if (investmentType === "funds") getManagedInvestments(fundFormState);
   }
 
   return (

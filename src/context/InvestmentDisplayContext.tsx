@@ -1,15 +1,16 @@
 "use client";
 
+import { queryParamParserPageState } from "@/lib/utils/queryparamparser";
 import {
   InvestmentType,
-  ManagedInvestmentFormState,
   PageState,
   ShareFormState,
-} from "@/app/types";
-import { ManagedInvestmentCategory } from "@/app/types/investment-ui/managedinvestmenttype";
-import { queryParamParserPageState } from "@/lib/utils/queryparamparser";
+  ManagedInvestmentFormState,
+  ManagedInvestmentCategory,
+  DisplayedInvestments,
+} from "@/types";
 import { useSearchParams } from "next/navigation";
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 
 interface InvestmentDisplayType {
   setInvestmentType: React.Dispatch<React.SetStateAction<InvestmentType>>;
@@ -26,6 +27,10 @@ interface InvestmentDisplayType {
   setPageNumber: React.Dispatch<React.SetStateAction<number>>;
   submitClicked: boolean;
   setSubmitClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  displayedInvestments: DisplayedInvestments;
+  setDisplayedInvestments: React.Dispatch<
+    React.SetStateAction<DisplayedInvestments>
+  >;
 }
 
 const emptyFundState: ManagedInvestmentFormState = {
@@ -37,6 +42,12 @@ const emptyFundState: ManagedInvestmentFormState = {
 const emptyShareState: ShareFormState = {
   asx: "",
   name: "",
+};
+
+const emptyDisplayedInvestments = {
+  investments: [],
+  error: null,
+  loading: false,
 };
 
 export const InvestmentDisplayContext = createContext<InvestmentDisplayType>({
@@ -52,6 +63,8 @@ export const InvestmentDisplayContext = createContext<InvestmentDisplayType>({
   setPageNumber: (): any => {},
   submitClicked: false,
   setSubmitClicked: (): any => {},
+  displayedInvestments: emptyDisplayedInvestments,
+  setDisplayedInvestments: (): any => {},
 });
 
 export default function InvestmentDisplayProvider({
@@ -81,7 +94,7 @@ export default function InvestmentDisplayProvider({
   const { managedInvestmentParams } = searchParamsObj;
   const { shareParams } = searchParamsObj;
 
-  const pageNumberParam: number = searchParamsObj.pageData.pageNumber
+  const pageNumberParam: number = !!searchParamsObj.pageData.pageNumber
     ? parseInt(searchParamsObj.pageData.pageNumber)
     : 1;
 
@@ -98,7 +111,7 @@ export default function InvestmentDisplayProvider({
     name: managedInvestmentParams.name || "",
     category:
       (managedInvestmentParams.category as ManagedInvestmentCategory) || "",
-    nabOwned: managedInvestmentParams.category === "true" ? true : "",
+    nabOwned: managedInvestmentParams.nabOwned === "true" ? true : "",
   };
 
   const [investmentType, setInvestmentType] = useState<InvestmentType>(
@@ -119,15 +132,8 @@ export default function InvestmentDisplayProvider({
 
   const [submitClicked, setSubmitClicked] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   setInvestmentType("");
-
-  //   setFundFormState(emptyFundState);
-
-  //   setShareFormState(emptyShareState);
-
-  //   setSubmitClicked(false);
-  // }, [submitClicked]);
+  const [displayedInvestments, setDisplayedInvestments] =
+    useState<DisplayedInvestments>(emptyDisplayedInvestments);
 
   return (
     <InvestmentDisplayContext.Provider
@@ -144,6 +150,8 @@ export default function InvestmentDisplayProvider({
         setPageNumber,
         submitClicked,
         setSubmitClicked,
+        displayedInvestments,
+        setDisplayedInvestments,
       }}
     >
       {children}

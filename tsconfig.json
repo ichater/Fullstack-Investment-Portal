@@ -25,7 +25,7 @@
       "@/builders/*": ["./src/lib/builders/*"],
       "@/utils/*": ["./src/lib/utils/*"],
       "@/globalComponents/*": ["./src/app/components/*"],
-      "@/appTypes/*": ["./src/app/types/*"]
+      "@/appTypes/*": ["./src/types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

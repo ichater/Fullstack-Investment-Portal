@@ -8,7 +8,7 @@ import ShareSearchDisplay from "./investment-search-form/ShareSearchDisplay";
 import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
 import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
-import { InvestmentType } from "@/app/types";
+import { InvestmentType } from "@/types";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentSearchForm() {

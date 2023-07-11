@@ -1,28 +1,27 @@
 import { ManagedInvestment } from "@prisma/client";
 import React from "react";
 import FundRow from "./FundRow";
-import { PageState } from "@/app/types";
+import { PageState } from "@/types";
 
 type Props = {
   funds: ManagedInvestment[];
-  investmentsPerpage: PageState;
+  pageState: PageState;
   pageNumber: number;
 };
 
 export default function FundResultDisplay({
   funds,
-  investmentsPerpage,
+  pageState,
   pageNumber,
 }: Props) {
   const filteredFunds = funds.filter(
     (_, index) =>
-      index >= investmentsPerpage * pageNumber - investmentsPerpage &&
-      index < investmentsPerpage * pageNumber
+      index >= pageState * pageNumber - pageState &&
+      index < pageState * pageNumber
   );
 
   return (
     <table className="investment-search-result_table">
-      {" "}
       <thead className="investment-search-result_table_head">
         <tr>
           <th>APIR</th>

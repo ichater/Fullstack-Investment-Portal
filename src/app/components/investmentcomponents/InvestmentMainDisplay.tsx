@@ -10,7 +10,9 @@ export default function InvestmentDisplay() {
       <div className="investment-display_container">
         <h1 className="investment-display_header">Search investments:</h1>
         <InvestmentSearchForm />
-        <InvestmentSearchResults />
+        <div className="investment-search-results_wrapper">
+          <InvestmentSearchResults />
+        </div>
       </div>
     </div>
   );

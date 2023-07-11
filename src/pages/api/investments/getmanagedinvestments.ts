@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/prismaInstance/client";
 import { INVESTMENTCATEGORY } from "@prisma/client";
 import { queryParamParserApi } from "@/lib/utils/queryparamparser";
+import { GetResult } from "@prisma/client/runtime/library";
 
 export default async function handler(
   req: NextApiRequest,

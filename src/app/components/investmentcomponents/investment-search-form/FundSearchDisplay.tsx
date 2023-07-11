@@ -9,14 +9,13 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
-import { ManagedInvestmentCategory } from "@/app/types/investment-ui/managedinvestmenttype";
+import { ManagedInvestmentCategory } from "@/types";
 
 export default function FundSearchDisplay() {
   const { setFundFormState, fundFormState } = useContext(
     InvestmentDisplayContext
   );
 
-  console.log(fundFormState);
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFundFormState((fundFormState) => ({
       ...fundFormState,
@@ -40,7 +39,7 @@ export default function FundSearchDisplay() {
       nabOwned: checked === true ? true : "",
     });
   };
-
+  console.log(nabOwned);
   return (
     <>
       <TextField
@@ -75,7 +74,7 @@ export default function FundSearchDisplay() {
         value="end"
         control={
           <Checkbox
-            checked={!!nabOwned}
+            checked={nabOwned !== ""}
             onChange={(e) => handleCheckboxChange(e)}
           />
         }
