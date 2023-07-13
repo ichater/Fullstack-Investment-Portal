@@ -5,6 +5,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import ClientAdviserToggle from "./ClientAdviserToggle";
+import AdviserSignUpForm from "./AdviserSignUpForm";
+import LogInForm from "./LogInForm";
+import { LoginState } from "@/types";
 
 type Props = {
   isLogIn: boolean;
@@ -12,7 +15,7 @@ type Props = {
 
 const style = {
   position: "absolute" as "absolute",
-  top: "20%",
+  top: "30%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
@@ -27,11 +30,9 @@ const style = {
   flexDirection: "column",
 };
 
-export type ToggleState = "client" | "adviser";
-
 export default function AuthModal({ isLogIn }: Props) {
   const [open, setOpen] = useState(false);
-  const [toggleState, setToggleState] = useState<ToggleState>("adviser");
+  const [loginState, setLoginState] = useState<LoginState>("adviser");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
@@ -43,19 +44,25 @@ export default function AuthModal({ isLogIn }: Props) {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className="auth-modal-main_background"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <h2 className="auth-modal_header">
             {isLogIn ? "Log in as:" : "Sign up as"}{" "}
-            {toggleState.charAt(0).toLocaleUpperCase() + toggleState.slice(1)}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Logs of details here
-          </Typography>
-          <ClientAdviserToggle
-            toggleState={toggleState}
-            setToggleState={setToggleState}
-          />
+            {loginState.charAt(0).toLocaleUpperCase() + loginState.slice(1)}
+          </h2>
+
+          {!isLogIn && <AdviserSignUpForm />}
+
+          {isLogIn && (
+            <div className="login-form_wrapper">
+              <LogInForm loginState={loginState} />
+              <ClientAdviserToggle
+                loginState={loginState}
+                setLoginState={setLoginState}
+              />
+            </div>
+          )}
         </Box>
       </Modal>
     </>

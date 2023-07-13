@@ -56,6 +56,18 @@
   height: 3rem;
 }
 
+.auth-modal-main_background {
+  background-color: rgba(229, 238, 247, 0.8);
+}
+
+.auth-modal_header {
+  background-color: var(--adviser-blue);
+  color: var(--main-white);
+  width: fit-content;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+}
+
 .modal-toggle {
   background-color: green;
   border-radius: 15px;
@@ -77,7 +89,39 @@
 }
 
 .modal-toggle_group {
-  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.login-form_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-modal_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.auth-modal_form > input {
+  background-color: green;
+}
+
+.single-row_input {
+  width: 100%;
+}
+
+.adviser-signup-fullname_wrapper {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;

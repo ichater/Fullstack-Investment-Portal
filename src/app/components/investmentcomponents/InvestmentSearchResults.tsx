@@ -11,6 +11,8 @@ export default function InvestmentResults() {
     InvestmentDisplayContext
   );
 
+  console.log(displayedInvestments);
+
   const currentInvestmentDisplay: ManagedInvestment[] | Share[] | undefined =
     displayedInvestments.investments[pageNumber - 1];
 
@@ -24,7 +26,7 @@ export default function InvestmentResults() {
 
   return (
     <>
-      {displayedInvestments.investments.length > 1 && (
+      {!!investmentType && displayedInvestments.investments.length > 1 && (
         <div className="page-number_wrapper">
           {arrayFromNumber(displayedInvestments.investments.length).map(
             (_, i) => (

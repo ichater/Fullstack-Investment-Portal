@@ -7,8 +7,14 @@ export default function InvestmentSubmitBtn() {
   const router = useRouter();
   const { getShares, getManagedInvestments } = useInvestmentSearch();
 
-  const { investmentType, pageState, shareFormState, fundFormState } =
-    useContext(InvestmentDisplayContext);
+  const {
+    investmentType,
+    pageState,
+    shareFormState,
+    fundFormState,
+    setInvestmentType,
+    formDisplay,
+  } = useContext(InvestmentDisplayContext);
 
   const { asx } = shareFormState;
 
@@ -29,6 +35,7 @@ export default function InvestmentSubmitBtn() {
   const fundSlug: string = fundNameSlug + nabOwnedSlug + fundCategorySlug;
 
   function handleSubmit() {
+    setInvestmentType(formDisplay);
     router.push(
       `/investments?investment-type=${investmentType}${
         investmentType === "shares" ? shareSlug : fundSlug

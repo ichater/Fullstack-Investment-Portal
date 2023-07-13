@@ -15,6 +15,8 @@ import { ReactNode, createContext, useState } from "react";
 interface InvestmentDisplayType {
   setInvestmentType: React.Dispatch<React.SetStateAction<InvestmentType>>;
   investmentType: InvestmentType;
+  formDisplay: InvestmentType;
+  setFormDisplay: React.Dispatch<React.SetStateAction<InvestmentType>>;
   setPageState: React.Dispatch<React.SetStateAction<PageState>>;
   pageState: PageState;
   setShareFormState: React.Dispatch<React.SetStateAction<ShareFormState>>;
@@ -51,6 +53,8 @@ const emptyDisplayedInvestments: DisplayedInvestments = {
 export const InvestmentDisplayContext = createContext<InvestmentDisplayType>({
   setInvestmentType: (): any => {},
   investmentType: "",
+  formDisplay: "",
+  setFormDisplay: (): any => {},
   setPageState: (): any => {},
   pageState: 10,
   setShareFormState: (): any => {},
@@ -114,6 +118,10 @@ export default function InvestmentDisplayProvider({
     (searchParamsObj.investmentType as InvestmentType) || ""
   );
 
+  const [formDisplay, setFormDisplay] = useState<InvestmentType>(
+    (searchParamsObj.investmentType as InvestmentType) || ""
+  );
+
   const [pageState, setPageState] = useState<PageState>(
     investmentsPerPageParam as PageState
   );
@@ -134,6 +142,8 @@ export default function InvestmentDisplayProvider({
       value={{
         investmentType,
         setInvestmentType,
+        formDisplay,
+        setFormDisplay,
         pageState,
         setPageState,
         shareFormState,

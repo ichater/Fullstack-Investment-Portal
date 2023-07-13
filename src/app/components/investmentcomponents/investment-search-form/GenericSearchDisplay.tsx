@@ -25,9 +25,7 @@ export default function GenericSearchDisplay() {
           label="type"
           onChange={handleChange}
         >
-          <MenuItem value={0}>
-            <em>investments per page</em>
-          </MenuItem>
+          <MenuItem value={5}>5</MenuItem>
           <MenuItem value={10}>10</MenuItem>
           <MenuItem value={25}>25</MenuItem>
           <MenuItem value={50}>50</MenuItem>

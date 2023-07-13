@@ -34,3 +34,21 @@ body {
   height: 5rem;
   width: 5rem;
 }
+
+.submit-btn {
+  background-color: var(--confirm-green);
+  color: var(--main-white);
+  font-size: 1.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--main-white);
+  cursor: pointer;
+  transition: 0.5s 0s;
+  height: 4rem;
+  width: 10rem;
+}
+
+.submit-btn:hover {
+  background-color: var(--confirm-green-hover);
+  border: 1px solid rgba(54, 172, 71, 0.2);
+  font-size: 1.75rem;
+}
