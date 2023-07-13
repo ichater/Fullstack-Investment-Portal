@@ -17,7 +17,7 @@ export class AdviserBuilder {
     this.adviser.lastName = lastName;
     return this;
   }
-  email(email: string) {
+  setEmail(email: string) {
     this.adviser.email = email;
     return this;
   }
