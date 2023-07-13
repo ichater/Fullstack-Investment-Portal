@@ -65,6 +65,7 @@ model Account {
    value      Float  
    shares     ShareInAccount[]
    managedInvestments   ManagedInvestmentInAccount[] 
+   name       String @unique
 }
 
 model ShareInAccount {

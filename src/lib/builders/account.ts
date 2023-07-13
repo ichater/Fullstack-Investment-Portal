@@ -13,6 +13,11 @@ export class AccountBuilder {
     return this;
   }
 
+  setName(name: string) {
+    this.account.name = name;
+    return this;
+  }
+
   build() {
     return this.account;
   }
@@ -24,17 +29,20 @@ class AccountInstance {
   value: number;
   managedInvestments: ManagedInvestment[];
   shares: Share[];
+  name: string;
   constructor(
     clientId: string = "",
     id: string = uuidv4(),
     value: number = 100000,
     managedInvestments: ManagedInvestment[] = [],
-    shares: Share[] = []
+    shares: Share[] = [],
+    name: string = ""
   ) {
     this.clientId = clientId;
     this.id = id;
     this.value = value;
     this.managedInvestments = managedInvestments;
     this.shares = shares;
+    this.name = name;
   }
 }
