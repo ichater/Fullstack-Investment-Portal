@@ -11,10 +11,11 @@ export const useInvestmentSearch = () => {
   );
 
   async function getShares({ asx, name }: ShareFormState) {
-    setDisplayedInvestments((displayedInvestments) => ({
-      ...displayedInvestments,
+    setDisplayedInvestments({
+      error: null,
+      investments: [],
       loading: true,
-    }));
+    });
     try {
       const response = await axios.get(
         `http://localhost:3000/api/investments/getshares?name=${name}&asx=${asx}`
@@ -43,10 +44,11 @@ export const useInvestmentSearch = () => {
     nabOwned,
     category,
   }: ManagedInvestmentFormState) {
-    setDisplayedInvestments((displayedInvestments) => ({
-      ...displayedInvestments,
+    setDisplayedInvestments({
+      error: null,
+      investments: [],
       loading: true,
-    }));
+    });
 
     try {
       const response = await axios.get(

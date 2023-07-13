@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -12,19 +12,17 @@ import { InvestmentType } from "@/types";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentSearchForm() {
-  const { investmentType, setInvestmentType } = useContext(
-    InvestmentDisplayContext
-  );
+  const { formDisplay, setFormDisplay } = useContext(InvestmentDisplayContext);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setInvestmentType(event.target.value as InvestmentType);
+    setFormDisplay(event.target.value as InvestmentType);
   };
 
   return (
-    <div className="investment-search_wrapper">
+    <form className="investment-search_wrapper">
       <div
         className="investment-search_top"
-        style={{ justifyContent: `${investmentType ? "space-between" : ""}` }}
+        style={{ justifyContent: `${formDisplay ? "space-between" : ""}` }}
       >
         {" "}
         <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -32,7 +30,7 @@ export default function InvestmentSearchForm() {
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
-            value={investmentType}
+            value={formDisplay}
             label="type"
             onChange={handleChange}
           >
@@ -44,16 +42,16 @@ export default function InvestmentSearchForm() {
           </Select>
           <FormHelperText>Investment Type</FormHelperText>
         </FormControl>
-        {investmentType === "shares" && <ShareSearchDisplay />}
-        {investmentType === "funds" && <FundSearchDisplay />}
-        {!!investmentType && <GenericSearchDisplay />}
+        {formDisplay === "shares" && <ShareSearchDisplay />}
+        {formDisplay === "funds" && <FundSearchDisplay />}
+        {!!formDisplay && <GenericSearchDisplay />}
       </div>
-      {!!investmentType && (
+      {!!formDisplay && (
         <div className="investment-submit_wrapper">
           {" "}
           <InvestmentSubmitBtn />{" "}
         </div>
       )}
-    </div>
+    </form>
   );
 }

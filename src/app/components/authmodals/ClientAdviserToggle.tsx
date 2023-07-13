@@ -1,19 +1,19 @@
 "use client";
 
-import React, { Dispatch, SetStateAction, useState } from "react";
-import { ToggleState } from "./AuthModal";
+import React, { Dispatch, SetStateAction } from "react";
+import { LoginState } from "@/types";
 
 type Props = {
-  toggleState: ToggleState;
-  setToggleState: Dispatch<SetStateAction<ToggleState>>;
+  loginState: LoginState;
+  setLoginState: Dispatch<SetStateAction<LoginState>>;
 };
 
 export default function ClientAdviserToggle({
-  toggleState,
-  setToggleState,
+  loginState,
+  setLoginState,
 }: Props) {
   const handleToggle = () =>
-    setToggleState(toggleState === "adviser" ? "client" : "adviser");
+    setLoginState(loginState === "adviser" ? "client" : "adviser");
   return (
     <div className="modal-toggle_group">
       <p>Adviser</p>
@@ -23,7 +23,7 @@ export default function ClientAdviserToggle({
         style={{
           display: "flex",
           justifyContent: `${
-            toggleState === "adviser" ? "flex-start" : "flex-end"
+            loginState === "adviser" ? "flex-start" : "flex-end"
           }`,
           alignItems: "center",
         }}
