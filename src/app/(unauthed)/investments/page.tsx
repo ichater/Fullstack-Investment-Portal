@@ -5,7 +5,6 @@ import InvestmentDisplayProvider from "@/context/InvestmentDisplayContext";
 export default function page() {
   return (
     <div>
-      investments:
       <InvestmentDisplayProvider>
         <InvestmentDisplay />
       </InvestmentDisplayProvider>

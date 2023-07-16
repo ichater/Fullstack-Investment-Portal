@@ -8,6 +8,11 @@ export class AccountBuilder {
     this.account = new AccountInstance(clientId);
   }
 
+  setClientId(clientId: string) {
+    this.account.clientId = clientId;
+    return this;
+  }
+
   setValue(value: number) {
     this.account.value = value;
     return this;

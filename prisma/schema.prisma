@@ -15,9 +15,12 @@ model Adviser {
     id     String @id 
     firstName   String
     lastName    String
-    slug             String
+    slug             String @unique
     bio              String
     email    String  @unique
+    city     String
+    phone    String
+    company  String
     profileImage    String
     secondaryImages  String[]
     clients    Client[]

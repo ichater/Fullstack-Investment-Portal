@@ -33,6 +33,14 @@ export class AdviserBuilder {
     this.adviser.secondaryImages = secondaryImages;
     return this;
   }
+  setPhone(phone: string) {
+    this.adviser.phone = phone;
+    return this;
+  }
+  setCompany(company: string) {
+    this.adviser.company = company;
+    return this;
+  }
 
   build(): Adviser {
     return this.adviser;
@@ -46,6 +54,9 @@ class AdviserInstance {
   slug: string;
   bio: string;
   email: string;
+  phone: string;
+  city: string;
+  company: string;
   profileImage: string;
   secondaryImages: string[];
   clients: Client[];
@@ -58,6 +69,9 @@ class AdviserInstance {
     slug: string = `${firstName}-${lastName}`,
     // For ease of association with other builder classes
     id: string = slug,
+    phone: string = "0425789076",
+    company: string = "Trustworthy advisers",
+    city: string = "Melbourne",
     bio: string = `${firstName} ${lastName} is a seasoned financial adviser with over 10 years of experience in the industry. He is dedicated to helping individuals and families achieve their financial goals through comprehensive financial planning and investment strategies. With a strong background in wealth management, retirement planning, and risk management, John provides personalized solutions tailored to each client's unique needs and aspirations. `,
     email: string = "jsmith@finadvice.com.au",
     profileImage: string = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
@@ -69,8 +83,11 @@ class AdviserInstance {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.phone = phone;
+    this.company = company;
     this.slug = slug;
     this.bio = bio;
+    this.city = city;
     this.email = email;
     this.profileImage = profileImage;
     this.secondaryImages = secondaryImages;
