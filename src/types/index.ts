@@ -11,3 +11,5 @@ export {
   type AdviserSignUpState,
   type SignInFormState,
 } from "./navbar";
+export { type AdviserData } from "./adviser";
+export { type SlugProp } from "./nextjs";
