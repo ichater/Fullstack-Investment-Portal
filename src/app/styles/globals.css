@@ -53,3 +53,12 @@ body {
   border: 1px solid rgba(54, 172, 71, 0.2);
   font-size: 1.75rem;
 }
+
+.next-link_No_Decoration > * {
+  text-decoration: none;
+}
+
+.next-link_No_Decoration:visited {
+  text-decoration: none;
+  background-color: transparent;
+}

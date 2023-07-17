@@ -1,40 +1,81 @@
-import SubmitButton from "@/app/components/formcomponents/SubmitButton";
-import { tempAdviser, tempAdvisersClients } from "@/lib/tempdata/tempAdviser";
+"use client";
+import React, { useState } from "react";
 import { SlugProp, AdviserData } from "@/types";
-
-import React from "react";
+import { tempAdviser, tempAdvisersClients } from "@/lib/tempdata/tempAdviser";
+import SubmitButton from "@/app/components/formcomponents/SubmitButton";
 import AdviserInformation from "./components/AdviserInformation";
+import ClientCard from "./components/ClientCard";
 
 const getData = (slug: string) => {
-  return tempAdviser.slug === slug && { tempAdviser, tempAdvisersClients };
+  return (
+    tempAdviser.slug === slug && {
+      tempAdviser,
+      clientData: tempAdvisersClients,
+    }
+  );
 };
 
-export default async function page({ params: { slug } }: SlugProp) {
+export default function page({ params: { slug } }: SlugProp) {
+  const [displayState, setDisplayState] = useState<"advisor" | "client">(
+    "client"
+  );
+
   const data = getData(slug);
+
+  const handleClick = (setPage: "advisor" | "client") => {
+    console.log(displayState);
+    setDisplayState(setPage);
+  };
 
   if (!data) {
     return <div>Nothing to see here</div>;
   }
 
-  const { tempAdviser, tempAdvisersClients } = data;
+  const { tempAdviser, clientData } = data;
   const { firstName, lastName, profileImage, email, city, phone, bio } =
     tempAdviser;
   return (
     <div className="adviser-homepage_wrapper">
       <div className="adviser-client_tabs">
-        <SubmitButton text="Profile" height={3} width={7} />
-        <SubmitButton text="Clients" height={3} width={7} />
+        <SubmitButton
+          text="Profile"
+          height={3}
+          width={7}
+          onClick={() => handleClick("advisor")}
+        />
+        <SubmitButton
+          text="Clients"
+          height={3}
+          width={7}
+          onClick={() => handleClick("client")}
+        />
       </div>
-
-      <AdviserInformation
-        firstName={firstName}
-        lastName={lastName}
-        profileImage={profileImage}
-        email={email}
-        city={city}
-        phone={phone}
-        bio={bio}
-      />
+      {displayState === "advisor" && (
+        <AdviserInformation
+          firstName={firstName}
+          lastName={lastName}
+          profileImage={profileImage}
+          email={email}
+          city={city}
+          phone={phone}
+          bio={bio}
+        />
+      )}
+      {displayState === "client" && (
+        <div className="client-display">
+          {clientData.map((client) => (
+            <ClientCard
+              key={client.id}
+              firstName={client.firstName}
+              lastName={client.lastName}
+              slug={client.slug}
+              email={client.email}
+              profileImage={client.profileImage}
+              mainSlug={slug}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
