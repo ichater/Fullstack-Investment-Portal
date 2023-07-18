@@ -102,8 +102,22 @@
   border-radius: 15px;
   display: flex;
   width: 100%;
+  cursor: pointer;
+  transition: 0.5s 0;
+}
+
+.client-card_wrapper:hover {
+  background-color: var(--adviser-blue-faded);
 }
 
 .client-img_wrapper {
   margin-right: 2rem;
+}
+
+.client-information_wrapper {
+  padding: 1rem 2rem;
+}
+
+.next-link_No_Decorationlink {
+  cursor: pointer;
 }

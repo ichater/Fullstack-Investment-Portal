@@ -72,6 +72,7 @@ export default function page({ params: { slug } }: SlugProp) {
               email={client.email}
               profileImage={client.profileImage}
               mainSlug={slug}
+              bio={client.bio}
             />
           ))}
         </div>
