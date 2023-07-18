@@ -23,7 +23,6 @@ export default function page({ params: { slug } }: SlugProp) {
   const data = getData(slug);
 
   const handleClick = (setPage: "advisor" | "client") => {
-    console.log(displayState);
     setDisplayState(setPage);
   };
 
