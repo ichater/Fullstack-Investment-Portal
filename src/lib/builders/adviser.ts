@@ -17,6 +17,12 @@ export class AdviserBuilder {
     this.adviser.lastName = lastName;
     return this;
   }
+
+  setSlug(slug: string) {
+    this.adviser.slug = slug;
+    return this;
+  }
+
   setEmail(email: string) {
     this.adviser.email = email;
     return this;

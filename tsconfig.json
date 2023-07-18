@@ -24,7 +24,7 @@
       "@/prismaInstance/*": ["./server/db/*"],
       "@/builders": ["./src/lib/builders/index.ts"],
       "@/utils/*": ["./src/lib/utils/*"],
-      "@/globalComponents/*": ["./src/app/components/*"],
+      "@/globalcomponents/*": ["./src/app/components/*"],
       "@/appTypes/*": ["./src/types/*"]
     }
   },
