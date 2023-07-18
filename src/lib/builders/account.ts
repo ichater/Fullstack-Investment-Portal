@@ -1,4 +1,9 @@
-import { Account, ManagedInvestment, Share } from "@prisma/client";
+import {
+  Account,
+  INVESTMENSTRATEGY,
+  ManagedInvestment,
+  Share,
+} from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
 export class AccountBuilder {
@@ -23,6 +28,11 @@ export class AccountBuilder {
     return this;
   }
 
+  setInvestmentStraqtegy(strategy: INVESTMENSTRATEGY) {
+    this.account.investmentStrategy = strategy;
+    return this;
+  }
+
   build() {
     return this.account;
   }
@@ -35,13 +45,15 @@ class AccountInstance {
   managedInvestments: ManagedInvestment[];
   shares: Share[];
   name: string;
+  investmentStrategy: INVESTMENSTRATEGY;
   constructor(
     clientId: string = "",
     id: string = uuidv4(),
     value: number = 100000,
     managedInvestments: ManagedInvestment[] = [],
     shares: Share[] = [],
-    name: string = ""
+    name: string = "",
+    investmentStrategy: INVESTMENSTRATEGY = INVESTMENSTRATEGY.CONSERVATIVE
   ) {
     this.clientId = clientId;
     this.id = id;
@@ -49,5 +61,6 @@ class AccountInstance {
     this.managedInvestments = managedInvestments;
     this.shares = shares;
     this.name = name;
+    this.investmentStrategy = investmentStrategy;
   }
 }

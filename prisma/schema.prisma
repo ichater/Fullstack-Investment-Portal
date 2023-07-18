@@ -34,6 +34,7 @@ model Client {
     slug    String
     email    String  @unique
     profileImage    String
+    bio   String
     adviserId    String
     adviser    Adviser  @relation(fields: [ adviserId], references: [id])
     role    ROLE 
@@ -50,6 +51,7 @@ enum ACCESS {
     READONLY
     READWRITE
 }
+
 
 model Review {
    id   String @id 
@@ -69,6 +71,15 @@ model Account {
    shares     ShareInAccount[]
    managedInvestments   ManagedInvestmentInAccount[] 
    name       String @unique
+   investmentStrategy INVESTMENSTRATEGY
+}
+enum INVESTMENSTRATEGY {
+    CONSERVATIVE
+    MODERATE
+    AGRESSIVE
+    ETHICAL
+    ACTIVE
+    PASSIVE
 }
 
 model ShareInAccount {

@@ -34,6 +34,16 @@ export class ClientBuilder {
     return this;
   }
 
+  setRole(role: ROLE) {
+    this.client.role = role;
+    return this;
+  }
+
+  setBio(bio: string) {
+    this.client.bio = bio;
+    return this;
+  }
+
   build(): Client {
     return this.client;
   }
@@ -46,6 +56,7 @@ class ClientInstance {
   slug: string;
   email: string;
   profileImage: string;
+  bio: string;
   adviserId: string;
   role: ROLE;
   access: ACCESS;
@@ -55,8 +66,9 @@ class ClientInstance {
   constructor(
     firstName: string = "Jane",
     lastName: string = "Doe",
-    slug: string = `${firstName}-${lastName}`,
+    slug: string = `${firstName.toLowerCase()}-${lastName.toLowerCase()}`,
     id: string = slug,
+    bio: string = "Investing for the monies!",
     email: string = "jDoe@pleb.com.au",
     profileImage: string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzq8hRZkv-2JFKAUssJlIqdDsFUUv3ptbVLA&usqp=CAU",
     adviserId: string = "",
@@ -69,6 +81,7 @@ class ClientInstance {
     this.firstName = firstName;
     this.lastName = lastName;
     this.slug = slug;
+    this.bio = bio;
     this.email = email;
     this.profileImage = profileImage;
     this.adviserId = adviserId;
