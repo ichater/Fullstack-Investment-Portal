@@ -3,6 +3,7 @@
 @import "./unauthed/advisers.css";
 @import "./globalcomponents/investmentdisplay.css";
 @import "./adviser/main-page.css";
+@import "./adviser/client-page.css";
 
 /* imported fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
@@ -61,4 +62,15 @@ body {
 .next-link_No_Decoration:visited {
   text-decoration: none;
   background-color: transparent;
+}
+
+.invisible_btn {
+  width: 100%;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }

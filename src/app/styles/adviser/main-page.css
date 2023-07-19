@@ -36,37 +36,36 @@
   margin-left: 1rem;
 }
 
-.adviser-details-wrapper {
-  padding: 0 1.5rem 2rem 1.5rem;
-
+.profile-details-wrapper {
+  padding: 2rem 1.5rem 2rem 1.5rem;
   width: 100%;
 }
 
-.adviser-details-wrapper h2 {
+.profile-details-wrapper h2 {
   color: var(--adviser-blue);
 }
-.adviser-details-wrapper h3 {
+.profile-details-wrapper h3 {
   color: var(--adviser-blue);
 }
-.adviser-details-wrapper p {
+.profile-details-wrapper p {
   margin-bottom: 1rem;
 }
-.adviser-details-wrapper p span {
+.profile-details-wrapper p span {
   color: var(--adviser-blue);
 }
 
-.adviser-details-wrapper div {
+.profile-details-wrapper div {
   margin-bottom: 1rem;
   display: flex;
   gap: 1rem;
-  width: 35%;
+  width: 50%;
   justify-content: space-between;
 }
 
-.adviser-details-wrapper div input {
+.profile-details-wrapper div input {
   width: 70%;
 }
-.adviser-details-wrapper div input:focus {
+.profile-details-wrapper div input:focus {
   background-color: var(--adviser-blue-faded);
   color: var(--main-white);
 }

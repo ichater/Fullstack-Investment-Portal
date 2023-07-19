@@ -6,7 +6,7 @@ import {
   sallieAccountsTemp,
 } from "@/lib/tempdata/tempClient";
 
-import ClientInformationDisplay from "./components/ClientInformationDisplay";
+import ClientInformation from "./components/ClientInformation";
 
 const getData = (clientSlug: string) => {
   return (
@@ -55,10 +55,9 @@ export default function page({
         />
       </div>
       {displayState === "profile" && (
-        <ClientInformationDisplay
+        <ClientInformation
           firstName={firstName}
           lastName={lastName}
-          slug={slug}
           email={email}
           profileImage={profileImage}
           access={access}

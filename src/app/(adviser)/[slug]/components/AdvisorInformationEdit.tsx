@@ -25,7 +25,7 @@ export default function AdvisorInformationEdit({
       <div className="adviser-img-wrapper">
         <img className="adviser-profile-img" src={profileImage} />
       </div>
-      <div className="adviser-details-wrapper">
+      <div className="profile-details-wrapper">
         <h2>{firstName + " " + lastName}</h2>
         <div>
           <label>Email:</label>

@@ -75,6 +75,7 @@
   height: 2rem;
   transition: all 0.5s ease 0s;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .modal-toggle_slider {
@@ -82,10 +83,9 @@
   height: 1.5rem;
   width: 1.5rem;
   border-radius: 100%;
-  border: 1px solid green;
   transition: all 0.5s ease 0s;
   cursor: pointer;
-  margin: 0 -5px;
+  margin: 0px -5px;
 }
 
 .modal-toggle_group {

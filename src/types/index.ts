@@ -13,4 +13,7 @@ export {
 } from "./navbar";
 export { type AdviserData, type AdvisorInfo } from "./adviser";
 export { type SlugProp } from "./nextjs";
-export { type BasicClientInformation } from "./client";
+export {
+  type BasicClientInformation,
+  type ClientInfoEditState,
+} from "./client";
