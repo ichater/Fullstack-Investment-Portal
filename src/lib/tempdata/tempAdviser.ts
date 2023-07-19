@@ -1,5 +1,6 @@
 import { AdviserBuilder, ClientBuilder, AccountBuilder } from "@/builders";
 import { Account, Adviser, Client } from "@prisma/client";
+import { tempClientSallie } from "./tempClient";
 
 export const tempAdviser: Adviser = new AdviserBuilder("Claire")
   .setId("tempAdviserId")
@@ -12,25 +13,7 @@ export const tempAdviser: Adviser = new AdviserBuilder("Claire")
   .build();
 
 export const tempAdvisersClients: Client[] = [
-  new ClientBuilder("Sallie")
-    .setAccess("READWRITE")
-    .setAviserId("tempAdviserId")
-    .setBio(
-      "Claire seems like a trustworthy and lovely lady, she sayd I shouldnt hire her to manage my retirement fund since she is a burse and not an advisor but I think she is under selling herself. With any luck my investment options pay off and I can pay for my nephew Brians drug habit"
-    )
-    .build(),
+  tempClientSallie,
   new ClientBuilder("John").setAviserId("tempAdviserId").build(),
   new ClientBuilder("Brian").setAviserId("tempAdviserId").build(),
-];
-
-export const sallieAccountsTemp: Account[] = [
-  new AccountBuilder("sallie-doe")
-    .setValue(123450.0)
-    .setInvestmentStraqtegy("ACTIVE")
-    .build(),
-
-  new AccountBuilder("sallie-doe")
-    .setValue(373450.0)
-    .setInvestmentStraqtegy("MODERATE")
-    .build(),
 ];

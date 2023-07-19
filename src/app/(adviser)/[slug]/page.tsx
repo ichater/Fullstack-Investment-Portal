@@ -35,7 +35,7 @@ export default function page({ params: { slug } }: SlugProp) {
     tempAdviser;
   return (
     <div className="adviser-homepage_wrapper">
-      <div className="adviser-client_tabs">
+      <div className="toggle-view_tabs">
         <SubmitButton
           text="Profile"
           height={3}
