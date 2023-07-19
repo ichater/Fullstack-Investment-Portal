@@ -67,11 +67,23 @@ model Account {
    id         String @id 
    clientId   String
    client     Client   @relation(fields: [clientId], references: [id])
-   value      Float  
+   totalValue      Float 
+   cashAccount     Float 
+   adviserFee      String
+   adviserFeeType ADVISERFEETYPE
+   cashInShares    Float
+   cashInInvestments   Float
    shares     ShareInAccount[]
    managedInvestments   ManagedInvestmentInAccount[] 
    name       String @unique
+   slug       String
    investmentStrategy INVESTMENSTRATEGY
+}
+
+enum ADVISERFEETYPE {
+    PERCENTAGE
+    FIXED
+    MIXED
 }
 enum INVESTMENSTRATEGY {
     CONSERVATIVE

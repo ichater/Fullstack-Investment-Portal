@@ -1,10 +1,12 @@
 import {
+  ADVISERFEETYPE,
   Account,
   INVESTMENSTRATEGY,
   ManagedInvestment,
   Share,
 } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
+import { adviserFeeParser } from "../utils/adviserFeeParser";
 
 export class AccountBuilder {
   account: Account;
@@ -18,8 +20,8 @@ export class AccountBuilder {
     return this;
   }
 
-  setValue(value: number) {
-    this.account.value = value;
+  setValue(totalValue: number) {
+    this.account.totalValue = totalValue;
     return this;
   }
 
@@ -41,26 +43,44 @@ export class AccountBuilder {
 class AccountInstance {
   clientId: string;
   id: string;
-  value: number;
+  totalValue: number;
+  cashAccount: number;
+  cashInShares: number;
+  cashInInvestments: number;
   managedInvestments: ManagedInvestment[];
   shares: Share[];
   name: string;
+  slug: string;
+  adviserFee: string;
   investmentStrategy: INVESTMENSTRATEGY;
+  adviserFeeType: ADVISERFEETYPE;
   constructor(
     clientId: string = "",
     id: string = uuidv4(),
-    value: number = 100000,
+    totalValue: number = 100000,
+    cashAccount: number = totalValue,
     managedInvestments: ManagedInvestment[] = [],
+    adviserFeeType: ADVISERFEETYPE = ADVISERFEETYPE.PERCENTAGE,
+    adviserFee: string = "",
+    cashInShares: number = 0,
+    cashInInvestments: number = 0,
     shares: Share[] = [],
-    name: string = "",
-    investmentStrategy: INVESTMENSTRATEGY = INVESTMENSTRATEGY.CONSERVATIVE
+    name: string = "conservative-account",
+    investmentStrategy: INVESTMENSTRATEGY = INVESTMENSTRATEGY.CONSERVATIVE,
+    slug: string = `${name + investmentStrategy.toLocaleLowerCase()}`
   ) {
     this.clientId = clientId;
     this.id = id;
-    this.value = value;
+    this.totalValue = totalValue;
+    this.cashAccount = cashAccount;
+    this.cashInShares = cashInShares;
+    this.cashInInvestments = cashInInvestments;
     this.managedInvestments = managedInvestments;
     this.shares = shares;
+    this.adviserFee = adviserFeeParser(adviserFeeType, adviserFee);
+    this.adviserFeeType = adviserFeeType;
     this.name = name;
+    this.slug = slug;
     this.investmentStrategy = investmentStrategy;
   }
 }
