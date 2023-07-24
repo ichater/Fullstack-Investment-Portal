@@ -18,7 +18,7 @@ export default async function handler(
       .json({ errorMessage: "unauthorized request no token" });
   }
 
-  const user = await prisma.adviser.findUnique({
+  const adviser = await prisma.adviser.findUnique({
     where: { email: payload.email },
     select: {
       id: true,
@@ -33,11 +33,11 @@ export default async function handler(
     },
   });
 
-  if (!user) {
+  if (!adviser) {
     return res.status(401).json({ errorMessage: "User not found" });
   }
 
   return res.json({
-    user,
+    adviser,
   });
 }

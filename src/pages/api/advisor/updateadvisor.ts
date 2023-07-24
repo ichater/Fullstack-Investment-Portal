@@ -11,23 +11,22 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "POST") {
-    const { email, firstName, lastName, bio, city, phone, company, password } =
-      req.body;
+  if (req.method === "PUT") {
+    const {
+      email,
+      bio,
+      city,
+      phone,
+      company,
+    }: {
+      email: string;
+      bio: string;
+      city: string;
+      phone: string;
+      company: string;
+    } = req.body;
 
     const validationSchema = [
-      {
-        valid: validator.isEmail(email),
-        errorMessage: "email address must be a valid email address",
-      },
-      {
-        valid: validator.isLength(firstName, { min: 3, max: 50 }),
-        errorMessage: "first name must be between 3 and 50 characters",
-      },
-      {
-        valid: validator.isLength(lastName, { min: 3, max: 50 }),
-        errorMessage: "last name must be between 3 and 50 characters",
-      },
       {
         valid: validator.isLength(bio, { min: 0, max: 1000 }),
         errorMessage: "bio must be less than 1000 characters",
@@ -44,14 +43,30 @@ export default async function handler(
         valid: validator.isLength(company, { min: 3, max: 50 }),
         errorMessage: "company must be between 3 and 50 characters",
       },
-      {
-        valid: validator.isStrongPassword(password),
-        errorMessage:
-          "password must be at least 8 characters long with at least 1 uppercase, 1 lowercase, 1 number and 1 special character",
-      },
     ];
+    const errorArr = validationSchema
+      .filter(({ valid }) => !valid)
+      .map(({ errorMessage }) => errorMessage);
 
-    res.status(405).json({});
+    if (errorArr.length) {
+      return res.status(400).json({
+        errorMessage: `${errorArr.join(", ")}`,
+      });
+    }
+
+    const updatedAdviser = await prisma.adviser.update({
+      where: {
+        email,
+      },
+      data: {
+        bio,
+        city,
+        phone,
+        company,
+      },
+    });
+
+    res.status(200).json({ updatedAdviser });
   }
   res.status(405).json({ error: "bad request" });
 }
