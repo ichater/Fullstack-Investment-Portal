@@ -1,3 +1,4 @@
+import { ACCESS, Adviser } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 import validator from "validator";
 import bcrypt from "bcrypt";
@@ -12,8 +13,25 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const { email, firstName, lastName, bio, city, phone, company, password } =
-      req.body;
+    const {
+      adviserId,
+      firstName,
+      lastName,
+      email,
+      password,
+      bio,
+      access,
+      profileImage,
+    }: {
+      adviserId: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      password: string;
+      bio: string;
+      access: ACCESS;
+      profileImage: string;
+    } = req.body;
 
     const validationSchema = [
       {
@@ -33,18 +51,6 @@ export default async function handler(
         errorMessage: "bio must be less than 1000 characters",
       },
       {
-        valid: validator.isLength(city, { min: 3, max: 50 }),
-        errorMessage: "city must be between 3 and 50 characters",
-      },
-      {
-        valid: validator.isLength(phone, { min: 3, max: 12 }),
-        errorMessage: "phone must be between 3 and 12 characters",
-      },
-      {
-        valid: validator.isLength(company, { min: 3, max: 50 }),
-        errorMessage: "company must be between 3 and 50 characters",
-      },
-      {
         valid: validator.isStrongPassword(password),
         errorMessage:
           "password must be at least 8 characters long with at least 1 uppercase, 1 lowercase, 1 number and 1 special character",
@@ -61,11 +67,11 @@ export default async function handler(
       });
     }
 
-    const advisorWithEmail = await prisma.adviser.findUnique({
+    const clientWithEmail = await prisma.adviser.findUnique({
       where: { email },
     });
 
-    if (advisorWithEmail) {
+    if (clientWithEmail) {
       return res
         .status(400)
         .json({ errorMessage: "Email is associated with another account" });
@@ -87,40 +93,36 @@ export default async function handler(
       });
     }
 
-    const adviser = await prisma.adviser.create({
-      data: {
-        id: uuidv4(),
-        email: email as string,
-        firstName: firstName as string,
-        lastName: lastName as string,
-        slug: `${firstName.toLowerCase() as string}-${
-          lastName.toLowerCase() as string
-        }`,
-        bio: bio as string,
-        city: city as string,
-        phone: phone as string,
-        company: company as string,
-        password: hashedPassword,
-        profileImage: "",
-        role: ROLE.ADVISER,
-        secondaryImages: [],
-        clients: undefined,
+    const adviser = await prisma.adviser.findUnique({
+      where: {
+        id: adviserId,
       },
     });
 
-    // algorithm for the protected header
-    const alg = "HS256";
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+    if (!adviser) {
+      return res.status(500).json({
+        errorMessage: "no adviser found",
+      });
+    }
 
-    // create web token through jose
-    const token = await new jose.SignJWT({ email: adviser.email })
-      .setProtectedHeader({ alg })
-      .setExpirationTime("24h")
-      .sign(secret);
+    const client = await prisma.client.create({
+      data: {
+        id: uuidv4(),
+        firstName,
+        lastName,
+        slug: `${firstName.toLowerCase()}-${lastName.toLowerCase()}`,
+        email,
+        password: hashedPassword,
+        profileImage,
+        bio,
+        adviserId,
+        role: ROLE.CLIENT,
+        access,
+        accounts: undefined,
+      },
+    });
 
-    setCookie("jwt", token, { req, res, maxAge: 60 * 6 * 24 });
-
-    res.status(405).json({ adviser, token });
+    res.status(200).json({ client, adviser });
   }
   res.status(405).json({ error: "bad request" });
 }
