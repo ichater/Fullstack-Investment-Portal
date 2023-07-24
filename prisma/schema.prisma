@@ -26,7 +26,6 @@ model Adviser {
     secondaryImages  String[]
     clients    Client[]
     role    ROLE   
-    reviews Review[]
 }
 model Client {
     id     String @id 
@@ -42,7 +41,6 @@ model Client {
     role    ROLE 
     access ACCESS 
     accounts    Account[]
-    reviews Review[]
 }
 enum ROLE {
     ADVISER
@@ -55,15 +53,6 @@ enum ACCESS {
 }
 
 
-model Review {
-   id   String @id 
-   text   String
-   rating Int
-   clientId   String
-   client    Client @relation(fields: [clientId], references: [id])
-   adviserId    String
-   adviser    Adviser  @relation(fields: [ adviserId], references: [id])
-}
 
 model Account {
    id         String @id 
