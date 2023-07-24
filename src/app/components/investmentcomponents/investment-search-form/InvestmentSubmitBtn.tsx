@@ -42,14 +42,10 @@ export default function InvestmentSubmitBtn() {
       }&per_page=${pageState}&page=1`
     );
 
-    if (formDisplay === "shares") {
-      console.log("shares called");
-      getShares(shareFormState);
-    }
-    if (formDisplay === "funds") {
-      console.log("funds called");
-      getManagedInvestments(fundFormState);
-    }
+    if (formDisplay === "shares") getShares(shareFormState);
+
+    if (formDisplay === "funds") getManagedInvestments(fundFormState);
+
     setPageNumber(1);
   }
 

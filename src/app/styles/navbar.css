@@ -119,9 +119,21 @@
 
 .single-row_input {
   width: 100%;
+  padding: 0.5rem;
 }
 
-.adviser-signup-fullname_wrapper {
+.bio-input_label {
+  width: 100%;
+  color: grey;
+}
+
+.single-row_textarea {
+  padding: 0.5rem;
+  min-width: 95%;
+  border-radius: 15px;
+}
+
+.adviser-signup-dual-input_wrapper {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;

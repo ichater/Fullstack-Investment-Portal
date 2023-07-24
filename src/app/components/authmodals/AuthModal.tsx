@@ -13,28 +13,29 @@ type Props = {
   isLogIn: boolean;
 };
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "30%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "1px solid #000",
-  boxShadow: 24,
-  p: 4,
-  borderRadius: "25px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-};
-
 export default function AuthModal({ isLogIn }: Props) {
   const [open, setOpen] = useState(false);
   const [loginState, setLoginState] = useState<LoginState>("adviser");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const style = {
+    position: "absolute" as "absolute",
+    top: isLogIn ? "30%" : "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "1px solid #000",
+    boxShadow: 24,
+    p: 4,
+    borderRadius: "25px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+  };
+
   return (
     <>
       {" "}

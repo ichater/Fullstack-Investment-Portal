@@ -4,4 +4,8 @@ export interface AdviserSignUpState {
   email: string;
   password: string;
   confirmPassword: string;
+  bio: string;
+  city: string;
+  company: string;
+  phone: string;
 }

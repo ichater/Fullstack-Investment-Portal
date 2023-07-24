@@ -10,10 +10,23 @@ export default function AdviserSignUpForm() {
     email: "",
     password: "",
     confirmPassword: "",
+    bio: "",
+    city: "",
+    company: "",
+    phone: "",
   });
 
-  const { firstName, lastName, email, password, confirmPassword } =
-    adviserSignUp;
+  const {
+    firstName,
+    lastName,
+    email,
+    bio,
+    city,
+    company,
+    phone,
+    password,
+    confirmPassword,
+  } = adviserSignUp;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,7 +40,7 @@ export default function AdviserSignUpForm() {
   return (
     <form className="auth-modal_form">
       {" "}
-      <div className="adviser-signup-fullname_wrapper">
+      <div className="adviser-signup-dual-input_wrapper">
         <TextField
           required
           label="first name"
@@ -43,6 +56,22 @@ export default function AdviserSignUpForm() {
           onChange={handleChange}
         />
       </div>
+      <div className="adviser-signup-dual-input_wrapper">
+        <TextField
+          required
+          label="city"
+          name="city"
+          value={city}
+          onChange={handleChange}
+        />{" "}
+        <TextField
+          required
+          label="phone"
+          name="phone"
+          value={phone}
+          onChange={handleChange}
+        />
+      </div>
       <TextField
         className="single-row_input"
         required
@@ -51,6 +80,25 @@ export default function AdviserSignUpForm() {
         name="email"
         onChange={handleChange}
       />
+      <TextField
+        className="single-row_input"
+        required
+        label="company"
+        value={company}
+        name="company"
+        onChange={handleChange}
+      />
+      <label className="bio-input_label">
+        bio (optional) :
+        <textarea
+          className="single-row_textarea"
+          id="bio"
+          name="bio"
+          rows={5}
+          value={bio}
+          onChange={handleChange}
+        />
+      </label>
       <TextField
         className="single-row_input"
         required
