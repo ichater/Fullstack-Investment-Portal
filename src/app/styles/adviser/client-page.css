@@ -1,0 +1,81 @@
+.client-accounts_wrapper {
+  width: 80%;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.client-accounts_wrapper h1 {
+  color: var(--main-white);
+  background-color: var(--adviser-blue);
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.client-account-card_wrapper {
+  /* width: 80%; */
+  cursor: pointer;
+  border: 1px solid var(--adviser-blue);
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.card-heading_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+
+.card_heading {
+  color: var(--main-white);
+  background-color: var(--adviser-blue);
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin: 0px;
+}
+
+.card_subheading {
+  margin: 0px;
+}
+.client-info_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.card-info-section_wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 1rem;
+  padding-left: 0px;
+}
+
+.card-info_finance {
+  margin: 0.5rem 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid var(--adviser-blue);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 80%;
+}
+
+.btn-wrapper_card {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-left: 1rem;
+  padding-bottom: 1rem;
+}

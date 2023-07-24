@@ -11,8 +11,6 @@ export default function InvestmentResults() {
     InvestmentDisplayContext
   );
 
-  console.log(displayedInvestments);
-
   const currentInvestmentDisplay: ManagedInvestment[] | Share[] | undefined =
     displayedInvestments.investments[pageNumber - 1];
 

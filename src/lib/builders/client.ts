@@ -55,6 +55,7 @@ class ClientInstance {
   lastName: string;
   slug: string;
   email: string;
+  password: string;
   profileImage: string;
   bio: string;
   adviserId: string;
@@ -68,6 +69,7 @@ class ClientInstance {
     lastName: string = "Doe",
     slug: string = `${firstName.toLowerCase()}-${lastName.toLowerCase()}`,
     id: string = slug,
+    password: string = "SomeClient123!",
     bio: string = "Investing for the monies!",
     email: string = "jDoe@pleb.com.au",
     profileImage: string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzq8hRZkv-2JFKAUssJlIqdDsFUUv3ptbVLA&usqp=CAU",
@@ -80,6 +82,7 @@ class ClientInstance {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.password = password;
     this.slug = slug;
     this.bio = bio;
     this.email = email;

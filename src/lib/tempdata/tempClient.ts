@@ -1,4 +1,4 @@
-import { Account } from "@prisma/client";
+import { ADVISERFEETYPE, Account } from "@prisma/client";
 import { AccountBuilder, ClientBuilder } from "../builders";
 
 export const tempClientSallie = new ClientBuilder("Sallie")
@@ -13,10 +13,14 @@ export const sallieAccountsTemp: Account[] = [
   new AccountBuilder("sallie-doe")
     .setValue(123450.0)
     .setInvestmentStraqtegy("ACTIVE")
+    .setAdviserFee(ADVISERFEETYPE.PERCENTAGE, "1.05")
+    .setName("Active Account")
     .build(),
 
   new AccountBuilder("sallie-doe")
     .setValue(373450.0)
     .setInvestmentStraqtegy("MODERATE")
+    .setAdviserFee(ADVISERFEETYPE.FIXED, "2300")
+    .setName("Moderate")
     .build(),
 ];

@@ -17,3 +17,4 @@ export {
   type BasicClientInformation,
   type ClientInfoEditState,
 } from "./client";
+export { type ClientAccountInformation } from "./accounts";

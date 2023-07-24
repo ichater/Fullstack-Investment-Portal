@@ -35,6 +35,12 @@ export class AccountBuilder {
     return this;
   }
 
+  setAdviserFee(feeType: ADVISERFEETYPE, adviserFee: string) {
+    this.account.adviserFeeType = feeType;
+    this.account.adviserFee = adviserFeeParser(feeType, adviserFee);
+    return this;
+  }
+
   build() {
     return this.account;
   }

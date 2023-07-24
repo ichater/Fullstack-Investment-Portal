@@ -7,6 +7,9 @@ import {
 } from "@/lib/tempdata/tempClient";
 
 import ClientInformation from "./components/ClientInformation";
+import ClientAccounts from "./components/ClientAccounts";
+import { ClientAccountInformation } from "@/types";
+import Link from "next/link";
 
 const getData = (clientSlug: string) => {
   return (
@@ -23,7 +26,7 @@ export default function page({
   params: { slug: string; clientSlug: string };
 }) {
   const [displayState, setDisplayState] = useState<"profile" | "accounts">(
-    "profile"
+    "accounts"
   );
 
   const data = getData(clientSlug);
@@ -38,8 +41,25 @@ export default function page({
 
   const { firstName, lastName, email, bio, access, profileImage } =
     data.clientData;
+
+  const parsedAccountInformation: ClientAccountInformation[] =
+    data.accountData.map((account) => ({
+      id: account.id,
+      clientId: account.clientId,
+      totalValue: account.totalValue,
+      cashAccount: account.cashAccount,
+      adviserFee: account.adviserFee,
+      adviserFeeType: account.adviserFeeType,
+      cashInShares: account.cashInShares,
+      cashInInvestments: account.cashInInvestments,
+      name: account.name,
+      slug: account.slug,
+      investmentStratgy: account.investmentStrategy,
+    }));
+
   return (
     <div className="adviser-homepage_wrapper">
+      <Link href={`/${slug}`}>Profile (Move to Navbar later)</Link>
       <div className="toggle-view_tabs">
         <SubmitButton
           text="Profile"
@@ -64,7 +84,14 @@ export default function page({
           bio={bio}
         />
       )}
-      {displayState === "accounts" && <div> Accounts </div>}
+      {displayState === "accounts" && (
+        <ClientAccounts
+          firstName={firstName}
+          lastName={lastName}
+          accounts={parsedAccountInformation}
+          params={{ slug, clientSlug }}
+        />
+      )}
     </div>
   );
 }

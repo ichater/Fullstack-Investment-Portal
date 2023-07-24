@@ -23,7 +23,7 @@ export default function AdviserSignUpForm() {
       [e.target.name]: e.target.value,
     }));
   };
-  console.log(adviserSignUp);
+
   return (
     <form className="auth-modal_form">
       {" "}

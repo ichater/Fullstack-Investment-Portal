@@ -57,6 +57,7 @@ class AdviserInstance {
   firstName: string;
   id: string;
   lastName: string;
+  password: string;
   slug: string;
   bio: string;
   email: string;
@@ -74,6 +75,7 @@ class AdviserInstance {
     lastName: string = "Smith",
     slug: string = `${firstName}-${lastName}`,
     // For ease of association with other builder classes
+    password: string = "Abc123...",
     id: string = slug,
     phone: string = "0425789076",
     company: string = "Trustworthy advisers",
@@ -87,6 +89,7 @@ class AdviserInstance {
     reviews: Review[] = []
   ) {
     this.id = id;
+    this.password = password;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;

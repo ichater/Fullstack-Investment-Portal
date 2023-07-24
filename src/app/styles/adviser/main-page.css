@@ -96,7 +96,7 @@
 
 .client-card_wrapper {
   padding: 1rem 2rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
   border: 1px solid var(--adviser-blue);
   border-radius: 15px;
   display: flex;

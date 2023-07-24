@@ -16,7 +16,7 @@ export default function InvestmentDisplay() {
   useEffect(() => {
     if (investmentType === "shares") getShares(shareFormState);
     if (investmentType === "funds") getManagedInvestments(fundFormState);
-  }, []);
+  }, [investmentType]);
 
   return (
     <div>

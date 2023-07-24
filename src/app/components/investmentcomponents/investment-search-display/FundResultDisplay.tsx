@@ -7,7 +7,6 @@ type Props = {
 };
 
 export default function FundResultDisplay({ funds }: Props) {
-  console.log(funds);
   return (
     <table className="investment-search-result_table">
       <thead className="investment-search-result_table_head">

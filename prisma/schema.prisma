@@ -21,6 +21,7 @@ model Adviser {
     city     String
     phone    String
     company  String
+    password String
     profileImage    String
     secondaryImages  String[]
     clients    Client[]
@@ -34,6 +35,7 @@ model Client {
     slug    String
     email    String  @unique
     profileImage    String
+    password String
     bio   String
     adviserId    String
     adviser    Adviser  @relation(fields: [ adviserId], references: [id])

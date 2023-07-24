@@ -7,7 +7,6 @@ type Props = {
 };
 
 export default function ShareResultDisplay({ shares }: Props) {
-  console.log("SHARES:", shares);
   return (
     <div>
       <table className="investment-search-result_table">

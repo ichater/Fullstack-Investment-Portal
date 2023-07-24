@@ -39,7 +39,7 @@ export default function FundSearchDisplay() {
       nabOwned: checked === true ? true : "",
     });
   };
-  console.log(nabOwned);
+
   return (
     <>
       <TextField

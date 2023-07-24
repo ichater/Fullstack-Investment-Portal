@@ -8,6 +8,6 @@ export const adviserFeeParser = (
     return "Invalid Fee";
   }
   return feeType === ADVISERFEETYPE.PERCENTAGE
-    ? feeAmount + "%"
-    : "$" + feeAmount;
+    ? feeAmount + "% P/A"
+    : "$" + feeAmount + " P/A";
 };

@@ -14,6 +14,7 @@ export default function InvestmentSubmitBtn() {
     fundFormState,
     setInvestmentType,
     formDisplay,
+    setPageNumber,
   } = useContext(InvestmentDisplayContext);
 
   const { asx } = shareFormState;
@@ -33,16 +34,23 @@ export default function InvestmentSubmitBtn() {
   const nabOwnedSlug: string = nabOwned ? `&nab=${nabOwned}` : "";
   const fundCategorySlug: string = category ? `&category=${category}` : "";
   const fundSlug: string = fundNameSlug + nabOwnedSlug + fundCategorySlug;
-
   function handleSubmit() {
     setInvestmentType(formDisplay);
     router.push(
-      `/investments?investment-type=${investmentType}${
-        investmentType === "shares" ? shareSlug : fundSlug
+      `/investments?investment-type=${formDisplay}${
+        formDisplay === "shares" ? shareSlug : fundSlug
       }&per_page=${pageState}&page=1`
     );
-    if (investmentType === "shares") getShares(shareFormState);
-    if (investmentType === "funds") getManagedInvestments(fundFormState);
+
+    if (formDisplay === "shares") {
+      console.log("shares called");
+      getShares(shareFormState);
+    }
+    if (formDisplay === "funds") {
+      console.log("funds called");
+      getManagedInvestments(fundFormState);
+    }
+    setPageNumber(1);
   }
 
   return (

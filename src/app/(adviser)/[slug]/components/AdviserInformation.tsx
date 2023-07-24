@@ -37,7 +37,6 @@ export default function AdviserInformation({
       ...editFormState,
       [event.target.name]: event.target.value,
     }));
-    console.log(editFormState);
   };
 
   const handleClick = () => {

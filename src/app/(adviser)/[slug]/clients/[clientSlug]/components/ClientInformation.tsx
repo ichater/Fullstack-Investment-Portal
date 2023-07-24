@@ -1,5 +1,4 @@
 import { BasicClientInformation, ClientInfoEditState } from "@/types";
-import { ACCESS } from "@prisma/client";
 import React, { useState } from "react";
 import ClientInformationDisplay from "./ClientInformationDisplay";
 import ClientInformationEdit from "./ClientInformationEdit";
@@ -29,7 +28,6 @@ export default function ClientInformation({
       ...editFormState,
       [event.target.name]: event.target.value,
     }));
-    console.log(editFormState);
   };
 
   const handleClick = () => {
