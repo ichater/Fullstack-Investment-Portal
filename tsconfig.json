@@ -28,6 +28,12 @@
       "@/appTypes/*": ["./src/types/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "__tests__/unauthed/investments.test.js"
+  ],
   "exclude": ["node_modules"]
 }

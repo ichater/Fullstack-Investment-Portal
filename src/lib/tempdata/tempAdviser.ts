@@ -1,5 +1,5 @@
-import { AdviserBuilder, ClientBuilder, AccountBuilder } from "@/builders";
-import { Account, Adviser, Client } from "@prisma/client";
+import { AdviserBuilder, ClientBuilder } from "@/builders";
+import { Adviser, Client } from "@prisma/client";
 import { tempClientSallie } from "./tempClient";
 
 export const tempAdviser: Adviser = new AdviserBuilder("Claire")
