@@ -7,16 +7,21 @@ import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
 
 export default function InvestmentDisplay() {
-  const { investmentType, shareFormState, fundFormState } = useContext(
-    InvestmentDisplayContext
-  );
+  const {
+    investmentType,
+    shareFormState,
+    fundFormState,
+    triggerSearch,
+    setTriggerSearch,
+  } = useContext(InvestmentDisplayContext);
 
   const { getShares, getManagedInvestments } = useInvestmentSearch();
   // sets investments on initial load if there are any relevant query parameters in the url
   useEffect(() => {
     if (investmentType === "shares") getShares(shareFormState);
     if (investmentType === "funds") getManagedInvestments(fundFormState);
-  }, [investmentType]);
+    setTriggerSearch(false);
+  }, [investmentType, triggerSearch]);
 
   return (
     <div>

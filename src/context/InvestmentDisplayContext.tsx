@@ -31,6 +31,8 @@ interface InvestmentDisplayType {
   setDisplayedInvestments: React.Dispatch<
     React.SetStateAction<DisplayedInvestments>
   >;
+  triggerSearch: boolean;
+  setTriggerSearch: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const emptyFundState: ManagedInvestmentFormState = {
@@ -65,6 +67,8 @@ export const InvestmentDisplayContext = createContext<InvestmentDisplayType>({
   setPageNumber: (): any => {},
   displayedInvestments: emptyDisplayedInvestments,
   setDisplayedInvestments: (): any => {},
+  triggerSearch: false,
+  setTriggerSearch: (): any => {},
 });
 
 export default function InvestmentDisplayProvider({
@@ -137,6 +141,8 @@ export default function InvestmentDisplayProvider({
   const [displayedInvestments, setDisplayedInvestments] =
     useState<DisplayedInvestments>(emptyDisplayedInvestments);
 
+  const [triggerSearch, setTriggerSearch] = useState(false);
+
   return (
     <InvestmentDisplayContext.Provider
       value={{
@@ -154,6 +160,8 @@ export default function InvestmentDisplayProvider({
         setPageNumber,
         displayedInvestments,
         setDisplayedInvestments,
+        triggerSearch,
+        setTriggerSearch,
       }}
     >
       {children}

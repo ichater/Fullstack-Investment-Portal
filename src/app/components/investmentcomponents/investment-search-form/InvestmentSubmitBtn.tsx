@@ -1,20 +1,18 @@
 import React, { useContext } from "react";
 import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 import { useRouter } from "next/navigation";
-import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
 
 export default function InvestmentSubmitBtn() {
   const router = useRouter();
-  const { getShares, getManagedInvestments } = useInvestmentSearch();
 
   const {
-    investmentType,
     pageState,
     shareFormState,
     fundFormState,
     setInvestmentType,
     formDisplay,
     setPageNumber,
+    setTriggerSearch,
   } = useContext(InvestmentDisplayContext);
 
   const { asx } = shareFormState;
@@ -34,6 +32,7 @@ export default function InvestmentSubmitBtn() {
   const nabOwnedSlug: string = nabOwned ? `&nab=${nabOwned}` : "";
   const fundCategorySlug: string = category ? `&category=${category}` : "";
   const fundSlug: string = fundNameSlug + nabOwnedSlug + fundCategorySlug;
+
   function handleSubmit() {
     setInvestmentType(formDisplay);
     router.push(
@@ -42,11 +41,8 @@ export default function InvestmentSubmitBtn() {
       }&per_page=${pageState}&page=1`
     );
 
-    if (formDisplay === "shares") getShares(shareFormState);
-
-    if (formDisplay === "funds") getManagedInvestments(fundFormState);
-
     setPageNumber(1);
+    setTriggerSearch(true);
   }
 
   return (
