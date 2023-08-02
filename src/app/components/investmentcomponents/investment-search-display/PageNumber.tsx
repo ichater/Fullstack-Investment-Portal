@@ -1,5 +1,5 @@
-import React, { useCallback, useContext } from "react";
-import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
+import React, { useCallback } from "react";
+import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
@@ -20,7 +20,7 @@ export default function PageNumber({ pageNumber }: Props) {
     },
     [searchParams]
   );
-  const { setPageNumber } = useContext(InvestmentDisplayContext);
+  const { setPageNumber } = useInvestmentContext();
   return (
     <button
       className="page-number_select"

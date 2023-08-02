@@ -1,28 +1,11 @@
 "use client";
 
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import InvestmentSearchForm from "./InvestmentSearchForm";
 import InvestmentSearchResults from "./InvestmentSearchResults";
-import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
-import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
 
 export default function InvestmentDisplay() {
-  const {
-    investmentType,
-    shareFormState,
-    fundFormState,
-    triggerSearch,
-    setTriggerSearch,
-  } = useContext(InvestmentDisplayContext);
-
-  const { getShares, getManagedInvestments } = useInvestmentSearch();
-  // sets investments on initial load if there are any relevant query parameters in the url
-  useEffect(() => {
-    if (investmentType === "shares") getShares(shareFormState);
-    if (investmentType === "funds") getManagedInvestments(fundFormState);
-    setTriggerSearch(false);
-  }, [investmentType, triggerSearch]);
-
+  // console.log("InvestmentDisplay render");
   return (
     <div>
       <div className="investment-display_container">

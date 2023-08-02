@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { PageState } from "@/types";
-import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 
 export default function GenericSearchDisplay() {
-  const { setPageState, pageState } = useContext(InvestmentDisplayContext);
+  const { setPageState, pageState } = useInvestmentContext();
 
   const handleChange = (event: SelectChangeEvent) =>
     setPageState(parseInt(event.target.value) as PageState);

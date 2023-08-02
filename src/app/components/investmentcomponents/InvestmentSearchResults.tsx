@@ -1,18 +1,34 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import FundResultDisplay from "./investment-search-display/FundResultDisplay";
-import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
 import ShareResultDisplay from "./investment-search-display/ShareResultDisplay";
 import { ManagedInvestment, Share } from "@prisma/client";
 import { arrayFromNumber } from "@/lib/utils/arrayFromNumber";
 import PageNumber from "./investment-search-display/PageNumber";
+import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
+import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentResults() {
-  const { investmentType, pageNumber, displayedInvestments } = useContext(
-    InvestmentDisplayContext
-  );
+  // console.log("InvestmentResults render");
+  const {
+    investmentType,
+    pageNumber,
+    displayedInvestments,
+    shareFormState,
+    fundFormState,
+    triggerSearch,
+    setTriggerSearch,
+  } = useInvestmentContext();
 
   const currentInvestmentDisplay: ManagedInvestment[] | Share[] | undefined =
     displayedInvestments.investments[pageNumber - 1];
+
+  const { getShares, getManagedInvestments } = useInvestmentSearch();
+  // sets investments on initial load if there are any relevant query parameters in the url
+  useEffect(() => {
+    if (investmentType === "shares") getShares(shareFormState);
+    if (investmentType === "funds") getManagedInvestments(fundFormState);
+    setTriggerSearch(false);
+  }, [investmentType, triggerSearch]);
 
   if (displayedInvestments.loading) {
     return <div>Loading...</div>;

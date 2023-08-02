@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -9,10 +9,12 @@ import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
 import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
 import { InvestmentType } from "@/types";
-import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentSearchForm() {
-  const { formDisplay, setFormDisplay } = useContext(InvestmentDisplayContext);
+  // console.log("InvestmentSearchForm render");
+
+  const { formDisplay, setFormDisplay } = useInvestmentContext();
 
   const handleChange = (event: SelectChangeEvent) => {
     setFormDisplay(event.target.value as InvestmentType);

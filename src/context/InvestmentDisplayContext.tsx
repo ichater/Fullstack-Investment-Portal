@@ -1,5 +1,5 @@
 "use client";
-
+import { ReactNode, createContext, useState, useMemo, useContext } from "react";
 import { queryParamParserPageState } from "@/lib/utils/queryparamparser";
 import {
   InvestmentType,
@@ -10,7 +10,6 @@ import {
   DisplayedInvestments,
 } from "@/types";
 import { useSearchParams } from "next/navigation";
-import { ReactNode, createContext, useState } from "react";
 
 interface InvestmentDisplayType {
   setInvestmentType: React.Dispatch<React.SetStateAction<InvestmentType>>;
@@ -143,28 +142,50 @@ export default function InvestmentDisplayProvider({
 
   const [triggerSearch, setTriggerSearch] = useState(false);
 
+  const memoValue = useMemo(
+    () => ({
+      investmentType,
+      setInvestmentType,
+      formDisplay,
+      setFormDisplay,
+      pageState,
+      setPageState,
+      shareFormState,
+      setShareFormState,
+      fundFormState,
+      setFundFormState,
+      pageNumber,
+      setPageNumber,
+      displayedInvestments,
+      setDisplayedInvestments,
+      triggerSearch,
+      setTriggerSearch,
+    }),
+    [
+      investmentType,
+      setInvestmentType,
+      formDisplay,
+      setFormDisplay,
+      pageState,
+      setPageState,
+      shareFormState,
+      setShareFormState,
+      fundFormState,
+      setFundFormState,
+      pageNumber,
+      setPageNumber,
+      displayedInvestments,
+      setDisplayedInvestments,
+      triggerSearch,
+      setTriggerSearch,
+    ]
+  );
+
   return (
-    <InvestmentDisplayContext.Provider
-      value={{
-        investmentType,
-        setInvestmentType,
-        formDisplay,
-        setFormDisplay,
-        pageState,
-        setPageState,
-        shareFormState,
-        setShareFormState,
-        fundFormState,
-        setFundFormState,
-        pageNumber,
-        setPageNumber,
-        displayedInvestments,
-        setDisplayedInvestments,
-        triggerSearch,
-        setTriggerSearch,
-      }}
-    >
+    <InvestmentDisplayContext.Provider value={memoValue}>
       {children}
     </InvestmentDisplayContext.Provider>
   );
 }
+
+export const useInvestmentContext = () => useContext(InvestmentDisplayContext);

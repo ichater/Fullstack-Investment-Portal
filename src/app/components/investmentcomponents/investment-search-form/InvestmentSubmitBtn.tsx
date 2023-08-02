@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
-import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
+import React from "react";
+import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 import { useRouter } from "next/navigation";
 
 export default function InvestmentSubmitBtn() {
+  console.log("InvestmentSubmitBtn render");
   const router = useRouter();
 
   const {
@@ -13,7 +14,7 @@ export default function InvestmentSubmitBtn() {
     formDisplay,
     setPageNumber,
     setTriggerSearch,
-  } = useContext(InvestmentDisplayContext);
+  } = useInvestmentContext();
 
   const { asx } = shareFormState;
 

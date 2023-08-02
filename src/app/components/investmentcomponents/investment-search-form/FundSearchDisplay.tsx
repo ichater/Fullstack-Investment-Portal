@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
@@ -8,13 +8,11 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
-import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 import { ManagedInvestmentCategory } from "@/types";
 
 export default function FundSearchDisplay() {
-  const { setFundFormState, fundFormState } = useContext(
-    InvestmentDisplayContext
-  );
+  const { setFundFormState, fundFormState } = useInvestmentContext();
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFundFormState((fundFormState) => ({

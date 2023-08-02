@@ -1,11 +1,12 @@
 import { ManagedInvestment } from "@prisma/client";
-import React from "react";
+import React, { memo } from "react";
 import FundRow from "./FundRow";
 
 type Props = {
   funds: ManagedInvestment[];
 };
 
+const FundMemo = memo(FundRow);
 export default function FundResultDisplay({ funds }: Props) {
   return (
     <table className="investment-search-result_table">
@@ -20,7 +21,7 @@ export default function FundResultDisplay({ funds }: Props) {
       </thead>
       <tbody className="investment-search-result_table_body">
         {funds.map((fund) => (
-          <FundRow key={fund.id} fund={fund} />
+          <FundMemo key={fund.id} fund={fund} />
         ))}
       </tbody>
     </table>

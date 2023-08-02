@@ -1,11 +1,12 @@
+import React, { memo } from "react";
 import { Share } from "@prisma/client";
-import React from "react";
 import ShareRow from "./ShareRow";
 
 type Props = {
   shares: Share[];
 };
 
+const ShareMemo = memo(ShareRow);
 export default function ShareResultDisplay({ shares }: Props) {
   return (
     <div>
@@ -19,7 +20,7 @@ export default function ShareResultDisplay({ shares }: Props) {
         </thead>
         <tbody className="investment-search-result_table_body">
           {shares.map((share) => (
-            <ShareRow key={share.id} share={share} />
+            <ShareMemo key={share.id} share={share} />
           ))}
         </tbody>
       </table>

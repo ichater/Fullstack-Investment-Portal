@@ -1,5 +1,5 @@
-import { ManagedInvestment } from "@prisma/client";
 import React from "react";
+import { ManagedInvestment } from "@prisma/client";
 
 type Props = {
   fund: ManagedInvestment;

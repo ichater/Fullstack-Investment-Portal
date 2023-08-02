@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
-import { InvestmentDisplayContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 
 export default function ShareSearchDisplay() {
-  const { shareFormState, setShareFormState } = useContext(
-    InvestmentDisplayContext
-  );
+  const { shareFormState, setShareFormState } = useInvestmentContext();
   const { name, asx } = shareFormState;
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
