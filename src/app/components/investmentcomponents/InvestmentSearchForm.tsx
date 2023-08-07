@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -9,19 +9,15 @@ import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
 import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
 import { InvestmentType } from "@/types";
-import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentFormContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentSearchForm() {
-  // console.log("InvestmentSearchForm render");
-
-  const { formDisplay, setFormDisplay } = useInvestmentContext();
+  console.log("Search form render");
+  const { formDisplay, setFormDisplay } = useInvestmentFormContext();
 
   const handleChange = (event: SelectChangeEvent) => {
     setFormDisplay(event.target.value as InvestmentType);
   };
-
-  let shareName = useRef("");
-  let asx = useRef("");
 
   return (
     <form className="investment-search_wrapper">
@@ -47,16 +43,14 @@ export default function InvestmentSearchForm() {
           </Select>
           <FormHelperText>Investment Type</FormHelperText>
         </FormControl>
-        {formDisplay === "shares" && (
-          <ShareSearchDisplay shareName={shareName} asx={asx} />
-        )}
+        {formDisplay === "shares" && <ShareSearchDisplay />}
         {formDisplay === "funds" && <FundSearchDisplay />}
         {!!formDisplay && <GenericSearchDisplay />}
       </div>
       {!!formDisplay && (
         <div className="investment-submit_wrapper">
           {" "}
-          <InvestmentSubmitBtn shareName={shareName} asx={asx} />
+          <InvestmentSubmitBtn />
         </div>
       )}
     </form>

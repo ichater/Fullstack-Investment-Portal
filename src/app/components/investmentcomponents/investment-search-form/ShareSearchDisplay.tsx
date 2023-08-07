@@ -1,52 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
-import { useSearchParams } from "next/navigation";
-import { ShareFormState } from "@/types";
+import { useInvestmentFormContext } from "@/context/InvestmentDisplayContext";
 
-export default function ShareSearchDisplay({
-  shareName,
-  asx,
-}: {
-  shareName: React.MutableRefObject<string>;
-  asx: React.MutableRefObject<string>;
-}) {
-  console.log("share form rendered");
-  const [formState, setFormState] = useState<ShareFormState>({
-    name: "",
-    asx: "",
-  });
-
-  const searchParams = useSearchParams();
-  const searchParamsObj = {
-    investmentType: searchParams?.get("investment-type"),
-    shareParams: {
-      name: searchParams?.get("name"),
-      asx: searchParams?.get("asx"),
-    },
-  };
-  const { shareParams } = searchParamsObj;
-  const shareParamState: ShareFormState = {
-    name: !!shareParams.name ? shareParams.name : "",
-    asx: !!shareParams.asx ? shareParams.asx : "",
-  };
-
-  useEffect(() => {
-    if (searchParamsObj.investmentType === "shares") {
-      setFormState({
-        name: shareParamState.name,
-        asx: shareParamState.asx,
-      });
-    }
-  }, []);
+export default function ShareSearchDisplay() {
+  const { setShareFormState, shareFormState } = useInvestmentFormContext();
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormState((state) => ({
-      ...state,
+    setShareFormState((shareFormState) => ({
+      ...shareFormState,
       [e.target.name]: e.target.value,
     }));
-
-    shareName.current = formState.name;
-    asx.current = formState.asx;
   };
 
   return (
@@ -59,7 +22,7 @@ export default function ShareSearchDisplay({
           type="search"
           name="name"
           onChange={handleChangeInput}
-          value={formState.name}
+          value={shareFormState.name}
         />
       </div>
       <div className="investment-input_wrapper">
@@ -70,7 +33,7 @@ export default function ShareSearchDisplay({
           type="search"
           name="asx"
           onChange={handleChangeInput}
-          value={formState.asx}
+          value={shareFormState.asx}
         />
       </div>
     </>

@@ -5,28 +5,28 @@ import { ManagedInvestment, Share } from "@prisma/client";
 import { arrayFromNumber } from "@/lib/utils/arrayFromNumber";
 import PageNumber from "./investment-search-display/PageNumber";
 import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
-import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentResultContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentResults() {
   console.log("InvestmentResults render");
   const {
     investmentType,
-    pageNumber,
+    shareRequestState,
     displayedInvestments,
-    shareFormState,
-    fundFormState,
+    fundRequestState,
     triggerSearch,
     setTriggerSearch,
-  } = useInvestmentContext();
+    displayPageNumber,
+  } = useInvestmentResultContext();
 
   const currentInvestmentDisplay: ManagedInvestment[] | Share[] | undefined =
-    displayedInvestments.investments[pageNumber - 1];
+    displayedInvestments.investments[displayPageNumber - 1];
 
   const { getShares, getManagedInvestments } = useInvestmentSearch();
   // sets investments on initial load if there are any relevant query parameters in the url
   useEffect(() => {
-    if (investmentType === "shares") getShares(shareFormState);
-    if (investmentType === "funds") getManagedInvestments(fundFormState);
+    if (investmentType === "shares") getShares(shareRequestState);
+    if (investmentType === "funds") getManagedInvestments(fundRequestState);
     setTriggerSearch(false);
   }, [triggerSearch]);
 

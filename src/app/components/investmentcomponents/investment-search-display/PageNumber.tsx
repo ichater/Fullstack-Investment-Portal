@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentResultContext } from "@/context/InvestmentDisplayContext";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
@@ -20,12 +20,12 @@ export default function PageNumber({ pageNumber }: Props) {
     },
     [searchParams]
   );
-  const { setPageNumber } = useInvestmentContext();
+  const { setDisplayPageNumber } = useInvestmentResultContext();
   return (
     <button
       className="page-number_select"
       onClick={() => {
-        setPageNumber(pageNumber);
+        setDisplayPageNumber(pageNumber);
         router.push(
           pathname + "?" + createQueryString("page", pageNumber.toString())
         );

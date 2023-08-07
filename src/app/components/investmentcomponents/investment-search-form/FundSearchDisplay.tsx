@@ -8,11 +8,11 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
-import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentFormContext } from "@/context/InvestmentDisplayContext";
 import { ManagedInvestmentCategory } from "@/types";
 
 export default function FundSearchDisplay() {
-  const { setFundFormState, fundFormState } = useInvestmentContext();
+  const { setFundFormState, fundFormState } = useInvestmentFormContext();
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFundFormState((fundFormState) => ({

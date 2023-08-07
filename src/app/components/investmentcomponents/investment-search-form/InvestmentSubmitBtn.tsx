@@ -1,34 +1,38 @@
 import React from "react";
-import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
+import {
+  useInvestmentFormContext,
+  useInvestmentResultContext,
+} from "@/context/InvestmentDisplayContext";
 import { useRouter } from "next/navigation";
 
-export default function InvestmentSubmitBtn({
-  shareName,
-  asx,
-}: {
-  shareName: React.MutableRefObject<string>;
-  asx: React.MutableRefObject<string>;
-}) {
-  console.log("InvestmentSubmitBtn render");
+export default function InvestmentSubmitBtn() {
+  // console.log("InvestmentSubmitBtn render");
   const router = useRouter();
 
   const {
     pageState,
     shareFormState,
-    setShareFormState,
     fundFormState,
-    setInvestmentType,
     formDisplay,
     setPageNumber,
     setTriggerSearch,
-  } = useInvestmentContext();
+  } = useInvestmentFormContext();
+
+  const {
+    setInvestmentType,
+    setShareRequestState,
+    setFundRequestState,
+    setDisplayPageNumber,
+    setInvestmentsPerPage,
+  } = useInvestmentResultContext();
 
   function handleSubmit() {
-    formDisplay === "shares"
-      ? setShareFormState({ asx: asx.current, name: shareName.current })
-      : null;
+    formDisplay === "shares" && setShareRequestState(shareFormState);
+    formDisplay === "funds" && setFundRequestState(fundFormState);
 
-    const asxSlug: string = asx ? `&asx=${shareFormState.asx}` : "";
+    const asxSlug: string = shareFormState.asx
+      ? `&asx=${shareFormState.asx}`
+      : "";
     const shareNameSlug: string = shareFormState.name
       ? `&name=${shareFormState.name}`
       : "";
@@ -52,6 +56,8 @@ export default function InvestmentSubmitBtn({
     );
 
     setPageNumber(1);
+    setDisplayPageNumber(1);
+    setInvestmentsPerPage(pageState);
     setTriggerSearch(true);
   }
 
