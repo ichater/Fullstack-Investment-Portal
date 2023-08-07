@@ -1,22 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import ShareSearchDisplay from "./investment-search-form/ShareSearchDisplay";
+import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
+import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
 import { InvestmentType } from "@/types";
 import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 
-export default function InvestmentSearchForm({
-  children,
-  ShareSearchDisplayMemo,
-  FundSearchDisplayMemo,
-}: {
-  children: React.JSX.Element;
-  ShareSearchDisplayMemo: React.JSX.Element;
-  FundSearchDisplayMemo: React.JSX.Element;
-}) {
+export default function InvestmentSearchForm() {
   // console.log("InvestmentSearchForm render");
 
   const { formDisplay, setFormDisplay } = useInvestmentContext();
@@ -24,6 +19,9 @@ export default function InvestmentSearchForm({
   const handleChange = (event: SelectChangeEvent) => {
     setFormDisplay(event.target.value as InvestmentType);
   };
+
+  let shareName = useRef("");
+  let asx = useRef("");
 
   return (
     <form className="investment-search_wrapper">
@@ -49,12 +47,17 @@ export default function InvestmentSearchForm({
           </Select>
           <FormHelperText>Investment Type</FormHelperText>
         </FormControl>
-        {formDisplay === "shares" && ShareSearchDisplayMemo}
-        {formDisplay === "funds" && FundSearchDisplayMemo}
+        {formDisplay === "shares" && (
+          <ShareSearchDisplay shareName={shareName} asx={asx} />
+        )}
+        {formDisplay === "funds" && <FundSearchDisplay />}
         {!!formDisplay && <GenericSearchDisplay />}
       </div>
       {!!formDisplay && (
-        <div className="investment-submit_wrapper"> {children}</div>
+        <div className="investment-submit_wrapper">
+          {" "}
+          <InvestmentSubmitBtn shareName={shareName} asx={asx} />
+        </div>
       )}
     </form>
   );

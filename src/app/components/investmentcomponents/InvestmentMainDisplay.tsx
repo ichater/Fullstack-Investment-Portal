@@ -26,11 +26,9 @@ export default function InvestmentDisplay() {
       <div className="investment-display_container">
         <h1 className="investment-display_header">Search investments:</h1>
         <InvestmentSearchForm
-          ShareSearchDisplayMemo={ShareSearchDisplayMemo}
-          FundSearchDisplayMemo={FundSearchDisplayMemo}
-        >
-          {InvestmentSubmitBtnMemo}
-        </InvestmentSearchForm>
+        // ShareSearchDisplayMemo={ShareSearchDisplayMemo}
+        // FundSearchDisplayMemo={FundSearchDisplayMemo}
+        />
         <div className="investment-search-results_wrapper">
           <InvestmentSearchResults />
         </div>

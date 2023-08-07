@@ -28,7 +28,7 @@ export default function InvestmentResults() {
     if (investmentType === "shares") getShares(shareFormState);
     if (investmentType === "funds") getManagedInvestments(fundFormState);
     setTriggerSearch(false);
-  }, [investmentType, triggerSearch]);
+  }, [triggerSearch]);
 
   if (displayedInvestments.loading) {
     return <div>Loading...</div>;
