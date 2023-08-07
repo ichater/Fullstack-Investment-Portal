@@ -8,7 +8,7 @@ import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
 import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 
 export default function InvestmentResults() {
-  // console.log("InvestmentResults render");
+  console.log("InvestmentResults render");
   const {
     investmentType,
     pageNumber,

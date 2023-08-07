@@ -121,3 +121,15 @@
   color: var(--main-white);
   background-color: var(--confirm-green);
 }
+.investment-input_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.investment-input_label {
+  color: var(--adviser-blue);
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+}

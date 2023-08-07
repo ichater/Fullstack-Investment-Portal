@@ -4,14 +4,19 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import ShareSearchDisplay from "./investment-search-form/ShareSearchDisplay";
-import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
-import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
 import { InvestmentType } from "@/types";
 import { useInvestmentContext } from "@/context/InvestmentDisplayContext";
 
-export default function InvestmentSearchForm() {
+export default function InvestmentSearchForm({
+  children,
+  ShareSearchDisplayMemo,
+  FundSearchDisplayMemo,
+}: {
+  children: React.JSX.Element;
+  ShareSearchDisplayMemo: React.JSX.Element;
+  FundSearchDisplayMemo: React.JSX.Element;
+}) {
   // console.log("InvestmentSearchForm render");
 
   const { formDisplay, setFormDisplay } = useInvestmentContext();
@@ -44,15 +49,12 @@ export default function InvestmentSearchForm() {
           </Select>
           <FormHelperText>Investment Type</FormHelperText>
         </FormControl>
-        {formDisplay === "shares" && <ShareSearchDisplay />}
-        {formDisplay === "funds" && <FundSearchDisplay />}
+        {formDisplay === "shares" && ShareSearchDisplayMemo}
+        {formDisplay === "funds" && FundSearchDisplayMemo}
         {!!formDisplay && <GenericSearchDisplay />}
       </div>
       {!!formDisplay && (
-        <div className="investment-submit_wrapper">
-          {" "}
-          <InvestmentSubmitBtn />{" "}
-        </div>
+        <div className="investment-submit_wrapper"> {children}</div>
       )}
     </form>
   );
