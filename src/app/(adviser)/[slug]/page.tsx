@@ -5,6 +5,7 @@ import { tempAdviser, tempAdvisersClients } from "@/lib/tempdata/tempAdviser";
 import SubmitButton from "@/app/components/formcomponents/SubmitButton";
 import AdviserInformation from "./components/AdviserInformation";
 import ClientCard from "./components/ClientCard";
+import ClientDisplay from "./components/ClientDisplay";
 
 const getData = (slug: string) => {
   return (
@@ -33,6 +34,17 @@ export default function page({ params: { slug } }: SlugProp) {
   const { tempAdviser, clientData } = data;
   const { firstName, lastName, profileImage, email, city, phone, bio } =
     tempAdviser;
+
+  const clients = clientData.map((client) => ({
+    firstName: client.firstName,
+    lastName: client.lastName,
+    slug: client.slug,
+    email: client.email,
+    profileImage: client.profileImage,
+    mainSlug: slug,
+    bio: client.bio,
+    id: client.id,
+  }));
   return (
     <div className="adviser-homepage_wrapper">
       <div className="toggle-view_tabs">
@@ -61,20 +73,21 @@ export default function page({ params: { slug } }: SlugProp) {
         />
       )}
       {displayState === "client" && (
-        <div className="client-display">
-          {clientData.map((client) => (
-            <ClientCard
-              key={client.id}
-              firstName={client.firstName}
-              lastName={client.lastName}
-              slug={client.slug}
-              email={client.email}
-              profileImage={client.profileImage}
-              mainSlug={slug}
-              bio={client.bio}
-            />
-          ))}
-        </div>
+        <ClientDisplay clients={clients} />
+        // <div className="client-display">
+        //   {clientData.map((client) => (
+        //     <ClientCard
+        //       key={client.id}
+        //       firstName={client.firstName}
+        //       lastName={client.lastName}
+        //       slug={client.slug}
+        //       email={client.email}
+        //       profileImage={client.profileImage}
+        //       mainSlug={slug}
+        //       bio={client.bio}
+        //     />
+        //   ))}
+        // </div>
       )}
     </div>
   );

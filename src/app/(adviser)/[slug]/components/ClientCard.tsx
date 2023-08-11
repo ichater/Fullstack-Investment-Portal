@@ -1,15 +1,8 @@
+import { AdvisorClientDisplay } from "@/types";
 import Link from "next/link";
 import React from "react";
 
-type Props = {
-  firstName: string;
-  lastName: string;
-  slug: string;
-  email: string;
-  profileImage: string;
-  mainSlug: string;
-  bio: string;
-};
+type Props = AdvisorClientDisplay;
 
 export default function ClientCard({
   firstName,
