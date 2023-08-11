@@ -15,6 +15,7 @@ export {
   type AdviserData,
   type AdvisorInfo,
   type AdvisorClientDisplay,
+  type AdviserAddClientState,
 } from "./adviser";
 export { type SlugProp } from "./nextjs";
 export {

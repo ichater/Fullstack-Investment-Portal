@@ -120,3 +120,47 @@
 .next-link_No_Decorationlink {
   cursor: pointer;
 }
+.add-client_form-title {
+  color: var(--adviser-blue);
+  margin-bottom: 1rem;
+}
+
+.add-client_form {
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 15px;
+  border: 1px solid var(--adviser-blue);
+}
+.add-client-form_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.add-client-dual-input_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-client-dual-input_wrapper input {
+  width: 40%;
+}
+
+.add-client-btn-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.add-client_button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  border: 1px solid var(--adviser-blue);
+  background-color: var(--adviser-blue);
+  color: white;
+  transition: 0.5s 0s;
+}
+
+.add-client_button:hover {
+  background-color: var(--adviser-blue-faded);
+}

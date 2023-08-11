@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { SlugProp, AdviserData } from "@/types";
+import { SlugProp } from "@/types";
 import { tempAdviser, tempAdvisersClients } from "@/lib/tempdata/tempAdviser";
 import SubmitButton from "@/app/components/formcomponents/SubmitButton";
 import AdviserInformation from "./components/AdviserInformation";
-import ClientCard from "./components/ClientCard";
 import ClientDisplay from "./components/ClientDisplay";
 
 const getData = (slug: string) => {
@@ -72,23 +71,7 @@ export default function page({ params: { slug } }: SlugProp) {
           bio={bio}
         />
       )}
-      {displayState === "client" && (
-        <ClientDisplay clients={clients} />
-        // <div className="client-display">
-        //   {clientData.map((client) => (
-        //     <ClientCard
-        //       key={client.id}
-        //       firstName={client.firstName}
-        //       lastName={client.lastName}
-        //       slug={client.slug}
-        //       email={client.email}
-        //       profileImage={client.profileImage}
-        //       mainSlug={slug}
-        //       bio={client.bio}
-        //     />
-        //   ))}
-        // </div>
-      )}
+      {displayState === "client" && <ClientDisplay clients={clients} />}
     </div>
   );
 }
