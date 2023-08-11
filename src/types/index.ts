@@ -18,3 +18,7 @@ export {
   type ClientInfoEditState,
 } from "./client";
 export { type ClientAccountInformation } from "./accounts";
+export {
+  type InvestmentDisplayContext as InvestmentDisplayContextType,
+  type InvestmentFormContext as InvestmentFormContextType,
+} from "./context";

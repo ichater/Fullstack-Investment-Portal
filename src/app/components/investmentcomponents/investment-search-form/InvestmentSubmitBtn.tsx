@@ -6,7 +6,6 @@ import {
 import { useRouter } from "next/navigation";
 
 export default function InvestmentSubmitBtn() {
-  // console.log("InvestmentSubmitBtn render");
   const router = useRouter();
 
   const {

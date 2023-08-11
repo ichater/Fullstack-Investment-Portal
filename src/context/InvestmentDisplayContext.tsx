@@ -8,69 +8,17 @@ import {
   ManagedInvestmentFormState,
   ManagedInvestmentCategory,
   DisplayedInvestments,
+  InvestmentFormContextType,
+  InvestmentDisplayContextType,
 } from "@/types";
 import { useSearchParams } from "next/navigation";
+import {
+  emptyShareState,
+  emptyFundState,
+  emptyDisplayedInvestments,
+} from "./utils/InvestmentDisplayUtils";
 
-interface InvestmentFormContext {
-  formDisplay: InvestmentType;
-  setFormDisplay: React.Dispatch<React.SetStateAction<InvestmentType>>;
-
-  setPageState: React.Dispatch<React.SetStateAction<PageState>>;
-  pageState: PageState;
-
-  pageNumber: number;
-  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
-
-  setShareFormState: React.Dispatch<React.SetStateAction<ShareFormState>>;
-  shareFormState: ShareFormState;
-  setFundFormState: React.Dispatch<
-    React.SetStateAction<ManagedInvestmentFormState>
-  >;
-  fundFormState: ManagedInvestmentFormState;
-  triggerSearch: boolean;
-  setTriggerSearch: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-interface InvestmentResultContext {
-  investmentType: InvestmentType;
-  setInvestmentType: React.Dispatch<React.SetStateAction<InvestmentType>>;
-
-  displayedInvestments: DisplayedInvestments;
-  setDisplayedInvestments: React.Dispatch<
-    React.SetStateAction<DisplayedInvestments>
-  >;
-  investmentsPerPage: PageState;
-  setInvestmentsPerPage: React.Dispatch<React.SetStateAction<PageState>>;
-  displayPageNumber: number;
-  setDisplayPageNumber: React.Dispatch<React.SetStateAction<number>>;
-  shareRequestState: ShareFormState;
-  setShareRequestState: React.Dispatch<React.SetStateAction<ShareFormState>>;
-  fundRequestState: ManagedInvestmentFormState;
-  setFundRequestState: React.Dispatch<
-    React.SetStateAction<ManagedInvestmentFormState>
-  >;
-  triggerSearch: boolean;
-  setTriggerSearch: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const emptyFundState: ManagedInvestmentFormState = {
-  category: "",
-  name: "",
-  nabOwned: "",
-};
-
-const emptyShareState: ShareFormState = {
-  asx: "",
-  name: "",
-};
-
-const emptyDisplayedInvestments: DisplayedInvestments = {
-  investments: [],
-  error: null,
-  loading: false,
-};
-
-export const InvestmentFormContext = createContext<InvestmentFormContext>({
+export const InvestmentFormContext = createContext<InvestmentFormContextType>({
   formDisplay: "",
   setFormDisplay: (): any => {},
   setPageState: (): any => {},
@@ -85,22 +33,23 @@ export const InvestmentFormContext = createContext<InvestmentFormContext>({
   setTriggerSearch: (): any => {},
 });
 
-export const InvestmentResultContext = createContext<InvestmentResultContext>({
-  displayedInvestments: emptyDisplayedInvestments,
-  setDisplayedInvestments: (): any => {},
-  displayPageNumber: 0,
-  setDisplayPageNumber: (): any => {},
-  investmentsPerPage: 10,
-  setInvestmentsPerPage: (): any => {},
-  investmentType: "",
-  setInvestmentType: (): any => {},
-  shareRequestState: emptyShareState,
-  setShareRequestState: (): any => {},
-  fundRequestState: emptyFundState,
-  setFundRequestState: (): any => {},
-  triggerSearch: false,
-  setTriggerSearch: (): any => {},
-});
+export const InvestmentResultContext =
+  createContext<InvestmentDisplayContextType>({
+    displayedInvestments: emptyDisplayedInvestments,
+    setDisplayedInvestments: (): any => {},
+    displayPageNumber: 0,
+    setDisplayPageNumber: (): any => {},
+    investmentsPerPage: 10,
+    setInvestmentsPerPage: (): any => {},
+    investmentType: "",
+    setInvestmentType: (): any => {},
+    shareRequestState: emptyShareState,
+    setShareRequestState: (): any => {},
+    fundRequestState: emptyFundState,
+    setFundRequestState: (): any => {},
+    triggerSearch: false,
+    setTriggerSearch: (): any => {},
+  });
 
 export default function InvestmentDisplayContext({
   children,
@@ -165,7 +114,7 @@ export default function InvestmentDisplayContext({
 
   const [pageNumber, setPageNumber] = useState<number>(pageNumberParam);
 
-  //Investment Display State
+  // Investment Display State
   const [displayedInvestments, setDisplayedInvestments] =
     useState<DisplayedInvestments>(emptyDisplayedInvestments);
 
