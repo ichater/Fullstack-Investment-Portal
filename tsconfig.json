@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "types": ["node", "jest"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,6 +22,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@/app": ["./src/app/*"],
       "@/prismaInstance/*": ["./server/db/*"],
       "@/builders": ["./src/lib/builders/index.ts"],
       "@/utils/*": ["./src/lib/utils/*"],
@@ -33,7 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "__tests__/unauthed/investments.test.js"
+    "__tests__/**.tsx"
   ],
   "exclude": ["node_modules"]
 }

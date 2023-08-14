@@ -1,4 +1,4 @@
-import { Adviser, Client, ROLE, Review } from "@prisma/client";
+import { Adviser, Client, ROLE } from "@prisma/client";
 
 export class AdviserBuilder {
   adviser: Adviser;
@@ -68,7 +68,6 @@ class AdviserInstance {
   secondaryImages: string[];
   clients: Client[];
   role: ROLE;
-  reviews: Review[];
 
   constructor(
     firstName: string = "John",
@@ -85,8 +84,7 @@ class AdviserInstance {
     profileImage: string = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     secondaryImages: string[] = [],
     clients: Client[] = [],
-    role: ROLE = ROLE.ADVISER,
-    reviews: Review[] = []
+    role: ROLE = ROLE.ADVISER
   ) {
     this.id = id;
     this.password = password;
@@ -102,6 +100,5 @@ class AdviserInstance {
     this.secondaryImages = secondaryImages;
     this.clients = clients;
     this.role = role;
-    this.reviews = reviews;
   }
 }

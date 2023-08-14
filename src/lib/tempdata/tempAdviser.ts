@@ -1,4 +1,4 @@
-import { AdviserBuilder, ClientBuilder } from "@/builders";
+import { AdviserBuilder, ClientBuilder } from "../builders";
 import { Adviser, Client } from "@prisma/client";
 import { tempClientSallie } from "./tempClient";
 

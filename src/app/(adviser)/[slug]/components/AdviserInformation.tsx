@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { AdvisorInfo } from "@/types";
-import SubmitButton from "@/globalcomponents/formcomponents/SubmitButton";
+import SubmitButton from "@/app/components/formcomponents/SubmitButton";
 import AdviserInformationDisplay from "./AdviserInformationDisplay";
 import AdvisorInformationEdit from "./AdvisorInformationEdit";
 

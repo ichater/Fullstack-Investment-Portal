@@ -11,9 +11,10 @@ type Props = {
 export default function ClientDisplay({ clients }: Props) {
   const [displayState, setDisplayState] = useState<
     "addclient" | "displayclients"
-  >("addclient");
+  >("displayclients");
   return (
     <div>
+      <h2>{displayState === "displayclients" ? "Clients:" : "Add Client"}</h2>
       {displayState === "displayclients" &&
         clients.map((client) => (
           <div className="client-display">
@@ -39,6 +40,7 @@ export default function ClientDisplay({ clients }: Props) {
             )
           }
           text={displayState === "addclient" ? "Display Clients" : "Add Client"}
+          data-testid="Add Client"
           height={5}
           width={7}
         />

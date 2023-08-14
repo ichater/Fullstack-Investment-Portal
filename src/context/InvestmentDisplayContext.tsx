@@ -18,20 +18,21 @@ import {
   emptyDisplayedInvestments,
 } from "./utils/InvestmentDisplayUtils";
 
-export const InvestmentFormContext = createContext<InvestmentFormContextType>({
-  formDisplay: "",
-  setFormDisplay: (): any => {},
-  setPageState: (): any => {},
-  pageState: 10,
-  setShareFormState: (): any => {},
-  shareFormState: emptyShareState,
-  setFundFormState: (): any => {},
-  fundFormState: emptyFundState,
-  pageNumber: 0,
-  setPageNumber: (): any => {},
-  triggerSearch: false,
-  setTriggerSearch: (): any => {},
-});
+export const InvestmentFormContext: any =
+  createContext<InvestmentFormContextType>({
+    formDisplay: "",
+    setFormDisplay: (): any => {},
+    setPageState: (): any => {},
+    pageState: 10,
+    setShareFormState: (): any => {},
+    shareFormState: emptyShareState,
+    setFundFormState: (): any => {},
+    fundFormState: emptyFundState,
+    pageNumber: 0,
+    setPageNumber: (): any => {},
+    triggerSearch: false,
+    setTriggerSearch: (): any => {},
+  });
 
 export const InvestmentResultContext =
   createContext<InvestmentDisplayContextType>({

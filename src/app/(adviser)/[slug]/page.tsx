@@ -17,7 +17,7 @@ const getData = (slug: string) => {
 
 export default function page({ params: { slug } }: SlugProp) {
   const [displayState, setDisplayState] = useState<"advisor" | "client">(
-    "client"
+    "advisor"
   );
 
   const data = getData(slug);
