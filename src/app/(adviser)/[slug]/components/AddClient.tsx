@@ -37,7 +37,7 @@ export default function AddClient() {
   return (
     <div className="add-client-form_wrapper">
       <form className="add-client_form">
-        <h2 className="add-client_form-title">Add Client</h2>
+        <h2 className="add-client_form-title">New Client</h2>
         <div className="add-client-dual-input_wrapper">
           <TextField
             required

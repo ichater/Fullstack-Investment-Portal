@@ -8,6 +8,7 @@ type Hover = {
 };
 
 type Props = {
+  disabled?: boolean;
   text?: string;
   fontSize?: number;
   height?: number;
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export default function SubmitButton({
+  disabled = false,
   text = "submit",
   fontSize = 1.5,
   height = 4,
@@ -39,7 +41,11 @@ export default function SubmitButton({
       height: `${height}rem`,
       width: `${width}rem`,
       color,
-      backgroundColor: isHovered ? onHover.backgroundColor : backgroundColor,
+      backgroundColor: disabled
+        ? "grey"
+        : isHovered
+        ? onHover.backgroundColor
+        : backgroundColor,
       border: isHovered ? onHover.border : "none",
       fontSize: isHovered ? `${onHover.fontSize}rem` : `${fontSize}rem`,
     },
@@ -47,11 +53,13 @@ export default function SubmitButton({
 
   return (
     <button
+      type="submit"
       style={style.container}
       className="submit-btn"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
+      disabled={disabled}
     >
       {text}
     </button>

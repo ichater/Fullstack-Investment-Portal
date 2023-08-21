@@ -93,6 +93,11 @@
   width: 80%;
   margin-left: 2rem;
 }
+.client-display_heading {
+  color: var(--adviser-blue);
+  font-size: 1.75rem;
+  padding-left: 3rem;
+}
 
 .client-card_wrapper {
   padding: 1rem 2rem;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { AdviserSignUpState } from "@/types";
+import { adviserAuth } from "@/hooks/adviserAuth";
 
 export default function AdviserSignUpForm() {
   const [adviserSignUp, setAdviserSignUp] = useState<AdviserSignUpState>({
@@ -28,6 +29,8 @@ export default function AdviserSignUpForm() {
     confirmPassword,
   } = adviserSignUp;
 
+  const { handleAdviserSignUp } = adviserAuth();
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -37,8 +40,10 @@ export default function AdviserSignUpForm() {
     }));
   };
 
+  const handleSubmit = () => handleAdviserSignUp(adviserSignUp);
+
   return (
-    <form className="auth-modal_form">
+    <form className="auth-modal_form" onSubmit={handleSubmit}>
       {" "}
       <div className="adviser-signup-dual-input_wrapper">
         <TextField
@@ -117,7 +122,19 @@ export default function AdviserSignUpForm() {
         name="confirmPassword"
         onChange={handleChange}
       />
-      <SubmitButton text="Submit" />
+      <SubmitButton
+        disabled={
+          !firstName ||
+          !lastName ||
+          !email ||
+          !city ||
+          !company ||
+          !phone ||
+          !password ||
+          !confirmPassword
+        }
+        text="Submit"
+      />
     </form>
   );
 }

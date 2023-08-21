@@ -14,7 +14,27 @@ export default function ClientDisplay({ clients }: Props) {
   >("displayclients");
   return (
     <div>
-      <h2>{displayState === "displayclients" ? "Clients:" : "Add Client"}</h2>
+      <h2 className="client-display_heading">
+        {displayState === "displayclients" ? "Client List:" : "Add Client:"}
+      </h2>
+      <div className="client-display-btn_wrapper">
+        <SubmitButton
+          onClick={() =>
+            setDisplayState((displayState) =>
+              displayState === "addclient" ? "displayclients" : "addclient"
+            )
+          }
+          text={displayState === "addclient" ? "Display Clients" : "Add Client"}
+          data-testid="Add Client"
+          height={3}
+          width={15}
+          backgroundColor="rgb(72, 92, 176)"
+          onHover={{
+            backgroundColor: "rgb(111, 128, 199)",
+            fontSize: 1.5,
+          }}
+        />
+      </div>
       {displayState === "displayclients" &&
         clients.map((client) => (
           <div className="client-display">
@@ -32,19 +52,6 @@ export default function ClientDisplay({ clients }: Props) {
           </div>
         ))}
       {displayState === "addclient" && <AddClient />}
-      <div className="client-display-btn_wrapper">
-        <SubmitButton
-          onClick={() =>
-            setDisplayState((displayState) =>
-              displayState === "addclient" ? "displayclients" : "addclient"
-            )
-          }
-          text={displayState === "addclient" ? "Display Clients" : "Add Client"}
-          data-testid="Add Client"
-          height={5}
-          width={7}
-        />
-      </div>
     </div>
   );
 }
