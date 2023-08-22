@@ -8,10 +8,19 @@ import { PageState } from "@/types";
 import { useInvestmentFormContext } from "@/context";
 
 export default function GenericSearchDisplay() {
-  const { setPageState, pageState } = useInvestmentFormContext();
+  const { investmentFormState, setInvestmentFormState } =
+    useInvestmentFormContext();
+
+  const { perPage } = investmentFormState.pageData;
 
   const handleChange = (event: SelectChangeEvent) =>
-    setPageState(parseInt(event.target.value) as PageState);
+    setInvestmentFormState((state) => ({
+      ...state,
+      pageData: {
+        ...state.pageData,
+        perPage: parseInt(event.target.value) as PageState,
+      },
+    }));
 
   return (
     <>
@@ -21,7 +30,7 @@ export default function GenericSearchDisplay() {
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={pageState.toString()}
+          value={perPage.toString()}
           label="type"
           onChange={handleChange}
         >

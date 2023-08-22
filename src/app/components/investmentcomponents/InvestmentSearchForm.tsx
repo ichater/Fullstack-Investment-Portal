@@ -13,17 +13,23 @@ import { useInvestmentFormContext } from "@/context";
 
 export default function InvestmentSearchForm() {
   console.log("Search form render");
-  const { formDisplay, setFormDisplay } = useInvestmentFormContext();
+  const { investmentFormState, setInvestmentFormState } =
+    useInvestmentFormContext();
 
   const handleChange = (event: SelectChangeEvent) => {
-    setFormDisplay(event.target.value as InvestmentType);
+    setInvestmentFormState((state) => ({
+      ...state,
+      investmentType: event.target.value as InvestmentType,
+    }));
   };
+
+  const { investmentType } = investmentFormState;
 
   return (
     <form className="investment-search_wrapper">
       <div
         className="investment-search_top"
-        style={{ justifyContent: `${formDisplay ? "space-between" : ""}` }}
+        style={{ justifyContent: `${investmentType ? "space-between" : ""}` }}
       >
         {" "}
         <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -31,7 +37,7 @@ export default function InvestmentSearchForm() {
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
-            value={formDisplay}
+            value={investmentType}
             label="type"
             onChange={handleChange}
           >
@@ -43,11 +49,11 @@ export default function InvestmentSearchForm() {
           </Select>
           <FormHelperText>Investment Type</FormHelperText>
         </FormControl>
-        {formDisplay === "shares" && <ShareSearchDisplay />}
-        {formDisplay === "funds" && <FundSearchDisplay />}
-        {!!formDisplay && <GenericSearchDisplay />}
+        {investmentType === "shares" && <ShareSearchDisplay />}
+        {investmentType === "funds" && <FundSearchDisplay />}
+        {!!investmentType && <GenericSearchDisplay />}
       </div>
-      {!!formDisplay && (
+      {!!investmentType && (
         <div className="investment-submit_wrapper">
           {" "}
           <InvestmentSubmitBtn />

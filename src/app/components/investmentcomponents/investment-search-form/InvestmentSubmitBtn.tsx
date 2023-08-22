@@ -8,13 +8,11 @@ import { useRouter } from "next/navigation";
 export default function InvestmentSubmitBtn() {
   const router = useRouter();
 
-  const {
-    pageState,
-    shareFormState,
-    fundFormState,
-    formDisplay,
-    setPageNumber,
-  } = useInvestmentFormContext();
+  const { investmentFormState, setInvestmentFormState } =
+    useInvestmentFormContext();
+
+  const { investmentType, shareState, fundState, pageData } =
+    investmentFormState;
 
   const {
     setInvestmentType,
@@ -26,37 +24,41 @@ export default function InvestmentSubmitBtn() {
   } = useInvestmentDisplayContext();
 
   function handleSubmit() {
-    formDisplay === "shares" && setShareRequestState(shareFormState);
-    formDisplay === "funds" && setFundRequestState(fundFormState);
+    investmentType === "shares" && setShareRequestState(shareState);
+    investmentType === "funds" && setFundRequestState(fundState);
 
-    const asxSlug: string = shareFormState.asx
-      ? `&asx=${shareFormState.asx}`
-      : "";
-    const shareNameSlug: string = shareFormState.name
-      ? `&name=${shareFormState.name}`
+    const asxSlug: string = shareState.asx ? `&asx=${shareState.asx}` : "";
+    const shareNameSlug: string = shareState.name
+      ? `&name=${shareState.name}`
       : "";
 
     const shareSlug: string = asxSlug + shareNameSlug;
 
-    const { category, nabOwned } = fundFormState;
+    const { category, nabOwned } = fundState;
 
-    const fundNameSlug: string = fundFormState.name
-      ? `&name=${fundFormState.name}`
+    const fundNameSlug: string = fundState.name
+      ? `&name=${fundState.name}`
       : "";
     const nabOwnedSlug: string = nabOwned ? `&nab=${nabOwned}` : "";
     const fundCategorySlug: string = category ? `&category=${category}` : "";
     const fundSlug: string = fundNameSlug + nabOwnedSlug + fundCategorySlug;
 
-    setInvestmentType(formDisplay);
+    setInvestmentType(investmentType);
     router.push(
-      `/investments?investment-type=${formDisplay}${
-        formDisplay === "shares" ? shareSlug : fundSlug
-      }&per_page=${pageState}&page=1`
+      `/investments?investment-type=${investmentType}${
+        investmentType === "shares" ? shareSlug : fundSlug
+      }&per_page=${pageData.perPage}&page=1`
     );
 
-    setPageNumber(1);
+    setInvestmentFormState((state) => ({
+      ...state,
+      pageData: {
+        ...state.pageData,
+        pageNumber: 1,
+      },
+    }));
     setDisplayPageNumber(1);
-    setInvestmentsPerPage(pageState);
+    setInvestmentsPerPage(pageData.perPage);
     setTriggerSearch(true);
   }
 

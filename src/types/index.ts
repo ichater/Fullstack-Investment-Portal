@@ -5,6 +5,7 @@ export {
   type ManagedInvestmentFormState,
   type ManagedInvestmentCategory,
   type DisplayedInvestments,
+  type InvestmentFormState,
 } from "./investment-ui";
 export {
   type LoginState,

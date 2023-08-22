@@ -3,14 +3,19 @@ import TextField from "@mui/material/TextField";
 import { useInvestmentFormContext } from "@/context";
 
 export default function ShareSearchDisplay() {
-  const { setShareFormState, shareFormState } = useInvestmentFormContext();
+  const { investmentFormState, setInvestmentFormState } =
+    useInvestmentFormContext();
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setShareFormState((shareFormState) => ({
-      ...shareFormState,
-      [e.target.name]: e.target.value,
+    setInvestmentFormState((state) => ({
+      ...state,
+      shareState: {
+        ...state.shareState,
+        [e.target.name]: e.target.value,
+      },
     }));
   };
+  const { name, asx } = investmentFormState.shareState;
 
   return (
     <>
@@ -22,7 +27,7 @@ export default function ShareSearchDisplay() {
           type="search"
           name="name"
           onChange={handleChangeInput}
-          value={shareFormState.name}
+          value={name}
         />
       </div>
       <div className="investment-input_wrapper">
@@ -33,7 +38,7 @@ export default function ShareSearchDisplay() {
           type="search"
           name="asx"
           onChange={handleChangeInput}
-          value={shareFormState.asx}
+          value={asx}
         />
       </div>
     </>

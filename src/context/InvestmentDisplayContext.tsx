@@ -11,11 +11,8 @@ import {
   InvestmentDisplayContextType,
 } from "@/types";
 import { useSearchParams } from "next/navigation";
-import {
-  emptyShareState,
-  emptyFundState,
-  emptyDisplayedInvestments,
-} from "./utils/InvestmentDisplayUtils";
+import { emptyDisplayedInvestments } from "./utils/InvestmentDisplayUtils";
+import { emptyFundState, emptyShareState } from "./utils/InvestmentFormUtils";
 
 export const InvestmentResultContext =
   createContext<InvestmentDisplayContextType>({

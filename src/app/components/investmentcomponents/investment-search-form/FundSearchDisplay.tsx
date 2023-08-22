@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
@@ -9,33 +9,43 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
 import { useInvestmentFormContext } from "@/context";
-import { ManagedInvestmentCategory } from "@/types";
+import { ManagedInvestmentCategory, ManagedInvestmentFormState } from "@/types";
 
 export default function FundSearchDisplay() {
-  const { setFundFormState, fundFormState } = useInvestmentFormContext();
+  const { investmentFormState, setInvestmentFormState } =
+    useInvestmentFormContext();
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFundFormState((fundFormState) => ({
-      ...fundFormState,
-      [e.target.name]: e.target.value,
+    setInvestmentFormState((state) => ({
+      ...state,
+      fundState: {
+        ...state.fundState,
+        [e.target.name]: e.target.value,
+      },
     }));
   };
 
   const handleChange = (event: SelectChangeEvent) => {
-    setFundFormState({
-      ...fundFormState,
-      category: event.target.value as ManagedInvestmentCategory,
-    });
+    setInvestmentFormState((state) => ({
+      ...state,
+      fundState: {
+        ...state.fundState,
+        category: event.target.value as ManagedInvestmentCategory,
+      },
+    }));
   };
-  const { name, category, nabOwned } = fundFormState;
+  const { name, category, nabOwned } = investmentFormState.fundState;
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const checked = event.target.checked;
 
-    return setFundFormState({
-      ...fundFormState,
-      nabOwned: checked === true ? true : "",
-    });
+    setInvestmentFormState((state) => ({
+      ...state,
+      fundState: {
+        ...state.fundState,
+        nabOwned: checked === true ? true : "",
+      },
+    }));
   };
 
   return (
