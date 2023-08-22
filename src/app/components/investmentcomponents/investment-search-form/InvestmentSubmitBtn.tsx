@@ -14,18 +14,20 @@ export default function InvestmentSubmitBtn() {
   const { investmentType, shareState, fundState, pageData } =
     investmentFormState;
 
-  const {
-    setInvestmentType,
-    setShareRequestState,
-    setFundRequestState,
-    setDisplayPageNumber,
-    setInvestmentsPerPage,
-    setTriggerSearch,
-  } = useInvestmentDisplayContext();
+  const { setInvestmentDisplayState, setTriggerSearch } =
+    useInvestmentDisplayContext();
 
   function handleSubmit() {
-    investmentType === "shares" && setShareRequestState(shareState);
-    investmentType === "funds" && setFundRequestState(fundState);
+    investmentType === "shares" &&
+      setInvestmentDisplayState((state) => ({
+        ...state,
+        shareState,
+      }));
+    investmentType === "funds" &&
+      setInvestmentDisplayState((state) => ({
+        ...state,
+        fundState,
+      }));
 
     const asxSlug: string = shareState.asx ? `&asx=${shareState.asx}` : "";
     const shareNameSlug: string = shareState.name
@@ -43,7 +45,10 @@ export default function InvestmentSubmitBtn() {
     const fundCategorySlug: string = category ? `&category=${category}` : "";
     const fundSlug: string = fundNameSlug + nabOwnedSlug + fundCategorySlug;
 
-    setInvestmentType(investmentType);
+    setInvestmentDisplayState((state) => ({
+      ...state,
+      investmentType,
+    }));
     router.push(
       `/investments?investment-type=${investmentType}${
         investmentType === "shares" ? shareSlug : fundSlug
@@ -57,8 +62,15 @@ export default function InvestmentSubmitBtn() {
         pageNumber: 1,
       },
     }));
-    setDisplayPageNumber(1);
-    setInvestmentsPerPage(pageData.perPage);
+
+    setInvestmentDisplayState((state) => ({
+      ...state,
+      pageData: {
+        pageNumber: 1,
+        perPage: pageData.perPage,
+      },
+    }));
+
     setTriggerSearch(true);
   }
 

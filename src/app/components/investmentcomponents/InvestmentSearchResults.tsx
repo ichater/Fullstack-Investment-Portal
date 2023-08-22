@@ -13,23 +13,23 @@ import {
 export default function InvestmentResults() {
   console.log("InvestmentResults render");
   const {
-    investmentType,
-    shareRequestState,
     displayedInvestments,
-    fundRequestState,
-    displayPageNumber,
+    investmentDisplayState,
     setTriggerSearch,
     triggerSearch,
   } = useInvestmentDisplayContext();
+  const { investmentType, shareState, fundState, pageData } =
+    investmentDisplayState;
 
   const currentInvestmentDisplay: ManagedInvestment[] | Share[] | undefined =
-    displayedInvestments.investments[displayPageNumber - 1];
+    displayedInvestments.investments[pageData.pageNumber - 1];
 
   const { getShares, getManagedInvestments } = useInvestmentSearch();
+
   // sets investments on initial load if there are any relevant query parameters in the url
   useEffect(() => {
-    if (investmentType === "shares") getShares(shareRequestState);
-    if (investmentType === "funds") getManagedInvestments(fundRequestState);
+    if (investmentType === "shares") getShares(shareState);
+    if (investmentType === "funds") getManagedInvestments(fundState);
     setTriggerSearch(false);
   }, [triggerSearch]);
 

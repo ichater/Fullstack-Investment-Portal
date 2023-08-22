@@ -6,9 +6,11 @@ import { ManagedInvestment, Share } from "@prisma/client";
 import { investmentsPageParser } from "@/lib/utils/investmentdataparser";
 
 export const useInvestmentSearch = () => {
-  const { setDisplayedInvestments, investmentsPerPage } = useContext(
+  const { setDisplayedInvestments, investmentDisplayState } = useContext(
     InvestmentResultContext
   );
+
+  const { perPage } = investmentDisplayState.pageData;
 
   async function getShares({ asx, name }: ShareFormState) {
     setDisplayedInvestments({
@@ -23,7 +25,7 @@ export const useInvestmentSearch = () => {
 
       const investments = investmentsPageParser(
         response.data.data as Share[],
-        investmentsPerPage
+        perPage
       );
       return setDisplayedInvestments({
         investments,
@@ -57,7 +59,7 @@ export const useInvestmentSearch = () => {
 
       const investments = investmentsPageParser(
         response.data.data as ManagedInvestment[],
-        investmentsPerPage
+        perPage
       );
 
       return setDisplayedInvestments({

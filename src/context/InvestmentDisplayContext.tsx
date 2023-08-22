@@ -3,31 +3,21 @@ import { ReactNode, createContext, useState, useMemo, useContext } from "react";
 import { queryParamParserPageState } from "@/lib/utils/queryparamparser";
 import {
   InvestmentType,
-  PageState,
-  ShareFormState,
-  ManagedInvestmentFormState,
   ManagedInvestmentCategory,
-  DisplayedInvestments,
   InvestmentDisplayContextType,
+  InvestmentDisplayState,
+  DisplayedInvestments,
 } from "@/types";
 import { useSearchParams } from "next/navigation";
+import { emptyInvestmentFormState } from "./utils/InvestmentFormUtils";
 import { emptyDisplayedInvestments } from "./utils/InvestmentDisplayUtils";
-import { emptyFundState, emptyShareState } from "./utils/InvestmentFormUtils";
 
 export const InvestmentResultContext =
   createContext<InvestmentDisplayContextType>({
     displayedInvestments: emptyDisplayedInvestments,
     setDisplayedInvestments: (): any => {},
-    displayPageNumber: 0,
-    setDisplayPageNumber: (): any => {},
-    investmentsPerPage: 10,
-    setInvestmentsPerPage: (): any => {},
-    investmentType: "",
-    setInvestmentType: (): any => {},
-    shareRequestState: emptyShareState,
-    setShareRequestState: (): any => {},
-    fundRequestState: emptyFundState,
-    setFundRequestState: (): any => {},
+    investmentDisplayState: emptyInvestmentFormState,
+    setInvestmentDisplayState: (): any => {},
     triggerSearch: false,
     setTriggerSearch: (): any => {},
   });
@@ -39,101 +29,51 @@ export default function InvestmentDisplayContext({
 }) {
   const searchParams = useSearchParams();
 
-  const searchParamsObj = {
-    investmentType: searchParams?.get("investment-type"),
-    shareParams: {
-      name: searchParams?.get("name"),
-      asx: searchParams?.get("asx"),
+  const numberPage = searchParams?.get("page");
+
+  const searchParamsObj: InvestmentDisplayState = {
+    investmentType:
+      (searchParams?.get("investment-type") as InvestmentType) || "",
+    shareState: {
+      name: searchParams?.get("name") || "",
+      asx: searchParams?.get("asx") || "",
     },
-    managedInvestmentParams: {
-      name: searchParams?.get("name"),
-      nabOwned: searchParams?.get("nab"),
-      category: searchParams?.get("category"),
+    fundState: {
+      name: searchParams?.get("name") || "",
+      nabOwned: searchParams?.get("nab") === "true" ? true : "",
+      category:
+        (searchParams?.get("category") as ManagedInvestmentCategory) || "",
     },
     pageData: {
-      perPage: searchParams?.get("per_page"),
-      pageNumber: searchParams?.get("page"),
+      perPage: queryParamParserPageState(searchParams?.get("per_page")),
+      pageNumber: !!numberPage ? parseInt(numberPage) : 1,
     },
   };
 
-  const { managedInvestmentParams } = searchParamsObj;
-  const { shareParams } = searchParamsObj;
+  const [investmentDisplayState, setInvestmentDisplayState] =
+    useState<InvestmentDisplayState>(searchParamsObj);
 
-  const pageNumberParam: number = !!searchParamsObj.pageData.pageNumber
-    ? parseInt(searchParamsObj.pageData.pageNumber)
-    : 1;
-
-  const investmentsPerPageParam: PageState = queryParamParserPageState(
-    searchParamsObj.pageData.perPage
-  );
-
-  const shareParamState: ShareFormState = {
-    name: !!shareParams.name ? shareParams.name : "",
-    asx: !!shareParams.asx ? shareParams.asx : "",
-  };
-
-  const fundParamsState: ManagedInvestmentFormState = {
-    name: managedInvestmentParams.name || "",
-    category:
-      (managedInvestmentParams.category as ManagedInvestmentCategory) || "",
-    nabOwned: managedInvestmentParams.nabOwned === "true" ? true : "",
-  };
-
-  // Investment Display State
   const [displayedInvestments, setDisplayedInvestments] =
     useState<DisplayedInvestments>(emptyDisplayedInvestments);
-
-  const [investmentType, setInvestmentType] = useState<InvestmentType>(
-    (searchParamsObj.investmentType as InvestmentType) || ""
-  );
-
-  const [investmentsPerPage, setInvestmentsPerPage] = useState<PageState>(
-    investmentsPerPageParam as PageState
-  );
-
-  const [displayPageNumber, setDisplayPageNumber] =
-    useState<number>(pageNumberParam);
-
-  const [shareRequestState, setShareRequestState] =
-    useState<ShareFormState>(shareParamState);
-
-  const [fundRequestState, setFundRequestState] =
-    useState<ManagedInvestmentFormState>(fundParamsState);
 
   const [triggerSearch, setTriggerSearch] = useState(false);
 
   const investmentDisplayMemoValue = useMemo(
     () => ({
-      displayedInvestments,
-      setDisplayedInvestments,
-      investmentType,
-      setInvestmentType,
-      investmentsPerPage,
-      setInvestmentsPerPage,
-      displayPageNumber,
-      setDisplayPageNumber,
-      shareRequestState,
-      setShareRequestState,
-      fundRequestState,
-      setFundRequestState,
+      investmentDisplayState,
+      setInvestmentDisplayState,
       triggerSearch,
       setTriggerSearch,
+      displayedInvestments,
+      setDisplayedInvestments,
     }),
     [
-      displayedInvestments,
-      setDisplayedInvestments,
-      investmentType,
-      setInvestmentType,
-      investmentsPerPage,
-      setInvestmentsPerPage,
-      displayPageNumber,
-      setDisplayPageNumber,
-      shareRequestState,
-      setShareRequestState,
-      fundRequestState,
-      setFundRequestState,
+      investmentDisplayState,
+      setInvestmentDisplayState,
       triggerSearch,
       setTriggerSearch,
+      displayedInvestments,
+      setDisplayedInvestments,
     ]
   );
 

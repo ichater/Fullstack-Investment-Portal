@@ -20,12 +20,18 @@ export default function PageNumber({ pageNumber }: Props) {
     },
     [searchParams]
   );
-  const { setDisplayPageNumber } = useInvestmentDisplayContext();
+  const { setInvestmentDisplayState } = useInvestmentDisplayContext();
   return (
     <button
       className="page-number_select"
       onClick={() => {
-        setDisplayPageNumber(pageNumber);
+        setInvestmentDisplayState((state) => ({
+          ...state,
+          pageData: {
+            ...state.pageData,
+            pageNumber,
+          },
+        }));
         router.push(
           pathname + "?" + createQueryString("page", pageNumber.toString())
         );
