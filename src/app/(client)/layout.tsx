@@ -18,10 +18,6 @@ export default function RootLayout({
       <head>
         <title>Client portal</title>
         <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
-        <link
           rel="icon"
           type="image/x-icon"
           href="https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png"

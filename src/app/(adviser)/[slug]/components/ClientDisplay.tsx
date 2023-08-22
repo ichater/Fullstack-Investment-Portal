@@ -37,16 +37,15 @@ export default function ClientDisplay({ clients }: Props) {
       </div>
       {displayState === "displayclients" &&
         clients.map((client) => (
-          <div className="client-display">
+          <div key={client.id} className="client-display">
             <ClientCard
-              key={client.id}
               id={client.id}
               firstName={client.firstName}
               lastName={client.lastName}
               slug={client.slug}
               email={client.email}
               profileImage={client.profileImage}
-              mainSlug={client.slug}
+              clientSlug={client.clientSlug}
               bio={client.bio}
             />
           </div>

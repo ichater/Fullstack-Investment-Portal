@@ -1,11 +1,18 @@
 import Link from "next/link";
 import React from "react";
 import AuthModal from "./authmodals/AuthModal";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
     <div className="navbar_wrapper">
-      <img className="logo" src="images/dollar_sign_icon.svg" alt="logo" />
+      <Image
+        className="logo"
+        src="images/dollar_sign_icon.svg"
+        alt="logo"
+        width={500}
+        height={500}
+      />
       <nav>
         <ul className="nav_links nav-text">
           <Link href="/">

@@ -19,10 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>Advisor-link unauthed</title>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
+
         <link
           rel="icon"
           type="image/x-icon"

@@ -1,4 +1,4 @@
-import { ACCESS, Account, Adviser, Client, ROLE, Review } from "@prisma/client";
+import { ACCESS, Account, Adviser, Client, ROLE } from "@prisma/client";
 
 export class ClientBuilder {
   client: Client;
@@ -62,7 +62,6 @@ class ClientInstance {
   role: ROLE;
   access: ACCESS;
   accounts: Account[];
-  reviews: Review[];
 
   constructor(
     firstName: string = "Jane",
@@ -72,12 +71,11 @@ class ClientInstance {
     password: string = "SomeClient123!",
     bio: string = "Investing for the monies!",
     email: string = "jDoe@pleb.com.au",
-    profileImage: string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzq8hRZkv-2JFKAUssJlIqdDsFUUv3ptbVLA&usqp=CAU",
+    profileImage: string = "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
     adviserId: string = "",
     role: ROLE = ROLE.CLIENT,
     access: ACCESS = ACCESS.READONLY,
-    accounts: Account[] = [],
-    reviews: Review[] = []
+    accounts: Account[] = []
   ) {
     this.id = id;
     this.firstName = firstName;
@@ -91,6 +89,5 @@ class ClientInstance {
     this.role = role;
     this.access = access;
     this.accounts = accounts;
-    this.reviews = reviews;
   }
 }

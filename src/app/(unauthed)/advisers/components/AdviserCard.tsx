@@ -1,4 +1,5 @@
 import { Adviser } from "@prisma/client";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -10,7 +11,13 @@ export default function AdviserCard({ adviser }: Props) {
   return (
     <div className="advisor-card_wrapper">
       <div className="advisor-card-profile-name_wrapper">
-        <img className="profile-image" src={adviser.profileImage} />
+        <Image
+          className="profile-image"
+          src={adviser.profileImage}
+          alt="adviser profile"
+          width={500}
+          height={500}
+        />
         <h3>
           {adviser.firstName} {adviser.lastName}
         </h3>
