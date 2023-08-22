@@ -28,7 +28,7 @@ export default function ClientInformationEdit({
       ...state,
       access: toggleState ? "READONLY" : "READWRITE",
     }));
-  }, [toggleState]);
+  }, [toggleState, setEditFormState]);
 
   return (
     <>

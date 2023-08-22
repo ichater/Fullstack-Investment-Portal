@@ -1,15 +1,12 @@
 "use client";
-import SubmitButton from "@/app/components/formcomponents/SubmitButton";
-import React, { useState } from "react";
+import React from "react";
 import {
   tempClientSallie,
   sallieAccountsTemp,
 } from "@/lib/tempdata/tempClient";
-
-import ClientInformation from "./components/ClientInformation";
-import ClientAccounts from "./components/ClientAccounts";
 import { ClientAccountInformation } from "@/types";
 import Link from "next/link";
+import ClientMainDisplay from "./components/ClientMainDisplay";
 
 const getData = (clientSlug: string) => {
   return (
@@ -25,19 +22,11 @@ export default function page({
 }: {
   params: { slug: string; clientSlug: string };
 }) {
-  const [displayState, setDisplayState] = useState<"profile" | "accounts">(
-    "accounts"
-  );
-
   const data = getData(clientSlug);
 
   if (!data) {
     return <div>No data!</div>;
   }
-
-  const handleClick = (setPage: "profile" | "accounts") => {
-    setDisplayState(setPage);
-  };
 
   const { firstName, lastName, email, bio, access, profileImage } =
     data.clientData;
@@ -60,38 +49,17 @@ export default function page({
   return (
     <div className="adviser-homepage_wrapper">
       <Link href={`/${slug}`}>Profile (Move to Navbar later)</Link>
-      <div className="toggle-view_tabs">
-        <SubmitButton
-          text="Profile"
-          height={3}
-          width={7}
-          onClick={() => handleClick("profile")}
-        />
-        <SubmitButton
-          text="Accounts"
-          height={3}
-          width={9}
-          onClick={() => handleClick("accounts")}
-        />
-      </div>
-      {displayState === "profile" && (
-        <ClientInformation
-          firstName={firstName}
-          lastName={lastName}
-          email={email}
-          profileImage={profileImage}
-          access={access}
-          bio={bio}
-        />
-      )}
-      {displayState === "accounts" && (
-        <ClientAccounts
-          firstName={firstName}
-          lastName={lastName}
-          accounts={parsedAccountInformation}
-          params={{ slug, clientSlug }}
-        />
-      )}
+      <ClientMainDisplay
+        slug={slug}
+        clientSlug={clientSlug}
+        firstName={firstName}
+        lastName={lastName}
+        email={email}
+        bio={bio}
+        access={access}
+        profileImage={profileImage}
+        parsedAccountInformation={parsedAccountInformation}
+      />
     </div>
   );
 }

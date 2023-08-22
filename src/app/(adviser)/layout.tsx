@@ -19,10 +19,6 @@ export default function RootLayout({
       <head>
         <title>Advisor portal</title>
         <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
-        <link
           rel="icon"
           type="image/x-icon"
           href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFm1d6OTmegYML-GS9nEHgb2zQGSkV3CPdqw&usqp=CAU"

@@ -4,7 +4,7 @@ export type AdvisorClientDisplay = {
   slug: string;
   email: string;
   profileImage: string;
-  mainSlug: string;
+  clientSlug: string;
   bio: string;
   id: string;
 };

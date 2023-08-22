@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ClientInformationDisplay from "./ClientInformationDisplay";
 import ClientInformationEdit from "./ClientInformationEdit";
 import SubmitButton from "@/app/components/formcomponents/SubmitButton";
+import Image from "next/image";
 
 export default function ClientInformation({
   firstName,
@@ -42,7 +43,13 @@ export default function ClientInformation({
     <div>
       <div className="adviser-homepage-details">
         <div className="adviser-img-wrapper">
-          <img className="adviser-profile-img" src={profileImage} />
+          <Image
+            className="adviser-profile-img"
+            src={profileImage}
+            alt="Profile Image"
+            width={500}
+            height={500}
+          />
         </div>
         <div className="profile-details-wrapper">
           <h2>{firstName + " " + lastName}</h2>

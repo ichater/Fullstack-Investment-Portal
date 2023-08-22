@@ -1,4 +1,5 @@
 import { AdvisorInfo } from "@/types/adviser";
+import Image from "next/image";
 import React from "react";
 
 export default function AdviserInformationDisplay({
@@ -13,7 +14,13 @@ export default function AdviserInformationDisplay({
   return (
     <>
       <div className="adviser-img-wrapper">
-        <img className="adviser-profile-img" src={profileImage} />
+        <Image
+          className="adviser-profile-img"
+          src={profileImage}
+          alt="adviser profile image"
+          height={500}
+          width={500}
+        />
       </div>
       <div className="profile-details-wrapper">
         <h2>{firstName + " " + lastName}</h2>

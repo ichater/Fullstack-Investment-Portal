@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { AdvisorInfo } from "@/types";
+import Image from "next/image";
 
 interface Props extends AdvisorInfo {
   handleChange: (
@@ -23,7 +24,13 @@ export default function AdvisorInformationEdit({
     <>
       {" "}
       <div className="adviser-img-wrapper">
-        <img className="adviser-profile-img" src={profileImage} />
+        <Image
+          className="adviser-profile-img"
+          src={profileImage}
+          alt="adviser profile image"
+          height={500}
+          width={500}
+        />
       </div>
       <div className="profile-details-wrapper">
         <h2>{firstName + " " + lastName}</h2>
