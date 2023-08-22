@@ -14,7 +14,7 @@ export default function AddClient() {
     password: "",
   });
 
-  const { firstName, lastName, email, bio, access, password } = addClient;
+  const { firstName, lastName, email, bio, password } = addClient;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
