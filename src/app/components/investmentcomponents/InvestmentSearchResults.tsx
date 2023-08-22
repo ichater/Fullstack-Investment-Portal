@@ -5,7 +5,10 @@ import { ManagedInvestment, Share } from "@prisma/client";
 import { arrayFromNumber } from "@/lib/utils/arrayFromNumber";
 import PageNumber from "./investment-search-display/PageNumber";
 import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
-import { useInvestmentResultContext } from "@/context/InvestmentDisplayContext";
+import {
+  useInvestmentDisplayContext,
+  useInvestmentFormContext,
+} from "@/context";
 
 export default function InvestmentResults() {
   console.log("InvestmentResults render");
@@ -14,10 +17,10 @@ export default function InvestmentResults() {
     shareRequestState,
     displayedInvestments,
     fundRequestState,
-    triggerSearch,
-    setTriggerSearch,
     displayPageNumber,
-  } = useInvestmentResultContext();
+    setTriggerSearch,
+    triggerSearch,
+  } = useInvestmentDisplayContext();
 
   const currentInvestmentDisplay: ManagedInvestment[] | Share[] | undefined =
     displayedInvestments.investments[displayPageNumber - 1];

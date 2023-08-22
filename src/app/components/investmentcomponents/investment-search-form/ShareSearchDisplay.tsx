@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import { useInvestmentFormContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentFormContext } from "@/context";
 
 export default function ShareSearchDisplay() {
   const { setShareFormState, shareFormState } = useInvestmentFormContext();

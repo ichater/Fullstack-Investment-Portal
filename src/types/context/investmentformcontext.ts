@@ -18,6 +18,4 @@ export interface InvestmentFormContext {
     React.SetStateAction<ManagedInvestmentFormState>
   >;
   fundFormState: ManagedInvestmentFormState;
-  triggerSearch: boolean;
-  setTriggerSearch: React.Dispatch<React.SetStateAction<boolean>>;
 }

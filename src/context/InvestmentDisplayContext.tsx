@@ -8,7 +8,6 @@ import {
   ManagedInvestmentFormState,
   ManagedInvestmentCategory,
   DisplayedInvestments,
-  InvestmentFormContextType,
   InvestmentDisplayContextType,
 } from "@/types";
 import { useSearchParams } from "next/navigation";
@@ -17,22 +16,6 @@ import {
   emptyFundState,
   emptyDisplayedInvestments,
 } from "./utils/InvestmentDisplayUtils";
-
-export const InvestmentFormContext: any =
-  createContext<InvestmentFormContextType>({
-    formDisplay: "",
-    setFormDisplay: (): any => {},
-    setPageState: (): any => {},
-    pageState: 10,
-    setShareFormState: (): any => {},
-    shareFormState: emptyShareState,
-    setFundFormState: (): any => {},
-    fundFormState: emptyFundState,
-    pageNumber: 0,
-    setPageNumber: (): any => {},
-    triggerSearch: false,
-    setTriggerSearch: (): any => {},
-  });
 
 export const InvestmentResultContext =
   createContext<InvestmentDisplayContextType>({
@@ -99,22 +82,6 @@ export default function InvestmentDisplayContext({
     nabOwned: managedInvestmentParams.nabOwned === "true" ? true : "",
   };
 
-  const [formDisplay, setFormDisplay] = useState<InvestmentType>(
-    (searchParamsObj.investmentType as InvestmentType) || ""
-  );
-
-  const [pageState, setPageState] = useState<PageState>(
-    investmentsPerPageParam as PageState
-  );
-
-  const [shareFormState, setShareFormState] =
-    useState<ShareFormState>(shareParamState);
-
-  const [fundFormState, setFundFormState] =
-    useState<ManagedInvestmentFormState>(fundParamsState);
-
-  const [pageNumber, setPageNumber] = useState<number>(pageNumberParam);
-
   // Investment Display State
   const [displayedInvestments, setDisplayedInvestments] =
     useState<DisplayedInvestments>(emptyDisplayedInvestments);
@@ -137,37 +104,6 @@ export default function InvestmentDisplayContext({
     useState<ManagedInvestmentFormState>(fundParamsState);
 
   const [triggerSearch, setTriggerSearch] = useState(false);
-
-  const investmentFormMemoValue = useMemo(
-    () => ({
-      formDisplay,
-      setFormDisplay,
-      pageState,
-      setPageState,
-      shareFormState,
-      setShareFormState,
-      fundFormState,
-      setFundFormState,
-      pageNumber,
-      setPageNumber,
-      triggerSearch,
-      setTriggerSearch,
-    }),
-    [
-      formDisplay,
-      setFormDisplay,
-      pageState,
-      setPageState,
-      shareFormState,
-      setShareFormState,
-      fundFormState,
-      setFundFormState,
-      pageNumber,
-      setPageNumber,
-      triggerSearch,
-      setTriggerSearch,
-    ]
-  );
 
   const investmentDisplayMemoValue = useMemo(
     () => ({
@@ -206,14 +142,10 @@ export default function InvestmentDisplayContext({
 
   return (
     <InvestmentResultContext.Provider value={investmentDisplayMemoValue}>
-      <InvestmentFormContext.Provider value={investmentFormMemoValue}>
-        {children}
-      </InvestmentFormContext.Provider>
+      {children}
     </InvestmentResultContext.Provider>
   );
 }
 
-export const useInvestmentFormContext = () => useContext(InvestmentFormContext);
-
-export const useInvestmentResultContext = () =>
+export const useInvestmentDisplayContext = () =>
   useContext(InvestmentResultContext);

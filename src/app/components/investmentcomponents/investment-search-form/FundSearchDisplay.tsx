@@ -8,7 +8,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
-import { useInvestmentFormContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentFormContext } from "@/context";
 import { ManagedInvestmentCategory } from "@/types";
 
 export default function FundSearchDisplay() {

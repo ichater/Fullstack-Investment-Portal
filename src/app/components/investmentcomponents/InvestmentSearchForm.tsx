@@ -9,7 +9,7 @@ import FundSearchDisplay from "./investment-search-form/FundSearchDisplay";
 import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay";
 import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
 import { InvestmentType } from "@/types";
-import { useInvestmentFormContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentFormContext } from "@/context";
 
 export default function InvestmentSearchForm() {
   console.log("Search form render");

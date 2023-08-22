@@ -1,8 +1,8 @@
 import React from "react";
 import {
   useInvestmentFormContext,
-  useInvestmentResultContext,
-} from "@/context/InvestmentDisplayContext";
+  useInvestmentDisplayContext,
+} from "@/context";
 import { useRouter } from "next/navigation";
 
 export default function InvestmentSubmitBtn() {
@@ -14,7 +14,6 @@ export default function InvestmentSubmitBtn() {
     fundFormState,
     formDisplay,
     setPageNumber,
-    setTriggerSearch,
   } = useInvestmentFormContext();
 
   const {
@@ -23,7 +22,8 @@ export default function InvestmentSubmitBtn() {
     setFundRequestState,
     setDisplayPageNumber,
     setInvestmentsPerPage,
-  } = useInvestmentResultContext();
+    setTriggerSearch,
+  } = useInvestmentDisplayContext();
 
   function handleSubmit() {
     formDisplay === "shares" && setShareRequestState(shareFormState);

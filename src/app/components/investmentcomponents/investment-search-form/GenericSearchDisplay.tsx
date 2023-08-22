@@ -5,7 +5,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { PageState } from "@/types";
-import { useInvestmentFormContext } from "@/context/InvestmentDisplayContext";
+import { useInvestmentFormContext } from "@/context";
 
 export default function GenericSearchDisplay() {
   const { setPageState, pageState } = useInvestmentFormContext();
