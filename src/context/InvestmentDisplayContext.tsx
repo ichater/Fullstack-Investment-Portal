@@ -9,8 +9,10 @@ import {
   DisplayedInvestments,
 } from "@/types";
 import { useSearchParams } from "next/navigation";
-import { emptyInvestmentFormState } from "./utils/InvestmentFormUtils";
-import { emptyDisplayedInvestments } from "./utils/InvestmentDisplayUtils";
+import {
+  emptyDisplayedInvestments,
+  emptyInvestmentFormState,
+} from "./utils/InvestmentContextUtils";
 
 export const InvestmentResultContext =
   createContext<InvestmentDisplayContextType>({
@@ -31,7 +33,7 @@ export default function InvestmentDisplayContext({
 
   const numberPage = searchParams?.get("page");
 
-  const searchParamsObj: InvestmentDisplayState = {
+  const defaultDisplayState: InvestmentDisplayState = {
     investmentType:
       (searchParams?.get("investment-type") as InvestmentType) || "",
     shareState: {
@@ -51,7 +53,7 @@ export default function InvestmentDisplayContext({
   };
 
   const [investmentDisplayState, setInvestmentDisplayState] =
-    useState<InvestmentDisplayState>(searchParamsObj);
+    useState<InvestmentDisplayState>(defaultDisplayState);
 
   const [displayedInvestments, setDisplayedInvestments] =
     useState<DisplayedInvestments>(emptyDisplayedInvestments);

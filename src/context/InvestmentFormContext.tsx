@@ -8,7 +8,7 @@ import {
   InvestmentFormState,
 } from "@/types";
 import { useSearchParams } from "next/navigation";
-import { emptyInvestmentFormState } from "./utils/InvestmentFormUtils";
+import { emptyInvestmentFormState } from "./utils/InvestmentContextUtils";
 
 export const InvestmentSearchContext = createContext<InvestmentFormContextType>(
   {
@@ -26,7 +26,7 @@ export default function InvestmentFormContext({
 
   const numberPage = searchParams?.get("page");
 
-  const searchParamsObj: InvestmentFormState = {
+  const defaultFormState: InvestmentFormState = {
     investmentType:
       (searchParams?.get("investment-type") as InvestmentType) || "",
     shareState: {
@@ -46,7 +46,7 @@ export default function InvestmentFormContext({
   };
 
   const [investmentFormState, setInvestmentFormState] =
-    useState<InvestmentFormState>(searchParamsObj);
+    useState<InvestmentFormState>(defaultFormState);
 
   const investmentFormMemoValue = useMemo(
     () => ({

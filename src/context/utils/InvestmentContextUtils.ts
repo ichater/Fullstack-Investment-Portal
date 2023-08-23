@@ -3,6 +3,7 @@ import {
   ManagedInvestmentFormState,
   PageState,
   ShareFormState,
+  DisplayedInvestments,
 } from "@/types";
 
 export const emptyFundState: ManagedInvestmentFormState = {
@@ -26,4 +27,10 @@ export const emptyInvestmentFormState: InvestmentFormState = {
   shareState: emptyShareState,
   fundState: emptyFundState,
   pageData: defaultPageData,
+};
+
+export const emptyDisplayedInvestments: DisplayedInvestments = {
+  investments: [],
+  error: null,
+  loading: false,
 };
