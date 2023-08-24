@@ -1,13 +1,13 @@
 .main-page_wrapper {
   margin: 3rem auto;
   width: 70%;
-  background-color: var(--background-dark);
+  background: var(--background-grey-gradient);
   padding: 3rem;
   border-radius: 25px;
 }
 
 .main-page_header {
-  color: var(--main-white);
+  color: var(--main-light);
   background-color: var(--adviser-blue);
   width: fit-content;
   padding: 0.25rem 0.5rem;
@@ -15,12 +15,12 @@
 }
 
 .main-page_wrapper p {
-  color: var(--main-white);
+  color: var(--main-dark);
   margin-right: 4rem;
 }
 
 .main-page_wrapper a {
-  color: var(--main-white);
+  color: var(--main-dark);
   transition: 0.5s 0s;
 }
 .main-page_wrapper a:hover {

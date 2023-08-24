@@ -7,7 +7,7 @@
   gap: 2rem;
 }
 .client-accounts_wrapper h1 {
-  color: var(--main-white);
+  color: var(--main-light);
   background-color: var(--adviser-blue);
   width: fit-content;
   padding: 0.5rem;
@@ -36,7 +36,7 @@
 }
 
 .card_heading {
-  color: var(--main-white);
+  color: var(--main-light);
   background-color: var(--adviser-blue);
   width: fit-content;
   padding: 0.5rem;

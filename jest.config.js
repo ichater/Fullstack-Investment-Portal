@@ -25,6 +25,7 @@ module.exports = {
 
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@/app/(.*)$": "<rootDir>/src/app/$1",
+    "^@/test-utils/(.*)$": "<rootDir>/src/lib/test-utils/$1",
   },
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],

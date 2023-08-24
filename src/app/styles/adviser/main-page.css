@@ -67,7 +67,7 @@
 }
 .profile-details-wrapper div input:focus {
   background-color: var(--adviser-blue-faded);
-  color: var(--main-white);
+  color: var(--main-light);
 }
 
 .adviser-submit-btn_wrapper {
@@ -82,7 +82,7 @@
 }
 .adviser-bio-edit:focus {
   background-color: var(--adviser-blue-faded);
-  color: var(--main-white);
+  color: var(--main-light);
 }
 
 .client-display {

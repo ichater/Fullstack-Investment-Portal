@@ -8,8 +8,8 @@
 }
 
 .investment-display_header {
-  background-color: var(--adviser-blue);
-  color: var(--main-white);
+  background: var(--adviser-blue-gradient);
+  color: var(--main-light);
   padding: 0.5rem 1rem;
   width: fit-content;
   border-radius: 10px;
@@ -21,6 +21,7 @@
   padding: 1rem;
   width: 100%;
   min-height: 5rem;
+  background: var(--background-grey-gradient);
 }
 
 .investment-search_top {
@@ -41,11 +42,11 @@
 }
 
 .investment-submit-btn {
-  background-color: var(--confirm-green);
-  color: var(--main-white);
+  background: var(--adviser-blue-gradient);
+  color: var(--main-light);
   font-size: 1.5rem;
   border-radius: 15px;
-  border: 1px solid var(--main-white);
+  border: 1px solid var(--main-light);
   cursor: pointer;
   transition: 0.5s 0s;
   height: 4rem;
@@ -53,7 +54,7 @@
 }
 
 .investment-submit-btn:hover {
-  background-color: var(--confirm-green-hover);
+  background: var(--adviser-blue-gradient_hover);
   border: 1px solid rgba(54, 172, 71, 0.2);
   font-size: 1.75rem;
 }
@@ -83,13 +84,14 @@
 
 .investment-search-result_table_head th {
   padding: 1rem;
-  color: var(--main-white);
+  color: var(--main-light);
   text-align: left;
   padding-left: 2rem;
 }
 
 .investment-display_row {
   padding: 0;
+  background-color: var(--background-light);
 }
 
 .investment-display_row td {
@@ -118,8 +120,8 @@
 }
 
 .page-number_select:hover {
-  color: var(--main-white);
-  background-color: var(--confirm-green);
+  color: var(--main-light);
+  background-color: var(--adviser-blue-faded);
 }
 .investment-input_wrapper {
   display: flex;

@@ -14,10 +14,33 @@
   --background-end-rgb: 255, 255, 255;
   --adviser-blue: #0088a9;
   --adviser-blue-faded: #369ab3;
+  --adviser-blue-gradient: linear-gradient(
+    0deg,
+    #3b879a 0%,
+    #3f8a9d 12%,
+    #369ab3 46%,
+    #0088a9 100%
+  );
+  --adviser-blue-gradient_hover: linear-gradient(
+    0deg,
+    #25515c 0%,
+    #326e7d 12%,
+    #3b879a 46%,
+    #3f8a9d 100%
+  );
   --background-dark: #24252a;
-  --main-white: #edf0f1;
+  --background-light: #e7e9f4;
+  --main-dark: #2a3031;
+  --main-light: #edf0f1;
   --confirm-green: rgb(0, 128, 0);
   --confirm-green-hover: rgb(34, 177, 76);
+  --background-grey-gradient: linear-gradient(
+    0deg,
+    rgb(131, 131, 133) 0%,
+    rgba(196, 202, 219, 1) 12%,
+    rgba(218, 221, 231, 0.989233193277311) 46%,
+    rgba(224, 227, 235, 1) 100%
+  );
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,6 +53,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  background-color: rgb(206, 203, 203);
 }
 
 .profile-image {
@@ -39,10 +63,10 @@ body {
 
 .submit-btn {
   background-color: var(--confirm-green);
-  color: var(--main-white);
+  color: var(--main-light);
   font-size: 1.5rem;
   border-radius: 15px;
-  border: 1px solid var(--main-white);
+  border: 1px solid var(--main-light);
   cursor: pointer;
   transition: 0.5s 0s;
   height: 4rem;

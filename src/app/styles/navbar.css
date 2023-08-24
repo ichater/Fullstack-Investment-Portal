@@ -14,7 +14,7 @@
 }
 
 .nav_links a:visited {
-  color: var(--main-white);
+  color: var(--main-light);
 }
 
 .nav_links li {
@@ -30,7 +30,7 @@
 .nav-text {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  color: var(--main-white);
+  color: var(--main-light);
   text-decoration: none;
   font-size: 1rem;
 }
@@ -62,7 +62,7 @@
 
 .auth-modal_header {
   background-color: var(--adviser-blue);
-  color: var(--main-white);
+  color: var(--main-light);
   width: fit-content;
   border-radius: 10px;
   padding: 0.5rem 1rem;

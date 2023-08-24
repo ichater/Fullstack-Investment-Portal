@@ -2,8 +2,8 @@
   width: 60%;
   margin: 2rem 4rem;
   border-radius: 25px;
-  background-color: var(--background-dark);
-  color: var(--main-white);
+  background: var(--background-grey-gradient);
+  color: var(--main-dark);
   padding: 1rem 2rem;
   display: flex;
   flex-direction: row;
@@ -38,9 +38,20 @@
   height: fit-content;
   padding: 0.5rem 1rem;
   border-radius: 25px;
-  background-color: var(--confirm-green);
+
+  /* Use the linear gradient as the background */
+  background: linear-gradient(
+    0deg,
+    rgb(7, 5, 52) 0%,
+    rgba(16, 108, 140, 1) 9%,
+    rgba(13, 87, 142, 1) 39%,
+    rgba(0, 212, 255, 1) 100%
+  );
+
   cursor: pointer;
-  transition: 0.5s 0s;
+  /* Apply transition to background property for smooth color change */
+  transition: 2s;
+
   color: rgb(205, 227, 207);
   text-decoration: none;
   white-space: nowrap;
@@ -51,5 +62,14 @@
 }
 
 .advisor-btn:hover {
-  background-color: var(--confirm-green-hover);
+  /* Update background-color on hover */
+  background-color: #e91e63;
+  color: #fff;
+  background: linear-gradient(
+    0deg,
+    rgb(5, 4, 26) 0%,
+    rgb(20, 91, 114) 9%,
+    rgb(18, 74, 117) 39%,
+    rgb(20, 182, 214) 100%
+  );
 }

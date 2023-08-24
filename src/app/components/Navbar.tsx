@@ -23,7 +23,7 @@ export default function Navbar() {
         </ul>
       </nav>
       <Link href="./advisers">
-        <button className="nav-btn nav-text">Adviser List</button>
+        <button className="advisor-btn">Adviser List</button>
       </Link>
     </div>
   );

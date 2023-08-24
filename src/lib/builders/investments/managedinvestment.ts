@@ -1,4 +1,3 @@
-import { generateString } from "@/lib/utils/randomstringgenerator";
 import { INVESTMENTCATEGORY, ManagedInvestment } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
