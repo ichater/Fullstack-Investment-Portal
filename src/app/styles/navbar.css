@@ -1,5 +1,5 @@
 .navbar_wrapper {
-  background-color: #24252a;
+  background-color: var(--background-dark);
   padding: 30px;
   display: flex;
   flex-direction: row;

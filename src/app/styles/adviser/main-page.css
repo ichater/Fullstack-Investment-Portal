@@ -2,6 +2,7 @@
   width: 80%;
   margin: auto;
   border: 1px solid var(--adviser-blue);
+  background: var(--background-grey-gradient);
   border-radius: 15px;
   margin-top: 2rem;
   padding-top: 1rem;
@@ -11,7 +12,28 @@
   margin: auto;
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  width: 90%;
+}
+
+.adviser-tab_link {
+  width: 100%;
+}
+
+.adviser-tab {
+  background: var(--adviser-blue-gradient);
+  border-radius: 5px;
+  color: var(--main-light);
+  font-size: 1rem;
+  height: 2rem;
+  width: 100%;
+  transition: 1s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.adviser-tab:hover {
+  background: var(--adviser-blue-gradient_hover);
+  font-size: 1.25rem;
 }
 
 .adviser-homepage-details {

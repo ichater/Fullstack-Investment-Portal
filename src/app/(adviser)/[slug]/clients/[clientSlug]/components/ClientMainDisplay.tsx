@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import SubmitButton from "@/app/components/formcomponents/SubmitButton";
 import ClientInformation from "./ClientInformation";
 import ClientAccounts from "./ClientAccounts";
 import { ACCESS } from "@prisma/client";
 import { ClientAccountInformation } from "@/types";
+import Link from "next/link";
 
 export default function ClientMainDisplay({
   slug,
@@ -38,18 +38,15 @@ export default function ClientMainDisplay({
     <>
       {" "}
       <div className="toggle-view_tabs">
-        <SubmitButton
-          text="Profile"
-          height={3}
-          width={7}
-          onClick={() => handleClick("profile")}
-        />
-        <SubmitButton
-          text="Accounts"
-          height={3}
-          width={9}
-          onClick={() => handleClick("accounts")}
-        />
+        <Link className="adviser-tab_link" href={`/${slug}`}>
+          <button className="adviser-tab">Adviser Profile</button>
+        </Link>
+        <button className="adviser-tab" onClick={() => handleClick("profile")}>
+          Profile
+        </button>
+        <button className="adviser-tab" onClick={() => handleClick("accounts")}>
+          Clients
+        </button>
       </div>
       {displayState === "profile" && (
         <ClientInformation

@@ -48,7 +48,6 @@ export default function page({
 
   return (
     <div className="adviser-homepage_wrapper">
-      <Link href={`/${slug}`}>Profile (Move to Navbar later)</Link>
       <ClientMainDisplay
         slug={slug}
         clientSlug={clientSlug}

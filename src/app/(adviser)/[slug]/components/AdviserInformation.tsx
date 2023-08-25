@@ -5,6 +5,7 @@ import { AdvisorInfo } from "@/types";
 import SubmitButton from "@/app/components/formcomponents/SubmitButton";
 import AdviserInformationDisplay from "./AdviserInformationDisplay";
 import AdvisorInformationEdit from "./AdvisorInformationEdit";
+import AdviserButton from "@/app/components/formcomponents/AdviserButton";
 
 export default function AdviserInformation({
   firstName,
@@ -75,16 +76,13 @@ export default function AdviserInformation({
         )}
       </div>
       <div className="adviser-submit-btn_wrapper">
-        <SubmitButton
+        <AdviserButton
           text={editState ? "Submit" : "Edit"}
-          backgroundColor="rgba(57, 229, 235, 0.8)"
+          padding="1rem 2rem"
+          transition="1s"
           height={3}
-          width={7}
-          onHover={{
-            // border: "1px solid rgba(54, 172, 71, 0.2)",
-            fontSize: 1.75,
-            backgroundColor: "rgba(12, 121, 255, 0.8)",
-          }}
+          width={8}
+          onHover={{ fontSize: "1.75rem" }}
           onClick={handleClick}
         />
       </div>

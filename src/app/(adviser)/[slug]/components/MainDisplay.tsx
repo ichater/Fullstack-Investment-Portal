@@ -43,18 +43,12 @@ export default function MainDisplay({
   return (
     <div className="adviser-homepage_wrapper">
       <div className="toggle-view_tabs">
-        <SubmitButton
-          text="Profile"
-          height={3}
-          width={7}
-          onClick={() => handleClick("advisor")}
-        />
-        <SubmitButton
-          text="Clients"
-          height={3}
-          width={7}
-          onClick={() => handleClick("client")}
-        />
+        <button className="adviser-tab" onClick={() => handleClick("advisor")}>
+          Profile
+        </button>
+        <button className="adviser-tab" onClick={() => handleClick("client")}>
+          Clients
+        </button>
       </div>
       {displayState === "advisor" && (
         <AdviserInformation
