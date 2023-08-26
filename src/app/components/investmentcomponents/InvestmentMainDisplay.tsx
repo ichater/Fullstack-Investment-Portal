@@ -9,7 +9,7 @@ export default function InvestmentDisplay() {
   return (
     <div>
       <div className="investment-display_container">
-        <h1 className="investment-display_header">Search investments:</h1>
+        <h1 className="investment-display_header">Search Investments:</h1>
         <InvestmentSearchForm />
         <div className="investment-search-results_wrapper">
           <InvestmentSearchResults />

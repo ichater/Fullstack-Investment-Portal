@@ -1,9 +1,9 @@
-import { ManagedInvestment } from "@prisma/client";
 import React, { memo } from "react";
 import FundRow from "./FundRow";
+import { DisplayFund } from "@/types";
 
 type Props = {
-  funds: ManagedInvestment[];
+  funds: DisplayFund[];
 };
 
 const FundMemo = memo(FundRow);

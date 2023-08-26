@@ -1,9 +1,9 @@
 import React, { memo } from "react";
-import { Share } from "@prisma/client";
 import ShareRow from "./ShareRow";
+import { DisplayShare } from "@/types";
 
 type Props = {
-  shares: Share[];
+  shares: DisplayShare[];
 };
 
 const ShareMemo = memo(ShareRow);

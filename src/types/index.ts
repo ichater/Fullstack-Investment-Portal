@@ -7,6 +7,8 @@ export {
   type DisplayedInvestments,
   type InvestmentFormState,
   type InvestmentDisplayState,
+  type DisplayFund,
+  type DisplayShare,
 } from "./investment-ui";
 export {
   type LoginState,
@@ -18,6 +20,7 @@ export {
   type AdvisorInfo,
   type AdvisorClientDisplay,
   type AdviserAddClientState,
+  type ClientView,
 } from "./adviser";
 export { type SlugProp } from "./nextjs";
 export {

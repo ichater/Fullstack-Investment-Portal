@@ -4,7 +4,16 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
   pageNumber: number;
+  onClick?: () => void;
 };
+
+export function PageNumberBtn({ pageNumber, onClick }: Props) {
+  return (
+    <button className="page-number_select" onClick={onClick}>
+      {pageNumber}
+    </button>
+  );
+}
 
 export default function PageNumber({ pageNumber }: Props) {
   const router = useRouter();
@@ -21,23 +30,18 @@ export default function PageNumber({ pageNumber }: Props) {
     [searchParams]
   );
   const { setInvestmentDisplayState } = useInvestmentDisplayContext();
-  return (
-    <button
-      className="page-number_select"
-      onClick={() => {
-        setInvestmentDisplayState((state) => ({
-          ...state,
-          pageData: {
-            ...state.pageData,
-            pageNumber,
-          },
-        }));
-        router.push(
-          pathname + "?" + createQueryString("page", pageNumber.toString())
-        );
-      }}
-    >
-      {pageNumber}
-    </button>
-  );
+
+  const onClick = () => {
+    setInvestmentDisplayState((state) => ({
+      ...state,
+      pageData: {
+        ...state.pageData,
+        pageNumber,
+      },
+    }));
+    router.push(
+      pathname + "?" + createQueryString("page", pageNumber.toString())
+    );
+  };
+  return <PageNumberBtn pageNumber={pageNumber} onClick={onClick} />;
 }

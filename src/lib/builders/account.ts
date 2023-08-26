@@ -71,9 +71,9 @@ class AccountInstance {
     cashInShares: number = 0,
     cashInInvestments: number = 0,
     shares: Share[] = [],
-    name: string = "conservative-account",
+    name: string = "sally-conservative",
     investmentStrategy: INVESTMENSTRATEGY = INVESTMENSTRATEGY.CONSERVATIVE,
-    slug: string = `${name + investmentStrategy.toLocaleLowerCase()}`
+    slug: string = `${name.toLocaleLowerCase()}`
   ) {
     this.clientId = clientId;
     this.id = id;

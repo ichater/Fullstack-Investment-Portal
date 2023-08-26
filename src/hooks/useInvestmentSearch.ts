@@ -1,6 +1,11 @@
 import { useContext } from "react";
 import axios from "axios";
-import { ManagedInvestmentFormState, ShareFormState } from "@/types";
+import {
+  DisplayFund,
+  DisplayShare,
+  ManagedInvestmentFormState,
+  ShareFormState,
+} from "@/types";
 import { InvestmentResultContext } from "@/context/InvestmentDisplayContext";
 import { ManagedInvestment, Share } from "@prisma/client";
 import { investmentsPageParser } from "@/lib/utils/investmentdataparser";
@@ -24,7 +29,7 @@ export const useInvestmentSearch = () => {
       );
 
       const investments = investmentsPageParser(
-        response.data.data as Share[],
+        response.data.data as DisplayShare[],
         perPage
       );
       return setDisplayedInvestments({
@@ -58,7 +63,7 @@ export const useInvestmentSearch = () => {
       );
 
       const investments = investmentsPageParser(
-        response.data.data as ManagedInvestment[],
+        response.data.data as DisplayFund[],
         perPage
       );
 

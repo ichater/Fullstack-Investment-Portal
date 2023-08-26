@@ -1,7 +1,8 @@
-import { ManagedInvestment, Share } from "@prisma/client";
+import { DisplayFund } from "./displayFund";
+import { DisplayShare } from "./displayShare";
 
 export interface DisplayedInvestments {
-  investments: Share[][] | ManagedInvestment[][];
+  investments: DisplayShare[][] | DisplayFund[][];
   error: string | null;
   loading: boolean;
 }

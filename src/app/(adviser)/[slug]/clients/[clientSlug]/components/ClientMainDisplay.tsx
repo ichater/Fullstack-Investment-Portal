@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import ClientInformation from "./ClientInformation";
 import ClientAccounts from "./ClientAccounts";
 import { ACCESS } from "@prisma/client";
-import { ClientAccountInformation } from "@/types";
+import { ClientAccountInformation, ClientView } from "@/types";
 import Link from "next/link";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 export default function ClientMainDisplay({
   slug,
@@ -27,13 +28,20 @@ export default function ClientMainDisplay({
   profileImage: string;
   parsedAccountInformation: ClientAccountInformation[];
 }) {
-  const [displayState, setDisplayState] = useState<"profile" | "accounts">(
-    "accounts"
-  );
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const display = (searchParams?.get("view") as ClientView) || "profile";
+
+  const [displayState, setDisplayState] = useState<ClientView>(display);
 
   const handleClick = (setPage: "profile" | "accounts") => {
     setDisplayState(setPage);
+    router.push(pathname + `?view=${setPage}`);
   };
+
+  console.log(displayState);
   return (
     <>
       {" "}
@@ -45,7 +53,7 @@ export default function ClientMainDisplay({
           Profile
         </button>
         <button className="adviser-tab" onClick={() => handleClick("accounts")}>
-          Clients
+          Accounts
         </button>
       </div>
       {displayState === "profile" && (

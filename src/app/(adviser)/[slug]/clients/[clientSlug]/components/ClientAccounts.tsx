@@ -21,14 +21,7 @@ export default function ClientAccounts({
         <h1>{firstName + " " + lastName + "'s"} accounts:</h1>
       </div>
       {accounts.map((account) => (
-        <>
-          {" "}
-          <ClientAccountCard
-            key={account.id}
-            account={account}
-            params={params}
-          />
-        </>
+        <ClientAccountCard key={account.id} account={account} params={params} />
       ))}
     </div>
   );

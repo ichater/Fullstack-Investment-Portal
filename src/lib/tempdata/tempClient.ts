@@ -10,14 +10,14 @@ export const tempClientSallie = new ClientBuilder("Sallie")
   .build();
 
 export const sallieAccountsTemp: Account[] = [
-  new AccountBuilder("sallie-doe")
+  new AccountBuilder(tempClientSallie.id)
     .setValue(123450.0)
     .setInvestmentStraqtegy("ACTIVE")
     .setAdviserFee(ADVISERFEETYPE.PERCENTAGE, "1.05")
     .setName("Active Account")
     .build(),
 
-  new AccountBuilder("sallie-doe")
+  new AccountBuilder(tempClientSallie.id)
     .setValue(373450.0)
     .setInvestmentStraqtegy("MODERATE")
     .setAdviserFee(ADVISERFEETYPE.FIXED, "2300")

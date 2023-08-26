@@ -5,10 +5,8 @@ import { ManagedInvestment, Share } from "@prisma/client";
 import { arrayFromNumber } from "@/lib/utils/arrayFromNumber";
 import PageNumber from "./investment-search-display/PageNumber";
 import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
-import {
-  useInvestmentDisplayContext,
-  useInvestmentFormContext,
-} from "@/context";
+import { useInvestmentDisplayContext } from "@/context";
+import { DisplayFund, DisplayShare, DisplayedInvestments } from "@/types";
 
 export default function InvestmentResults() {
   console.log("InvestmentResults render");
@@ -21,11 +19,11 @@ export default function InvestmentResults() {
   const { investmentType, shareState, fundState, pageData } =
     investmentDisplayState;
 
-  const currentInvestmentDisplay: ManagedInvestment[] | Share[] | undefined =
+  const currentInvestmentDisplay: DisplayFund[] | DisplayShare[] | undefined =
     displayedInvestments.investments[pageData.pageNumber - 1];
 
   const { getShares, getManagedInvestments } = useInvestmentSearch();
-
+  console.log(currentInvestmentDisplay);
   // sets investments on initial load if there are any relevant query parameters in the url
   useEffect(() => {
     if (investmentType === "shares") getShares(shareState);
@@ -53,12 +51,12 @@ export default function InvestmentResults() {
         </div>
       )}
       {investmentType === "funds" && currentInvestmentDisplay.length && (
-        <FundResultDisplay
-          funds={currentInvestmentDisplay as ManagedInvestment[]}
-        />
+        <FundResultDisplay funds={currentInvestmentDisplay as DisplayFund[]} />
       )}
       {investmentType === "shares" && currentInvestmentDisplay.length && (
-        <ShareResultDisplay shares={currentInvestmentDisplay as Share[]} />
+        <ShareResultDisplay
+          shares={currentInvestmentDisplay as DisplayShare[]}
+        />
       )}
     </>
   );
