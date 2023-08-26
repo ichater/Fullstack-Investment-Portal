@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ClientCard from "../components/ClientCard";
 import { AdvisorClientDisplay } from "@/types";
 
