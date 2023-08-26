@@ -32,3 +32,5 @@ export {
   type InvestmentDisplayContext as InvestmentDisplayContextType,
   type InvestmentFormContext as InvestmentFormContextType,
 } from "./context";
+
+export { type ShareInAccount, type FundInAccount } from "./accounts";

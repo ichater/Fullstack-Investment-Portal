@@ -1,0 +1,58 @@
+import { FundInAccount } from "@/types";
+
+export const tempFunds: FundInAccount[] = [
+  {
+    id: "e50950c8-e4d6-4966-a877-5ff7b604d7f7",
+    name: "MLC Wholesale Horizon 1 Bond Portfolio",
+    apir: "MLC0669AU",
+    nabOwned: true,
+    mer: 0.55,
+    category: "FUND",
+    value: 2000,
+  },
+  {
+    id: "acac7aab-1fd1-4fa6-9eba-d2a41b24ccf0",
+    name: "MLC Wholesale Horizon 2 Income Portfolio",
+    apir: "MLC0670AU",
+    nabOwned: true,
+    mer: 0.91,
+    category: "FUND",
+    value: 2000,
+  },
+  {
+    id: "a9500361-449b-4d1a-aa17-0255b2752246",
+    name: "MLC Wholesale Horizon 3 Conservative Growth Portfolio",
+    apir: "MLC0398AU",
+    nabOwned: true,
+    mer: 1.04,
+    category: "FUND",
+    value: 2000,
+  },
+  {
+    id: "3dfc8f6c-f451-4d0c-b0c3-fca9b6a209fd",
+    name: "MLC Wholesale Horizon 4 Balanced Portfolio",
+    apir: "MLC0260AU",
+    nabOwned: true,
+    mer: 1.08,
+    category: "FUND",
+    value: 2000,
+  },
+  {
+    id: "63d98bf9-481a-4e6f-8fe6-5225ee1f85b1",
+    name: "MLC Wholesale Horizon 5 Growth Portfolio",
+    apir: "MLC0265AU",
+    nabOwned: true,
+    mer: 1.08,
+    category: "FUND",
+    value: 2000,
+  },
+  {
+    id: "e6061be4-fe6f-42ce-b4be-0182473d90be",
+    name: "MLC Wholesale Horizon 6 Share Portfolio",
+    apir: "MLC0397AU",
+    nabOwned: true,
+    mer: 1.06,
+    category: "FUND",
+    value: 2000,
+  },
+];
