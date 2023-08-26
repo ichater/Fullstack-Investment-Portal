@@ -4,6 +4,7 @@
 @import "./globalcomponents/investmentdisplay.css";
 @import "./adviser/main-page.css";
 @import "./adviser/client-page.css";
+@import "./adviser/account-page.css";
 
 /* imported fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
@@ -12,21 +13,22 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --adviser-blue: #0088a9;
-  --adviser-blue-faded: #369ab3;
+  --adviser-blue: hsl(192, 75%, 33%);
+  --adviser-blue-dark: hsl(189, 100%, 13%);
+  --adviser-blue-light: hsl(195, 50%, 53%);
   --adviser-blue-gradient: linear-gradient(
-    0deg,
-    #3b879a 0%,
-    #3f8a9d 12%,
-    #369ab3 46%,
-    #0088a9 100%
+    180deg,
+    hsl(195, 50%, 53%) 0%,
+    hsl(192, 75%, 33%),
+    hsl(189, 100%, 13%) 75%,
+    hsl(186 100% 8%)
   );
   --adviser-blue-gradient_hover: linear-gradient(
-    0deg,
-    #25515c 0%,
-    #326e7d 12%,
-    #3b879a 46%,
-    #3f8a9d 100%
+    180deg,
+    hsl(195, 50%, 53%) 0%,
+    hsl(192, 75%, 33%),
+    hsl(189, 100%, 13%) 46%,
+    hsl(186 100% 8%)
   );
   --background-dark: #24252a;
   --background-light: #e7e9f4;
@@ -40,6 +42,25 @@
     rgba(196, 202, 219, 1) 12%,
     rgba(218, 221, 231, 0.989233193277311) 46%,
     rgba(224, 227, 235, 1) 100%
+  );
+
+  --custom-advisor-blue: hsl(194 47% 77%);
+  --custom-advisor-blue-faded: hsl(200 72% 47%);
+
+  --account-green-main: hsl(135, 50%, 50%);
+  --account-green-gradient_light: linear-gradient(
+    0deg,
+    hsl(126, 20%, 80%) 0%,
+    hsl(129, 30%, 70%) 15%,
+    hsl(132, 40%, 60%) 46%,
+    hsl(135, 50%, 50%) 100%
+  );
+  --account-green-gradient_dark: linear-gradient(
+    0deg,
+    hsl(135, 50%, 50%) 0%,
+    hsl(138, 60%, 40%) 12%,
+    hsl(141, 70%, 30%) 46%,
+    hsl(144, 80%, 20%) 100%
   );
 }
 

@@ -42,13 +42,13 @@
 }
 
 .investment-submit-btn {
+  transition: 1s 0s;
   background: var(--adviser-blue-gradient);
   color: var(--main-light);
   font-size: 1.5rem;
   border-radius: 15px;
   border: 1px solid var(--main-light);
   cursor: pointer;
-  transition: 0.5s 0s;
   height: 4rem;
   width: 10rem;
 }
@@ -79,7 +79,7 @@
 }
 
 .investment-search-result_table_head {
-  background-color: var(--adviser-blue-faded);
+  background-color: var(--adviser-blue-dark);
 }
 
 .investment-search-result_table_head th {
@@ -95,7 +95,7 @@
 }
 
 .investment-display_row td {
-  border-bottom: 1px solid var(--adviser-blue-faded);
+  border-bottom: 1px solid var(--adviser-blue-dark);
   margin: 0px;
   padding: 1rem 2rem;
 }
@@ -121,7 +121,7 @@
 
 .page-number_select:hover {
   color: var(--main-light);
-  background-color: var(--adviser-blue-faded);
+  background-color: var(--adviser-blue-dark);
 }
 .investment-input_wrapper {
   display: flex;

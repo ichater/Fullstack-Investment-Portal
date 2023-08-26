@@ -88,7 +88,7 @@
   width: 70%;
 }
 .profile-details-wrapper div input:focus {
-  background-color: var(--adviser-blue-faded);
+  background-color: var(--adviser-blue-dark);
   color: var(--main-light);
 }
 
@@ -103,7 +103,7 @@
   border: 1px solid var(--adviser-blue);
 }
 .adviser-bio-edit:focus {
-  background-color: var(--adviser-blue-faded);
+  background-color: var(--adviser-blue-dark);
   color: var(--main-light);
 }
 
@@ -133,7 +133,7 @@
 }
 
 .client-card_wrapper:hover {
-  background-color: var(--adviser-blue-faded);
+  background-color: var(--adviser-blue-dark);
 }
 
 .client-img_wrapper {
@@ -189,5 +189,5 @@
 }
 
 .add-client_button:hover {
-  background-color: var(--adviser-blue-faded);
+  background-color: var(--adviser-blue-dark);
 }
