@@ -33,4 +33,8 @@ export {
   type InvestmentFormContext as InvestmentFormContextType,
 } from "./context";
 
-export { type ShareInAccount, type FundInAccount } from "./accounts";
+export {
+  type ShareInAccountParsed,
+  type FundInAccountParsed,
+  type AccountValues,
+} from "./accounts";

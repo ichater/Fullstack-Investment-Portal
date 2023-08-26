@@ -1,6 +1,6 @@
-import { ShareInAccount } from "@/types";
+import { ShareInAccountParsed } from "@/types";
 
-export const tempShares: ShareInAccount[] = [
+export const tempShares: ShareInAccountParsed[] = [
   {
     id: "85875746-73ec-4e9a-856c-71a680dbc720",
     asxCode: "360",

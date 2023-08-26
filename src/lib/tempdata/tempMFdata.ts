@@ -1,6 +1,6 @@
-import { FundInAccount } from "@/types";
+import { FundInAccountParsed } from "@/types";
 
-export const tempFunds: FundInAccount[] = [
+export const tempFunds: FundInAccountParsed[] = [
   {
     id: "e50950c8-e4d6-4966-a877-5ff7b604d7f7",
     name: "MLC Wholesale Horizon 1 Bond Portfolio",

@@ -1,4 +1,4 @@
-export type ShareInAccount = {
+export type ShareInAccountParsed = {
   id: string;
   asxCode: string;
   name: string;

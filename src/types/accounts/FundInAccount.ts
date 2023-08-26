@@ -1,6 +1,6 @@
 import { INVESTMENTCATEGORY } from "@prisma/client";
 
-export type FundInAccount = {
+export type FundInAccountParsed = {
   id: string;
   name: string;
   apir: string;

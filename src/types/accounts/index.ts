@@ -1,3 +1,4 @@
 export { type ClientAccountInformation } from "./clientaccountinfo";
-export { type ShareInAccount } from "./ShareInAccount";
-export { type FundInAccount } from "./FundInAccount";
+export { type ShareInAccountParsed } from "./ShareInAccount";
+export { type FundInAccountParsed } from "./FundInAccount";
+export { type AccountValues } from "./AccountValues";

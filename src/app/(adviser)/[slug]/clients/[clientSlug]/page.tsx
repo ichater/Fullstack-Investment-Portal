@@ -5,7 +5,6 @@ import {
   sallieAccountsTemp,
 } from "@/lib/tempdata/tempClient";
 import { ClientAccountInformation } from "@/types";
-import Link from "next/link";
 import ClientMainDisplay from "./components/ClientMainDisplay";
 
 const getData = (clientSlug: string) => {

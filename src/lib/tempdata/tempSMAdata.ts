@@ -1,6 +1,6 @@
-import { FundInAccount } from "@/types";
+import { FundInAccountParsed } from "@/types";
 
-export const tempSMAs: FundInAccount[] = [
+export const tempSMAs: FundInAccountParsed[] = [
   {
     id: "359c5b32-9ffa-4498-ac5f-b64b7f501547",
     name: "SMA Antares ex 20",
