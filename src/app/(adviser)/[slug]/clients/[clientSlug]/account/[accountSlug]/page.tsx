@@ -10,6 +10,7 @@ import {
   tempFunds,
   tempSMAs,
 } from "@/lib/tempdata";
+import FeeDisplay from "./components/FeeDisplay";
 
 const getData = (accountSlug: string) => {
   return {
@@ -26,20 +27,28 @@ export default function page({
 }) {
   const { accountData } = getData(accountSlug);
 
+  const { totalValue, cashAccount, cashInShares, cashInInvestments } =
+    accountData;
   return (
     <div className="account-display_wrapper">
       <NavigationTabs slug={slug} clientSlug={clientSlug} />
-      <AccountTables
-        accountValues={{
-          totalValue: accountData.totalValue,
-          cashAccount: accountData.cashAccount,
-          cashinShares: accountData.cashInShares,
-          cashInInvestments: accountData.cashInInvestments,
-          shares: tempShares,
-          funds: tempFunds,
-          sma: tempSMAs,
-        }}
-      />
+      <div className="fee-account-table_wrapper">
+        <AccountTables
+          accountValues={{
+            totalValue: totalValue,
+            cashAccount: cashAccount,
+            cashinShares: cashInShares,
+            cashInInvestments: cashInInvestments,
+            shares: tempShares,
+            funds: tempFunds,
+            sma: tempSMAs,
+          }}
+        />
+        <FeeDisplay
+          totalValue={totalValue}
+          cashInInvestments={cashInInvestments}
+        />
+      </div>
     </div>
   );
 }

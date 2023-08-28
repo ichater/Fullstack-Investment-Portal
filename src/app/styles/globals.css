@@ -5,6 +5,7 @@
 @import "./adviser/main-page.css";
 @import "./adviser/client-page.css";
 @import "./adviser/account-page.css";
+@import "./client/accountpage.css";
 
 /* imported fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
@@ -49,14 +50,14 @@
 
   --account-green-main: hsl(135, 50%, 50%);
   --account-green-gradient_light: linear-gradient(
-    0deg,
+    180deg,
     hsl(126, 20%, 80%) 0%,
     hsl(129, 30%, 70%) 15%,
     hsl(132, 40%, 60%) 46%,
     hsl(135, 50%, 50%) 100%
   );
   --account-green-gradient_dark: linear-gradient(
-    0deg,
+    180deg,
     hsl(135, 50%, 50%) 0%,
     hsl(138, 60%, 40%) 12%,
     hsl(141, 70%, 30%) 46%,

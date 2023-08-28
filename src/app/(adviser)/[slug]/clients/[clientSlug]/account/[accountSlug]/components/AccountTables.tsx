@@ -11,7 +11,7 @@ export default function AccountTables({
   const { totalValue, cashAccount, shares, funds, sma } = accountValues;
 
   return (
-    <div>
+    <table className="client-account_table">
       {!!shares && shares?.length && <AccountShareTable shares={shares} />}
       {!!funds && funds?.length && (
         <AccountFundTable type="fund" investments={funds} />
@@ -20,7 +20,7 @@ export default function AccountTables({
         <AccountFundTable type="sma" investments={sma} />
       )}
 
-      <p>${cashAccount}</p>
-    </div>
+      {/* <p>${cashAccount}</p> */}
+    </table>
   );
 }

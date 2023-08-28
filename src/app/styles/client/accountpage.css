@@ -1,0 +1,79 @@
+.account-display_wrapper {
+  margin: auto;
+  width: 80%;
+}
+
+.fee-account-table_wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
+}
+
+.client-account_table {
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden;
+  border-collapse: collapse;
+  width: clamp(35rem, 50%, 60%);
+  background-color: #e8e3e3;
+}
+
+.account-investment_header {
+  background: var(--account-green-gradient_light);
+  color: var(--main-light);
+  font-size: 1.25rem;
+  padding: 1.25rem;
+}
+
+.account-investment_subHeadings {
+  border-bottom: 1px solid #ddd;
+  background: var(--account-green-gradient_dark);
+}
+.account-investment_subHeadings th {
+  padding: 1rem;
+  color: hsl(126, 20%, 80%);
+}
+
+.account-investment_body {
+  border-collapse: collapse;
+}
+
+.account-investment_body td {
+  padding: 0.5rem;
+}
+
+.account-investment_body .investment-col_wrapper:nth-child(even) {
+  background-color: var(--main-light);
+  margin: 0px;
+}
+
+.fee-display_wrapper {
+  width: 40%;
+}
+
+.tiered-fees_wrapper {
+  overflow: hidden;
+}
+
+.tiered-fees {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: -350px;
+  opacity: 0;
+  transition-property: margin-top, opacity;
+  transition-duration: 2s;
+}
+
+.tiered-fees_col {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.fee-param {
+  display: flex;
+  flex-direction: column;
+}

@@ -11,7 +11,7 @@ export const tempClientSallie = new ClientBuilder("Sallie")
 
 export const sallieAccountsTemp: Account[] = [
   new AccountBuilder(tempClientSallie.id)
-    .setValue(123450.0)
+    .setValue(623450.0)
     .setInvestmentStraqtegy("ACTIVE")
     .setAdviserFee(ADVISERFEETYPE.PERCENTAGE, "1.05")
     .setName("Active Account")

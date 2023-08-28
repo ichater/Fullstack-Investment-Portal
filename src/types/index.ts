@@ -37,4 +37,5 @@ export {
   type ShareInAccountParsed,
   type FundInAccountParsed,
   type AccountValues,
+  type TieredFee,
 } from "./accounts";

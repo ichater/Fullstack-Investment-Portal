@@ -7,18 +7,35 @@ export default function AccountShareTable({
   shares: ShareInAccountParsed[];
 }) {
   return (
-    <div>
-      <h2>Shares:</h2>
-      {shares.map((share) => (
-        <div key={share.id} className="share-col_wrapper">
-          <p>{share.name}</p>
-          <p>{share.category}</p>
-          <p>{share.asxCode}</p>
-          <p>
-            $<span>{share.value}</span>
-          </p>
-        </div>
-      ))}
-    </div>
+    <>
+      <thead>
+        <tr>
+          <th colSpan={4} className="account-investment_header">
+            {" "}
+            Shares:
+          </th>
+        </tr>
+      </thead>
+      <thead className="account-investment_subHeadings">
+        <tr>
+          <th> Name </th>
+          <th> Category</th>
+          <th> ASX</th>
+          <th> value</th>
+        </tr>
+      </thead>
+      <tbody className="account-investment_body">
+        {shares.map((share) => (
+          <tr key={share.id} className="investment-col_wrapper">
+            <td>{share.name}</td>
+            <td>{share.category}</td>
+            <td>{share.asxCode}</td>
+            <td>
+              $<span>{share.value}</span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </>
   );
 }
