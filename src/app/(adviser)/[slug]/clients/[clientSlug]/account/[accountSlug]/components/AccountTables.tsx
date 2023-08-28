@@ -19,8 +19,12 @@ export default function AccountTables({
       {!!sma && sma?.length && (
         <AccountFundTable type="sma" investments={sma} />
       )}
-
-      {/* <p>${cashAccount}</p> */}
+      <tbody>
+        <tr>
+          <td>Cash Account:</td>
+          <td>${cashAccount}</td>
+        </tr>
+      </tbody>
     </table>
   );
 }

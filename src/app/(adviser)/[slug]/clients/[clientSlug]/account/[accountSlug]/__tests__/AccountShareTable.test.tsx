@@ -18,8 +18,8 @@ describe("Account Share Table", () => {
   it("Renders the correct number of cells based on the data given", () => {
     const data = [tempShares[0], tempShares[1], tempShares[3]];
     const { container } = render(<AccountShareTable shares={data} />);
-    expect(container.getElementsByClassName("share-col_wrapper").length).toBe(
-      3
-    );
+    expect(
+      container.getElementsByClassName("investment-col_wrapper").length
+    ).toBe(3);
   });
 });

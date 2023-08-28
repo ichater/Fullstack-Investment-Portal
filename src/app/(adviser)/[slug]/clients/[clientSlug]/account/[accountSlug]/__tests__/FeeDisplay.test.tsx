@@ -10,6 +10,6 @@ describe("Fee display on client account page", () => {
     const button = container.getElementsByClassName("fee-display_togglebtn")[0];
     fireEvent.click(button);
 
-    expect(screen.getByText("Fee Structure:")).toBeInTheDocument();
+    expect(screen.getByText("Fees (tiered):")).toBeInTheDocument();
   });
 });

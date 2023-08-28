@@ -12,6 +12,7 @@ describe("Client Account Table", () => {
         .setCashAccountValue(1234.56)
         .build();
       render(<AccountTables accountValues={accountValue} />);
+      screen.debug();
       expect(screen.getByText("$1234.56")).toBeInTheDocument();
     });
   });
