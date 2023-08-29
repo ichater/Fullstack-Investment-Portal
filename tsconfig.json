@@ -27,7 +27,8 @@
       "@/builders": ["./src/lib/builders/index.ts"],
       "@/utils/*": ["./src/lib/utils/*"],
       "@/globalcomponents/*": ["./src/app/components/*"],
-      "@/appTypes/*": ["./src/types/*"]
+      "@/appTypes/*": ["./src/types/*"],
+      "@/test-utils/*": ["./src/lib/test-utils"]
     }
   },
   "include": [

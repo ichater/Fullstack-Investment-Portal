@@ -12,7 +12,7 @@ describe("Client Account Table", () => {
         .setCashAccountValue(1234.56)
         .build();
       render(<AccountTables accountValues={accountValue} />);
-      screen.debug();
+
       expect(screen.getByText("$1234.56")).toBeInTheDocument();
     });
   });
@@ -27,7 +27,7 @@ describe("Client Account Table", () => {
     it("does not renders shares in table as title if there is no share data", () => {
       const accountValue = new AccountValueBuilder(1000).setShares([]).build();
       render(<AccountTables accountValues={accountValue} />);
-      screen.debug();
+
       expect(screen.queryByText("Shares:")).toBeNull();
     });
   });

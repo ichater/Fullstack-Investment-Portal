@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import React from "react";
 import FundRow from "../../investment-search-display/FundRow";
 import { render, screen } from "@testing-library/react";
-import { mockManagedInvestment } from "@/lib/test-utils/investment-utils/dataMocks";
+import { mockManagedInvestment } from "@/lib/test-utils/investment-utils/InvestmentDataMocks";
 
 describe("FundRow", () => {
   it("renders correct fund title", () => {

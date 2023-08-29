@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import React from "react";
 import ShareRow from "../../investment-search-display/ShareRow";
 import { render, screen } from "@testing-library/react";
-import { mockShare } from "@/lib/test-utils/investment-utils/dataMocks";
+import { mockShare } from "@/lib/test-utils/investment-utils/InvestmentDataMocks";
 
 describe("ShareRow", () => {
   it("renders correct share name", () => {

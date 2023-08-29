@@ -21,7 +21,6 @@ export default function InvestmentResults() {
     displayedInvestments.investments[pageData.pageNumber - 1];
 
   const { getShares, getManagedInvestments } = useInvestmentSearch();
-  console.log(currentInvestmentDisplay);
   // sets investments on initial load if there are any relevant query parameters in the url
   useEffect(() => {
     if (investmentType === "shares") getShares(shareState);
