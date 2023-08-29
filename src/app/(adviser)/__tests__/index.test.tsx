@@ -18,7 +18,6 @@ describe("clients tab is clicked", () => {
 
     const button = getByText("Clients");
     fireEvent.click(button);
-
     const heading = screen.getByText(/Client List:/i);
     expect(heading).toBeInTheDocument();
   });

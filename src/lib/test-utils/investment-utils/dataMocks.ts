@@ -105,3 +105,66 @@ export const mockInvestmentResult: DisplayFund[] = [
     category: "SMA",
   },
 ];
+
+export const mockShareResults = [
+  {
+    id: "85875746-73ec-4e9a-856c-71a680dbc720",
+    asxCode: "360",
+    name: "LIFE360 INC.",
+    category: "Software & Services",
+  },
+  {
+    id: "a5b9a146-f1e7-473a-b170-b68e202217b6",
+    asxCode: "29M",
+    name: "29METALS LIMITED",
+    category: "Materials",
+  },
+  {
+    id: "11611ceb-04ca-4731-bd36-53254d6a0743",
+    asxCode: "3PL",
+    name: "3P LEARNING LIMITED..",
+    category: "Consumer Services",
+  },
+  {
+    id: "6c4750dd-898a-431b-ae1e-8b25f3ecc288",
+    asxCode: "5EA",
+    name: "5E ADVANCED MATERIALS INC.",
+    category: "Materials",
+  },
+  {
+    id: "f83e4ebe-9d74-4662-83cc-914ee5939f7f",
+    asxCode: "88E",
+    name: "88 ENERGY LIMITED",
+    category: "Energy",
+  },
+  {
+    id: "6b25a50b-38a5-46eb-bb6d-40c4da9dc199",
+    asxCode: "A11",
+    name: "ATLANTIC LITHIUM LIMITED",
+    category: "Materials",
+  },
+  {
+    id: "0783ea2f-3853-4daf-b989-3638a34ecadc",
+    asxCode: "A1M",
+    name: "AIC MINES LIMITED",
+    category: "Materials",
+  },
+  {
+    id: "edcc5f91-55be-438b-9cfb-c9b212c30d2a",
+    asxCode: "A2M",
+    name: "THE A2 MILK COMPANY LIMITED",
+    category: "Food, Beverage & Tobacco",
+  },
+  {
+    id: "a16d20db-47b6-48b1-af8e-bd0e9e7f5bfa",
+    asxCode: "A4N",
+    name: "ALPHA HPA LIMITED",
+    category: "Materials",
+  },
+  {
+    id: "9e61a9e6-f6cc-4770-90e2-3e3fffae0d98",
+    asxCode: "AAC",
+    name: "AUSTRALIAN AGRICULTURAL COMPANY LIMITED.",
+    category: "Food, Beverage & Tobacco",
+  },
+];

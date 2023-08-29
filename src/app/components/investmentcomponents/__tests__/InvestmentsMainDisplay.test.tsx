@@ -1,17 +1,14 @@
 import InvestmentDisplay from "../InvestmentMainDisplay";
 import "@testing-library/jest-dom";
-import React, { createContext } from "react";
-import { render } from "@testing-library/react";
-import { investmentFormContextMock } from "@/lib/test-utils/investment-utils/InvestmentFormContextmock";
-import { InvestmentFormContextType } from "@/types";
-import { emptyInvestmentFormState } from "@/context/utils/InvestmentContextUtils";
+import React from "react";
+import { render, screen } from "@testing-library/react";
 
-const investmentFormContextEmpty = createContext<InvestmentFormContextType>({
-  investmentFormState: emptyInvestmentFormState,
-  setInvestmentFormState: (): any => {},
-});
+import { InvestmentResultContext } from "@/context/InvestmentDisplayContext";
 
-const InvestmentFormContextMockProvider = investmentFormContextEmpty.Provider;
+import InvestmentResults from "../InvestmentSearchResults";
+import { investmentDisplayContextMock } from "@/lib/test-utils/investment-utils/InvestmentDisplayContextmock";
+
+let mockedDisplayContext = investmentDisplayContextMock;
 
 describe("Investment Main Display", () => {
   it("renders heading", () => {
@@ -19,13 +16,4 @@ describe("Investment Main Display", () => {
     const name = getByText("Search Investments:");
     expect(name).toBeInTheDocument();
   });
-  // it("adds context properly", () => {
-  //   const { getByText } = render(
-  //     <InvestmentFormContextMockProvider value={investmentFormContextMock}>
-  //       <InvestmentDisplay />
-  //     </InvestmentFormContextMockProvider>
-  //   );
-  //   const name = getByText("mlc");
-  //   expect(name).toBeInTheDocument();
-  // });
 });

@@ -24,7 +24,7 @@ const tierOne = (value: number): number => {
   }
 };
 
-const tierTwo = (value: number) => {
+const tierTwo = (value: number): number => {
   const tierTwoUncapped =
     (value - 200000) * 0.0015 <= 0 ? 0 : (value - 200000) * 0.0015;
   const isTirerTwo = tierTwoUncapped > 450 ? 450 : tierTwoUncapped;

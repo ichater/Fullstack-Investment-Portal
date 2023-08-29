@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { TieredFee } from "@/types";
 import { accountFeeParser } from "@/lib/utils/accountFeeParser";
 type Props = {
@@ -25,11 +23,7 @@ export default function FeeDisplay({ totalValue, cashInInvestments }: Props) {
     <div className="fee-display_wrapper">
       <button onClick={handleClick} className="fee-display_togglebtn">
         {displayFees ? "hide fees" : "show Fees"}
-        {displayFees ? (
-          <KeyboardArrowUpIcon></KeyboardArrowUpIcon>
-        ) : (
-          <KeyboardArrowDownIcon></KeyboardArrowDownIcon>
-        )}
+        {displayFees ? "^" : "v"}
       </button>
       <div className="tiered-fees_wrapper">
         <div style={transitionProps} className="tiered-fees">

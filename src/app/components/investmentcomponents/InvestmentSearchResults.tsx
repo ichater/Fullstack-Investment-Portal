@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
 import FundResultDisplay from "./investment-search-display/FundResultDisplay";
 import ShareResultDisplay from "./investment-search-display/ShareResultDisplay";
-import { ManagedInvestment, Share } from "@prisma/client";
 import { arrayFromNumber } from "@/lib/utils/arrayFromNumber";
 import PageNumber from "./investment-search-display/PageNumber";
 import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
 import { useInvestmentDisplayContext } from "@/context";
-import { DisplayFund, DisplayShare, DisplayedInvestments } from "@/types";
+import { DisplayFund, DisplayShare } from "@/types";
 
 export default function InvestmentResults() {
-  console.log("InvestmentResults render");
   const {
     displayedInvestments,
     investmentDisplayState,
