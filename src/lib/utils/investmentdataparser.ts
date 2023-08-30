@@ -1,11 +1,11 @@
 import { PageState } from "@/types";
-import { ManagedInvestment, Share } from "@prisma/client";
+import { DisplayFund, DisplayShare } from "@/types";
 
 export function investmentsPageParser(
-  investmentArray: Share[] | ManagedInvestment[],
+  investmentArray: DisplayShare[] | DisplayFund[],
   pageState: PageState
-): Share[][] | ManagedInvestment[][] {
-  let returnArr: Share[][] | ManagedInvestment[][] = [];
+): DisplayShare[][] | DisplayFund[][] {
+  let returnArr: DisplayShare[][] | DisplayFund[][] = [];
   if (pageState > investmentArray.length) {
     returnArr[0] = investmentArray;
     return returnArr;

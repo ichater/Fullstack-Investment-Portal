@@ -7,15 +7,11 @@ import {
   ShareFormState,
 } from "@/types";
 import { InvestmentResultContext } from "@/context/InvestmentDisplayContext";
-import { ManagedInvestment, Share } from "@prisma/client";
-import { investmentsPageParser } from "@/lib/utils/investmentdataparser";
 
 export const useInvestmentSearch = () => {
   const { setDisplayedInvestments, investmentDisplayState } = useContext(
     InvestmentResultContext
   );
-
-  const { perPage } = investmentDisplayState.pageData;
 
   async function getShares({ asx, name }: ShareFormState) {
     setDisplayedInvestments({
@@ -28,12 +24,8 @@ export const useInvestmentSearch = () => {
         `http://localhost:3000/api/investments/getshares?name=${name}&asx=${asx}`
       );
 
-      const investments = investmentsPageParser(
-        response.data.data as DisplayShare[],
-        perPage
-      );
       return setDisplayedInvestments({
-        investments,
+        investments: response.data.data as DisplayShare[],
         error: null,
         loading: false,
       });
@@ -62,13 +54,8 @@ export const useInvestmentSearch = () => {
         `http://localhost:3000/api/investments/getmanagedinvestments?name=${name}&nab=${nabOwned}&category=${category}`
       );
 
-      const investments = investmentsPageParser(
-        response.data.data as DisplayFund[],
-        perPage
-      );
-
       return setDisplayedInvestments({
-        investments,
+        investments: response.data.data as DisplayFund[],
         loading: false,
         error: null,
       });

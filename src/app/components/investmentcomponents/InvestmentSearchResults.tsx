@@ -6,6 +6,7 @@ import PageNumber from "./investment-search-display/PageNumber";
 import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
 import { useInvestmentDisplayContext } from "@/context";
 import { DisplayFund, DisplayShare } from "@/types";
+import { investmentsPageParser } from "@/lib/utils/investmentdataparser";
 
 export default function InvestmentResults() {
   const {
@@ -17,8 +18,13 @@ export default function InvestmentResults() {
   const { investmentType, shareState, fundState, pageData } =
     investmentDisplayState;
 
+  const data = investmentsPageParser(
+    displayedInvestments.investments,
+    pageData.perPage
+  );
+
   const currentInvestmentDisplay: DisplayFund[] | DisplayShare[] | undefined =
-    displayedInvestments.investments[pageData.pageNumber - 1];
+    data[pageData.pageNumber - 1];
 
   const { getShares, getManagedInvestments } = useInvestmentSearch();
   // sets investments on initial load if there are any relevant query parameters in the url
@@ -38,13 +44,11 @@ export default function InvestmentResults() {
 
   return (
     <>
-      {!!investmentType && displayedInvestments.investments.length > 1 && (
+      {!!investmentType && data.length > 1 && (
         <div className="page-number_wrapper">
-          {arrayFromNumber(displayedInvestments.investments.length).map(
-            (_, i) => (
-              <PageNumber key={i} pageNumber={i + 1} />
-            )
-          )}
+          {arrayFromNumber(data.length).map((_, i) => (
+            <PageNumber key={i} pageNumber={i + 1} />
+          ))}
         </div>
       )}
       {investmentType === "funds" && currentInvestmentDisplay.length && (

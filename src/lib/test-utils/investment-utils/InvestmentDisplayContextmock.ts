@@ -42,7 +42,7 @@ export const investmentDisplayContextMock: InvestmentDisplayContextType = {
 
 export function investmentDisplayContextMockFactory(
   investmentType: InvestmentType,
-  investments: DisplayShare[][] | DisplayFund[][]
+  investments: DisplayShare[] | DisplayFund[]
 ): InvestmentDisplayContextType {
   return {
     investmentDisplayState: {
