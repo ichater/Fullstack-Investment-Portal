@@ -3,7 +3,7 @@ import {
   ManagedInvestmentFormState,
   ShareFormState,
 } from "@/types";
-import { InvestmentFormContext } from "@/types/context";
+import { InvestmentFormContextType } from "@/types/context";
 
 export const shareStateMock: ShareFormState = {
   asx: "",
@@ -26,7 +26,7 @@ export const investmentFormStateMock: InvestmentFormState = {
   },
 };
 
-export const investmentFormContextMock: InvestmentFormContext = {
+export const investmentFormContextMock: InvestmentFormContextType = {
   investmentFormState: investmentFormStateMock,
   setInvestmentFormState: () => {},
 };

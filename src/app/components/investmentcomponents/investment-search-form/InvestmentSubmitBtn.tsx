@@ -1,9 +1,6 @@
 import React from "react";
-import {
-  useInvestmentFormContext,
-  useInvestmentDisplayContext,
-} from "@/context";
 import { useRouter } from "next/navigation";
+import { useInvestmentDisplayContext, useInvestmentFormContext } from "@/hooks";
 
 export default function InvestmentSubmitBtn() {
   const router = useRouter();

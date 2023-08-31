@@ -30,7 +30,7 @@ export class AccountBuilder {
     return this;
   }
 
-  setInvestmentStraqtegy(strategy: INVESTMENSTRATEGY) {
+  setInvestmentStrategy(strategy: INVESTMENSTRATEGY) {
     this.account.investmentStrategy = strategy;
     return this;
   }

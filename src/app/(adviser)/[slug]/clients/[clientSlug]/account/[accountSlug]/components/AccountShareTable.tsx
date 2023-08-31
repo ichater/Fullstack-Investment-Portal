@@ -15,9 +15,7 @@ export default function AccountShareTable({
             Shares:
           </th>
         </tr>
-      </thead>
-      <thead className="account-investment_subHeadings">
-        <tr>
+        <tr className="account-investment_subHeadings">
           <th> Name </th>
           <th> Category</th>
           <th> ASX</th>

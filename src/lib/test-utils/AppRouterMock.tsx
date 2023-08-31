@@ -2,6 +2,7 @@ import {
   AppRouterContext,
   AppRouterInstance,
 } from "next/dist/shared/lib/app-router-context";
+import { render } from "@testing-library/react";
 
 export type AppRouterContextProviderMockProps = {
   router: Partial<AppRouterInstance>;
@@ -25,5 +26,14 @@ export const AppRouterContextProviderMock = ({
     <AppRouterContext.Provider value={mockedRouter}>
       {children}
     </AppRouterContext.Provider>
+  );
+};
+
+export const renderWithRouter = (children: React.ReactNode) => {
+  const push = jest.fn();
+  return render(
+    <AppRouterContextProviderMock router={{ push }}>
+      {children}
+    </AppRouterContextProviderMock>
   );
 };

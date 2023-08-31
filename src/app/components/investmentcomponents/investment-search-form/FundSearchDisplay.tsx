@@ -8,8 +8,8 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Checkbox } from "@mui/material";
-import { useInvestmentFormContext } from "@/context";
-import { ManagedInvestmentCategory, ManagedInvestmentFormState } from "@/types";
+import { useInvestmentFormContext } from "@/hooks";
+import { ManagedInvestmentCategory } from "@/types";
 
 export default function FundSearchDisplay() {
   const { investmentFormState, setInvestmentFormState } =
@@ -79,7 +79,7 @@ export default function FundSearchDisplay() {
       </FormControl>
       <FormControlLabel
         className="nab-owned-radio"
-        value="end"
+        value="nab-owned-radio"
         control={
           <Checkbox
             checked={nabOwned !== ""}

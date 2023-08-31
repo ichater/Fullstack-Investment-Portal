@@ -4,7 +4,7 @@ import ShareResultDisplay from "./investment-search-display/ShareResultDisplay";
 import { arrayFromNumber } from "@/lib/utils/arrayFromNumber";
 import PageNumber from "./investment-search-display/PageNumber";
 import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
-import { useInvestmentDisplayContext } from "@/context";
+import { useInvestmentDisplayContext } from "@/hooks/contextHooks";
 import { DisplayFund, DisplayShare } from "@/types";
 import { investmentsPageParser } from "@/lib/utils/investmentdataparser";
 

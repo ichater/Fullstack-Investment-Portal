@@ -85,6 +85,3 @@ export default function InvestmentDisplayContext({
     </InvestmentResultContext.Provider>
   );
 }
-
-export const useInvestmentDisplayContext = () =>
-  useContext(InvestmentResultContext);

@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useInvestmentDisplayContext } from "@/context";
+import { useInvestmentDisplayContext } from "@/hooks";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Props = {

@@ -17,8 +17,6 @@ export default function AccountFundTable({ type, investments }: Props) {
               : "Seperately Managed Accounts:"}
           </th>
         </tr>
-      </thead>
-      <thead>
         <tr className="account-investment_subHeadings">
           <th> Name </th>
           <th> apir</th>

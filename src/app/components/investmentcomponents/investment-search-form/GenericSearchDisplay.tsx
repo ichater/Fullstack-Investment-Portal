@@ -5,7 +5,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { PageState } from "@/types";
-import { useInvestmentFormContext } from "@/context";
+import { useInvestmentFormContext } from "@/hooks";
 
 export default function GenericSearchDisplay() {
   const { investmentFormState, setInvestmentFormState } =
@@ -26,9 +26,9 @@ export default function GenericSearchDisplay() {
     <>
       {" "}
       <FormControl sx={{ minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-helper-label">num</InputLabel>
+        <InputLabel id="per_page_select">num</InputLabel>
         <Select
-          labelId="demo-simple-select-helper-label"
+          labelId="per_page_select"
           id="demo-simple-select-helper"
           value={perPage.toString()}
           label="type"
