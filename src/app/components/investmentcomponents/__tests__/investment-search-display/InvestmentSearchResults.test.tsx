@@ -94,7 +94,6 @@ describe("Investment Main Display", () => {
           <InvestmentResults />
         </AppRouterContextProviderMock>
       );
-      screen.debug();
       expect(screen.getByText("LIFE360 INC.")).toBeInTheDocument();
     });
 
@@ -138,12 +137,10 @@ describe("Investment Main Display", () => {
       it("setInvestmentDisplayState is called when page is clicked", () => {
         const setInvestmentDisplayState = jest.fn();
 
-        jest
-          .spyOn(hooks, "useInvestmentDisplayContext")
-          .mockReturnValue({
-            ...mockedDisplayContext,
-            setInvestmentDisplayState,
-          });
+        jest.spyOn(hooks, "useInvestmentDisplayContext").mockReturnValue({
+          ...mockedDisplayContext,
+          setInvestmentDisplayState,
+        });
         const { getByText } = renderWithRouter(<InvestmentResults />);
 
         const pageTwo = getByText("2");

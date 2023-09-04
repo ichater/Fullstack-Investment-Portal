@@ -5,7 +5,6 @@ import InvestmentSearchForm from "./InvestmentSearchForm";
 import InvestmentSearchResults from "./InvestmentSearchResults";
 
 export default function InvestmentDisplay() {
-  console.log("MainDisplay render");
   return (
     <div>
       <div className="investment-display_container">

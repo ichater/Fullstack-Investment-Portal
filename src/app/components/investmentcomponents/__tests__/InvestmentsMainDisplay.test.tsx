@@ -12,6 +12,8 @@ import { InvestmentDisplayContext } from "@/types/context";
 import { InvestmentResultContext } from "@/context/InvestmentDisplayContext";
 import { InvestmentSearchContext } from "@/context/InvestmentFormContext";
 import { mockFundResults } from "@/lib/test-utils/investment-utils/InvestmentDataMocks";
+import InvestmentSearchForm from "../InvestmentSearchForm";
+import InvestmentSearchResults from "../InvestmentSearchResults";
 
 describe("Investment Main Display", () => {
   const setSearch = jest.fn();
@@ -32,7 +34,7 @@ describe("Investment Main Display", () => {
     .setFundState({ name: "mlc", nabOwned: true, category: "fund" })
     .build();
   it("renders heading", () => {
-    const { getByText } = renderWithRouter(
+    renderWithRouter(
       <InvestmentResultContext.Provider value={mockedDisplayContext}>
         <InvestmentSearchContext.Provider value={mockedFormContext}>
           <InvestmentDisplay />
@@ -40,5 +42,9 @@ describe("Investment Main Display", () => {
       </InvestmentResultContext.Provider>
     );
     screen.debug();
+
+    expect(
+      screen.getByText("MLC Wholesale Horizon 5 Growth Portfolio")
+    ).toBeInTheDocument();
   });
 });

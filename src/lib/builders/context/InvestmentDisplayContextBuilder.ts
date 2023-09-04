@@ -57,6 +57,11 @@ export class InvestmentDisplayContextBuilder {
     return this;
   }
 
+  setMockSetInvestmentDisplayState(fn: () => any) {
+    this.context.setInvestmentDisplayState = fn;
+    return this;
+  }
+
   setMockTriggerSearch(fn: () => any) {
     this.context.setTriggerSearch = fn;
     return this;
