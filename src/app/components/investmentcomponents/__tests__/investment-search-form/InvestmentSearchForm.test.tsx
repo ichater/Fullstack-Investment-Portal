@@ -37,7 +37,6 @@ describe("investmentSearchForm", () => {
         <InvestmentSearchForm />
       </AppRouterContextProviderMock>
     );
-    screen.debug();
     const nameSearch = screen.getByDisplayValue("Profitable Funds");
     const nabRadio = screen.getByDisplayValue("nab-owned-radio");
     const category = screen.getByDisplayValue("fund");
