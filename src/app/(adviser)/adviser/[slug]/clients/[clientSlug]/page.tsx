@@ -4,9 +4,10 @@ import {
   tempClientSallie,
   sallieAccountsTemp,
 } from "@/lib/tempdata/tempClient";
-import { AccountReturnData, ClientAccountInformation } from "@/types";
+import { AccountReturnData } from "@/types";
 import ClientMainDisplay from "./components/ClientMainDisplay";
 import { Metadata } from "next";
+import AdviserAuthContextProvider from "@/context/AdviserAuthContext";
 
 const getData = (clientSlug: string) => {
   return (
@@ -53,17 +54,19 @@ export default function page({
 
   return (
     <div className="adviser-homepage_wrapper">
-      <ClientMainDisplay
-        slug={slug}
-        clientSlug={clientSlug}
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        bio={bio}
-        access={access}
-        profileImage={profileImage}
-        parsedAccountInformation={parsedAccountInformation}
-      />
+      <AdviserAuthContextProvider>
+        <ClientMainDisplay
+          slug={slug}
+          clientSlug={clientSlug}
+          firstName={firstName}
+          lastName={lastName}
+          email={email}
+          bio={bio}
+          access={access}
+          profileImage={profileImage}
+          parsedAccountInformation={parsedAccountInformation}
+        />
+      </AdviserAuthContextProvider>
     </div>
   );
 }

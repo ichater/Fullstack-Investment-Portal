@@ -37,6 +37,7 @@ export { type ClientAccountInformation } from "./accounts";
 export {
   type InvestmentDisplayContext as InvestmentDisplayContextType,
   type InvestmentFormContextType,
+  type AdviserAuthContext,
 } from "./context";
 
 export {

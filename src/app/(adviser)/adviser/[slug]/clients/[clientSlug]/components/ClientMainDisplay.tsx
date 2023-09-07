@@ -3,13 +3,10 @@ import React, { useState } from "react";
 import ClientInformation from "./ClientInformation";
 import ClientAccounts from "./ClientAccounts";
 import { ACCESS } from "@prisma/client";
-import {
-  AccountReturnData,
-  ClientAccountInformation,
-  ClientView,
-} from "@/types";
+import { AccountReturnData, ClientView } from "@/types";
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useAdviserAuthContext } from "@/hooks/contextHooks";
 
 export default function ClientMainDisplay({
   slug,
@@ -45,7 +42,6 @@ export default function ClientMainDisplay({
     router.push(pathname + `?view=${setPage}`);
   };
 
-  console.log(displayState);
   return (
     <>
       {" "}
