@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import ClientInformation from "./ClientInformation";
 import ClientAccounts from "./ClientAccounts";
 import { ACCESS } from "@prisma/client";
-import { ClientAccountInformation, ClientView } from "@/types";
+import {
+  AccountReturnData,
+  ClientAccountInformation,
+  ClientView,
+} from "@/types";
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
@@ -26,7 +30,7 @@ export default function ClientMainDisplay({
   bio: string;
   access: ACCESS;
   profileImage: string;
-  parsedAccountInformation: ClientAccountInformation[];
+  parsedAccountInformation: AccountReturnData[];
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();

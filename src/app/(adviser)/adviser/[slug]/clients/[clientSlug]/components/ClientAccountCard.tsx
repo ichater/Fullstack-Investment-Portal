@@ -1,5 +1,5 @@
 import SubmitButton from "@/app/components/formcomponents/SubmitButton";
-import { ClientAccountInformation } from "@/types";
+import { AccountReturnData, ClientAccountInformation } from "@/types";
 import Link from "next/link";
 import React from "react";
 
@@ -7,7 +7,7 @@ export default function ClientAccountCard({
   account,
   params: { slug, clientSlug },
 }: {
-  account: ClientAccountInformation;
+  account: AccountReturnData;
   params: { slug: string; clientSlug: string };
 }) {
   const {
@@ -18,11 +18,11 @@ export default function ClientAccountCard({
     cashInInvestments,
     name,
     slug: accountSlug,
-    investmentStratgy,
+    investmentStrategy,
   } = account;
   return (
     <Link
-      href={`/${slug}/clients/${clientSlug}/account/${accountSlug}`}
+      href={`/adviser/${slug}/clients/${clientSlug}/account/${accountSlug}`}
       passHref
       legacyBehavior
     >
@@ -30,7 +30,7 @@ export default function ClientAccountCard({
         <div className="card-heading_wrapper">
           <h3 className="card_heading">{name}</h3>
           <p className="card_subheading">
-            Style: {investmentStratgy.toLocaleLowerCase()}
+            Style: {investmentStrategy.toLocaleLowerCase()}
           </p>
         </div>
         <div className="client-info_wrapper">

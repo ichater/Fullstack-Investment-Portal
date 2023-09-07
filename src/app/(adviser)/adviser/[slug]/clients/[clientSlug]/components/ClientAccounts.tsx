@@ -1,11 +1,11 @@
-import { ClientAccountInformation } from "@/types";
+import { AccountReturnData, ClientAccountInformation } from "@/types";
 import React from "react";
 import ClientAccountCard from "./ClientAccountCard";
 
 type Props = {
   firstName: string;
   lastName: string;
-  accounts: ClientAccountInformation[];
+  accounts: AccountReturnData[];
   params: { slug: string; clientSlug: string };
 };
 

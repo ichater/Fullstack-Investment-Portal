@@ -1,23 +1,17 @@
-import {
-  ADVISERFEETYPE,
-  Account,
-  INVESTMENSTRATEGY,
-  ManagedInvestment,
-  Share,
-} from "@prisma/client";
+import { ADVISERFEETYPE, INVESTMENSTRATEGY, Share } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 import { adviserFeeParser } from "../utils/adviserFeeParser";
+import {
+  AccountReturnData,
+  ManagedInvestmentInAccountParsed,
+  ShareInAccountParsed,
+} from "@/types";
 
 export class AccountBuilder {
-  account: Account;
+  account: AccountReturnData;
 
   constructor(clientId: string) {
     this.account = new AccountInstance(clientId);
-  }
-
-  setClientId(clientId: string) {
-    this.account.clientId = clientId;
-    return this;
   }
 
   setValue(totalValue: number) {
@@ -47,41 +41,41 @@ export class AccountBuilder {
 }
 
 class AccountInstance {
-  clientId: string;
   id: string;
   totalValue: number;
+  name: string;
+  slug: string;
   cashAccount: number;
   cashInShares: number;
   cashInInvestments: number;
-  managedInvestments: ManagedInvestment[];
-  shares: Share[];
-  name: string;
-  slug: string;
+  managedFunds: ManagedInvestmentInAccountParsed[];
+  SMAs: ManagedInvestmentInAccountParsed[];
+  shares: ShareInAccountParsed[];
   adviserFee: string;
   investmentStrategy: INVESTMENSTRATEGY;
   adviserFeeType: ADVISERFEETYPE;
   constructor(
-    clientId: string = "",
     id: string = uuidv4(),
     totalValue: number = 100000,
     cashAccount: number = totalValue,
-    managedInvestments: ManagedInvestment[] = [],
     adviserFeeType: ADVISERFEETYPE = ADVISERFEETYPE.PERCENTAGE,
     adviserFee: string = "",
     cashInShares: number = 0,
     cashInInvestments: number = 0,
-    shares: Share[] = [],
+    managedFunds: ManagedInvestmentInAccountParsed[] = [],
+    SMAs: ManagedInvestmentInAccountParsed[] = [],
+    shares: ShareInAccountParsed[] = [],
     name: string = "sally-conservative",
     investmentStrategy: INVESTMENSTRATEGY = INVESTMENSTRATEGY.CONSERVATIVE,
     slug: string = `${name.toLocaleLowerCase()}`
   ) {
-    this.clientId = clientId;
     this.id = id;
     this.totalValue = totalValue;
     this.cashAccount = cashAccount;
     this.cashInShares = cashInShares;
     this.cashInInvestments = cashInInvestments;
-    this.managedInvestments = managedInvestments;
+    this.managedFunds = managedFunds;
+    this.SMAs = SMAs;
     this.shares = shares;
     this.adviserFee = adviserFeeParser(adviserFeeType, adviserFee);
     this.adviserFeeType = adviserFeeType;

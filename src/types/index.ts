@@ -16,12 +16,18 @@ export {
   type SignInFormState,
 } from "./navbar";
 export {
-  type AdviserData,
   type AdvisorInfo,
   type AdvisorClientDisplay,
   type AdviserAddClientState,
   type ClientView,
 } from "./adviser";
+export {
+  type AccountReturnData,
+  type ClientReturnData,
+  type AdviserReturnData,
+  type ManagedInvestmentInAccountParsed,
+  type ShareInAccountParsed,
+} from "./adviser/return-data";
 export { type SlugProp } from "./nextjs";
 export {
   type BasicClientInformation,
@@ -34,7 +40,6 @@ export {
 } from "./context";
 
 export {
-  type ShareInAccountParsed,
   type FundInAccountParsed,
   type AccountValues,
   type TieredFee,

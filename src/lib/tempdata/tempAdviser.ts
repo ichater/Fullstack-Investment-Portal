@@ -1,8 +1,8 @@
 import { AdviserBuilder, ClientBuilder } from "../builders";
-import { Adviser, Client } from "@prisma/client";
 import { tempClientSallie } from "./tempClient";
+import { AdviserReturnData, ClientReturnData } from "@/types";
 
-export const tempAdviser: Adviser = new AdviserBuilder("Claire")
+export const tempAdviser: AdviserReturnData = new AdviserBuilder("Claire")
   .setId("tempAdviserId")
   .setLastName("Ruming")
   .setEmail("crum@gmail.com")
@@ -12,8 +12,8 @@ export const tempAdviser: Adviser = new AdviserBuilder("Claire")
   )
   .build();
 
-export const tempAdvisersClients: Client[] = [
+export const tempAdvisersClients: ClientReturnData[] = [
   tempClientSallie,
-  new ClientBuilder("John").setAviserId("tempAdviserId").build(),
-  new ClientBuilder("Brian").setAviserId("tempAdviserId").build(),
+  new ClientBuilder("John").build(),
+  new ClientBuilder("Brian").build(),
 ];

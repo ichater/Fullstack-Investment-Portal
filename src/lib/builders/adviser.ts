@@ -1,7 +1,7 @@
-import { Adviser, Client, ROLE } from "@prisma/client";
+import { AdviserReturnData, ClientReturnData } from "@/types";
 
 export class AdviserBuilder {
-  adviser: Adviser;
+  adviser: AdviserReturnData;
   constructor(firstName: string) {
     this.adviser = new AdviserInstance(firstName);
   }
@@ -35,10 +35,7 @@ export class AdviserBuilder {
     this.adviser.profileImage = profileImage;
     return this;
   }
-  setSecondaryImages(secondaryImages: string[]) {
-    this.adviser.secondaryImages = secondaryImages;
-    return this;
-  }
+
   setPhone(phone: string) {
     this.adviser.phone = phone;
     return this;
@@ -48,7 +45,7 @@ export class AdviserBuilder {
     return this;
   }
 
-  build(): Adviser {
+  build(): AdviserReturnData {
     return this.adviser;
   }
 }
@@ -65,9 +62,7 @@ class AdviserInstance {
   city: string;
   company: string;
   profileImage: string;
-  secondaryImages: string[];
-  clients: Client[];
-  role: ROLE;
+  clients: ClientReturnData[];
 
   constructor(
     firstName: string = "John",
@@ -82,9 +77,7 @@ class AdviserInstance {
     bio: string = `${firstName} ${lastName} is a seasoned financial adviser with over 10 years of experience in the industry. He is dedicated to helping individuals and families achieve their financial goals through comprehensive financial planning and investment strategies. With a strong background in wealth management, retirement planning, and risk management, John provides personalized solutions tailored to each client's unique needs and aspirations. `,
     email: string = "jsmith@finadvice.com.au",
     profileImage: string = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-    secondaryImages: string[] = [],
-    clients: Client[] = [],
-    role: ROLE = ROLE.ADVISER
+    clients: ClientReturnData[] = []
   ) {
     this.id = id;
     this.password = password;
@@ -97,8 +90,6 @@ class AdviserInstance {
     this.city = city;
     this.email = email;
     this.profileImage = profileImage;
-    this.secondaryImages = secondaryImages;
     this.clients = clients;
-    this.role = role;
   }
 }

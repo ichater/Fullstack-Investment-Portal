@@ -4,8 +4,9 @@ import {
   tempClientSallie,
   sallieAccountsTemp,
 } from "@/lib/tempdata/tempClient";
-import { ClientAccountInformation } from "@/types";
+import { AccountReturnData, ClientAccountInformation } from "@/types";
 import ClientMainDisplay from "./components/ClientMainDisplay";
+import { Metadata } from "next";
 
 const getData = (clientSlug: string) => {
   return (
@@ -14,6 +15,10 @@ const getData = (clientSlug: string) => {
       accountData: sallieAccountsTemp,
     }
   );
+};
+
+export const metadata: Metadata = {
+  title: "Client display",
 };
 
 export default function page({
@@ -30,10 +35,10 @@ export default function page({
   const { firstName, lastName, email, bio, access, profileImage } =
     data.clientData;
 
-  const parsedAccountInformation: ClientAccountInformation[] =
-    data.accountData.map((account) => ({
+  const parsedAccountInformation: AccountReturnData[] = data.accountData.map(
+    (account) => ({
+      ...account,
       id: account.id,
-      clientId: account.clientId,
       totalValue: account.totalValue,
       cashAccount: account.cashAccount,
       adviserFee: account.adviserFee,
@@ -43,7 +48,8 @@ export default function page({
       name: account.name,
       slug: account.slug,
       investmentStratgy: account.investmentStrategy,
-    }));
+    })
+  );
 
   return (
     <div className="adviser-homepage_wrapper">
