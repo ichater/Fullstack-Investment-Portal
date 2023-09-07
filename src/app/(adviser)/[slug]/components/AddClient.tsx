@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
+import { TextField } from "@mui/material";
 import { ACCESS } from "@prisma/client";
 import { AdviserAddClientState } from "@/types";
 import { Checkbox, FormControlLabel } from "@mui/material";

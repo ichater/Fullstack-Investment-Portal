@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
+import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { AdviserSignUpState } from "@/types";
 import { adviserAuth } from "@/hooks/adviserAuth";

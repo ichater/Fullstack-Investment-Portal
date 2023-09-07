@@ -3,8 +3,6 @@ import React from "react";
 import PageNumber from "../../investment-search-display/PageNumber";
 import { screen, fireEvent } from "@testing-library/react";
 import { renderWithRouter } from "@/lib/test-utils/AppRouterMock";
-import * as hooks from "@/hooks/contextHooks";
-import { InvestmentDisplayContextBuilder } from "@/lib/builders";
 
 describe("PageNumber", () => {
   afterEach(() => {

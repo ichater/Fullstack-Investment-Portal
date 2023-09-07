@@ -1,5 +1,5 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
+import { TextField } from "@mui/material";
 import { useInvestmentFormContext } from "@/hooks";
 
 export default function ShareSearchDisplay() {

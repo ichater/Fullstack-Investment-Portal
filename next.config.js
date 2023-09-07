@@ -11,6 +11,11 @@ const nextConfig = {
         hostname: "cdn-icons-png.flaticon.com",
       },
     ],
+    modularizeImports: {
+      "@mui/icons-material": {
+        transform: "@mui/icons-material/{{member}}",
+      },
+    },
   },
 };
 
