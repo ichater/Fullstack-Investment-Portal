@@ -36,21 +36,17 @@ export default async function handler(
 
     const advisor = await prisma.adviser.findUnique({
       where: { email },
-      select: {
-        id: true,
-        email: true,
-        password: true,
-        firstName: true,
-        lastName: true,
-        bio: true,
-        city: true,
-        phone: true,
-        company: true,
-        role: true,
-        slug: true,
-        profileImage: true,
-        secondaryImages: true,
-        clients: true,
+      include: {
+        clients: {
+          include: {
+            accounts: {
+              include: {
+                shares: true,
+                managedInvestments: true,
+              },
+            },
+          },
+        },
       },
     });
 
