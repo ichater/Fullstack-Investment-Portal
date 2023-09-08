@@ -12,7 +12,7 @@ import {
   AppRouterContextProviderMock,
   renderWithRouter,
 } from "@/lib/test-utils/AppRouterMock";
-import * as hooks from "@/hooks/contextHooks";
+import * as hooks from "@/hooks/useContextHooks";
 import { InvestmentDisplayContextBuilder } from "@/lib/builders";
 import { InvestmentDisplayContext } from "@/types/context";
 import { mockFundResults } from "@/lib/test-utils/investment-utils/InvestmentDataMocks";

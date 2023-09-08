@@ -20,8 +20,8 @@ export default function ClientAccounts({
       <div>
         <h1>{firstName + " " + lastName + "'s"} accounts:</h1>
       </div>
-      {accounts.map((account) => (
-        <ClientAccountCard key={account.id} account={account} params={params} />
+      {accounts.map((account, i) => (
+        <ClientAccountCard key={i} account={account} params={params} />
       ))}
     </div>
   );

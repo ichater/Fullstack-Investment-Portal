@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import FundResultDisplay from "./investment-search-display/FundResultDisplay";
 import ShareResultDisplay from "./investment-search-display/ShareResultDisplay";
 import { useInvestmentSearch } from "@/hooks/useInvestmentSearch";
-import { useInvestmentDisplayContext } from "@/hooks/contextHooks";
+import { useInvestmentDisplayContext } from "@/hooks/useContextHooks";
 import { DisplayFund, DisplayShare } from "@/types";
 import { investmentsPageParser } from "@/lib/utils/investmentdataparser";
 import PagesWrapper from "./investment-search-display/PagesWrapper";

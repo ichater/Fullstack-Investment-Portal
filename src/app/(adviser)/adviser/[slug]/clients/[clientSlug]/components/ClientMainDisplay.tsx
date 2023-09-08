@@ -6,7 +6,7 @@ import { ACCESS } from "@prisma/client";
 import { AccountReturnData, ClientView } from "@/types";
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { useAdviserAuthContext } from "@/hooks/contextHooks";
+import { useAdviserAuthContext } from "@/hooks/useContextHooks";
 
 export default function ClientMainDisplay({
   slug,
@@ -42,11 +42,15 @@ export default function ClientMainDisplay({
     router.push(pathname + `?view=${setPage}`);
   };
 
+  const { authState } = useAdviserAuthContext();
+
+  console.log("authstate from client:", authState);
+
   return (
     <>
       {" "}
       <div className="toggle-view_tabs">
-        <Link className="adviser-tab_link" href={`/${slug}`}>
+        <Link className="adviser-tab_link" href={`/adviser/${slug}`}>
           <button className="adviser-tab">Adviser Profile</button>
         </Link>
         <button className="adviser-tab" onClick={() => handleClick("profile")}>

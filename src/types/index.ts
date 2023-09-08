@@ -27,6 +27,7 @@ export {
   type AdviserReturnData,
   type ManagedInvestmentInAccountParsed,
   type ShareInAccountParsed,
+  type AdviserAuthState,
 } from "./adviser/return-data";
 export { type SlugProp } from "./nextjs";
 export {

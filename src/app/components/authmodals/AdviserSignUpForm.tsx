@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { AdviserSignUpState } from "@/types";
-import { adviserAuth } from "@/hooks/adviserAuth";
+import { adviserAuth } from "@/hooks/useAdviserAuth";
 
 export default function AdviserSignUpForm() {
   const [adviserSignUp, setAdviserSignUp] = useState<AdviserSignUpState>({

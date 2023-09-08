@@ -10,7 +10,7 @@ import {
   InvestmentFormContextBuilder,
   InvestmentDisplayContextBuilder,
 } from "@/lib/builders";
-import * as hooks from "@/hooks/contextHooks";
+import * as hooks from "@/hooks/useContextHooks";
 
 describe("InvestmentSubmitBtn", () => {
   it("trigger search is called when button is clicked", () => {

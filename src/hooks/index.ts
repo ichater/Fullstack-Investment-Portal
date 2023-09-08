@@ -1,4 +1,5 @@
 export {
   useInvestmentDisplayContext,
   useInvestmentFormContext,
-} from "./contextHooks";
+  useAdviserAuthContext,
+} from "./useContextHooks";
