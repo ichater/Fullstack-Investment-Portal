@@ -61,7 +61,7 @@ export const useAdviserAuth = () => {
       setAuthState({
         data: res.data,
         loading: false,
-        error: "no response",
+        error: null,
       });
     } catch (error) {
       console.log(error);

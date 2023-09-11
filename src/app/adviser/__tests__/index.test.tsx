@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Home from "@/app/(adviser)/adviser/[slug]/page";
+import Home from "@/app/adviser/[slug]/page";
 
 describe("Home", () => {
   it("renders a heading", () => {

@@ -10,13 +10,13 @@ export default function NavigationTabs({
 }) {
   return (
     <div className="toggle-view_tabs">
-      <Link className="adviser-tab_link" href={`/${slug}`}>
+      <Link className="adviser-tab_link" href={`/adviser/${slug}`}>
         <button className="adviser-tab">Adviser Profile</button>
       </Link>
       <Link
         className="adviser-tab_link"
         href={{
-          pathname: `/${slug}/clients/${clientSlug}`,
+          pathname: `/adviser/${slug}/clients/${clientSlug}`,
           query: {
             view: "accounts",
           },

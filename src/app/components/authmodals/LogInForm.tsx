@@ -3,6 +3,7 @@ import { LoginState, SignInFormState } from "@/types";
 import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { useAdviserAuth } from "@/hooks/useAdviserAuth";
+import { useRouter } from "next/navigation";
 
 type Props = {
   loginState: LoginState;
@@ -26,6 +27,8 @@ export default function LogInForm({ loginState }: Props) {
     }));
   };
 
+  const router = useRouter();
+
   useEffect(() => {
     setSignInFormState({
       email: "",
@@ -35,7 +38,9 @@ export default function LogInForm({ loginState }: Props) {
 
   const handleSubmit = async () => {
     if (loginState === "adviser") {
+      console.log("logging in as aviser");
       await handleAdviserSignIn(signInFormState);
+      router.refresh();
     }
   };
 

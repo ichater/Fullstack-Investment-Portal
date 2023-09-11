@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { AdviserSignUpState } from "@/types";
-import { adviserAuth } from "@/hooks/useAdviserAuth";
+import { useAdviserAuth } from "@/hooks/useAdviserAuth";
 
 export default function AdviserSignUpForm() {
   const [adviserSignUp, setAdviserSignUp] = useState<AdviserSignUpState>({
@@ -29,7 +29,7 @@ export default function AdviserSignUpForm() {
     confirmPassword,
   } = adviserSignUp;
 
-  const { handleAdviserSignUp } = adviserAuth();
+  const { handleAdviserSignUp } = useAdviserAuth();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,7 +40,7 @@ export default function AdviserSignUpForm() {
     }));
   };
 
-  const handleSubmit = () => handleAdviserSignUp(adviserSignUp);
+  const handleSubmit = async () => await handleAdviserSignUp(adviserSignUp);
 
   return (
     <form className="auth-modal_form" onSubmit={handleSubmit}>

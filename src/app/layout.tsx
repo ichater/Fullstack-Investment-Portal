@@ -1,4 +1,5 @@
-import "../styles/globals.css";
+import Navbar from "./components/Navbar";
+import "./styles/globals.css";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,14 +17,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Client portal</title>
+        <title>Advisor portal</title>
         <link
           rel="icon"
           type="image/x-icon"
-          href="https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png"
+          href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFm1d6OTmegYML-GS9nEHgb2zQGSkV3CPdqw&usqp=CAU"
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {" "}
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
