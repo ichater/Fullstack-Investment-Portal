@@ -17,7 +17,7 @@ export default function page() {
         </p>
         <p>
           Until you do log in you are welcome to browse our{" "}
-          <Link href="./advisers" data-testid="adviser-link">
+          <Link href="./adviser-list" data-testid="adviser-link">
             Adviser list
           </Link>{" "}
           or our <Link href="./investments">Investment options</Link> to see

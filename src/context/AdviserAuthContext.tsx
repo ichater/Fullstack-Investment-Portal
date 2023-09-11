@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ReactNode, createContext, useState, useEffect } from "react";
 import {
   AdviserAuthState,

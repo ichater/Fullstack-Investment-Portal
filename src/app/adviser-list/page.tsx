@@ -14,7 +14,7 @@ export async function getProps(): Promise<any> {
     .setProfileImage("https://cdn-icons-png.flaticon.com/512/3135/3135715.png")
     .build();
 
-  const advisers: Adviser[] = await [adviser1, adviser2, adviser3];
+  const advisers = await [adviser1, adviser2, adviser3];
 
   return advisers;
 }
