@@ -40,7 +40,10 @@ export default function AdviserSignUpForm() {
     }));
   };
 
-  const handleSubmit = async () => await handleAdviserSignUp(adviserSignUp);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await handleAdviserSignUp(adviserSignUp);
+  };
 
   return (
     <form className="auth-modal_form" onSubmit={handleSubmit}>

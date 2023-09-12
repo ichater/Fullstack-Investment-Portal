@@ -59,7 +59,7 @@ export const useAdviserAuth = () => {
         .then((res) => res.data.json());
 
       setAuthState({
-        data: res.data,
+        data: res,
         loading: false,
         error: null,
       });

@@ -7,9 +7,10 @@ import { useRouter } from "next/navigation";
 
 type Props = {
   loginState: LoginState;
+  handleClose: () => void;
 };
 
-export default function LogInForm({ loginState }: Props) {
+export default function LogInForm({ loginState, handleClose }: Props) {
   const [signInFormState, setSignInFormState] = useState<SignInFormState>({
     email: "",
     password: "",
@@ -17,15 +18,6 @@ export default function LogInForm({ loginState }: Props) {
   const { email, password } = signInFormState;
 
   const { handleAdviserSignIn } = useAdviserAuth();
-
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setSignInFormState((signInFormState) => ({
-      ...signInFormState,
-      [event.target.name]: event.target.value,
-    }));
-  };
 
   const router = useRouter();
 
@@ -36,16 +28,26 @@ export default function LogInForm({ loginState }: Props) {
     });
   }, [loginState]);
 
-  const handleSubmit = async () => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setSignInFormState((signInFormState) => ({
+      ...signInFormState,
+      [event.target.name]: event.target.value,
+    }));
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (loginState === "adviser") {
       console.log("logging in as aviser");
       await handleAdviserSignIn(signInFormState);
       router.refresh();
     }
+    handleClose();
   };
 
   return (
-    <form className="auth-modal_form" onSubmit={() => handleSubmit()}>
+    <form className="auth-modal_form" onSubmit={handleSubmit}>
       {" "}
       <TextField
         className="single-row_input"
@@ -66,7 +68,7 @@ export default function LogInForm({ loginState }: Props) {
         value={password}
         onChange={handleChange}
       />{" "}
-      <SubmitButton text="Submit" />
+      <SubmitButton text="Submit" disabled={!email || !password} />
     </form>
   );
 }

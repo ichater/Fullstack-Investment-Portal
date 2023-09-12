@@ -55,7 +55,7 @@ export default function AuthModal({ isLogIn }: Props) {
 
           {isLogIn && (
             <div className="login-form_wrapper">
-              <LogInForm loginState={loginState} />
+              <LogInForm handleClose={handleClose} loginState={loginState} />
               <ClientAdviserToggle
                 loginState={loginState}
                 setLoginState={setLoginState}

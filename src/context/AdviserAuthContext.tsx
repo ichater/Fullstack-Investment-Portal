@@ -7,6 +7,7 @@ import {
   AdviserAuthContext as AuthType,
 } from "@/types";
 import { getCookie } from "cookies-next";
+import axios from "axios";
 
 export const AdviserAuthContext = createContext<AuthType>({
   authState: {
@@ -30,23 +31,34 @@ export default function AdviserAuthContextProvider({
   });
 
   const fetchData = async () => {
-    const token = getCookie("jwt");
-
-    if (!token) return;
     setAuthState({
       data: null,
       loading: true,
       error: null,
     });
     try {
-      const response = await fetch("http://localhost:3000/api/auth/meadviser", {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }).then((res) => res.json());
-      console.log("data", response.adviser);
+      const jwt = getCookie("jwt");
+
+      if (!jwt) {
+        return setAuthState({
+          data: null,
+          error: null,
+          loading: false,
+        });
+      }
+      const response = await axios.get(
+        "http://localhost:3000/api/auth/meadviser",
+        {
+          headers: {
+            authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      console.log("response", response.data.adviser);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+
       setAuthState({
-        data: response.adviser as AdviserReturnData,
+        data: response.data as AdviserReturnData,
         loading: false,
         error: null,
       });
