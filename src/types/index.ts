@@ -48,3 +48,5 @@ export {
   type AccountValues,
   type TieredFee,
 } from "./accounts";
+
+export { type ParamKeyValue } from "./generic";

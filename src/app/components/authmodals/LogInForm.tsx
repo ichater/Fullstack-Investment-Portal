@@ -3,7 +3,7 @@ import { LoginState, SignInFormState } from "@/types";
 import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { useAdviserAuth } from "@/hooks/useAdviserAuth";
-import { useRouter } from "next/navigation";
+import { useQueryString } from "@/hooks/useQueryString";
 
 type Props = {
   loginState: LoginState;
@@ -19,7 +19,7 @@ export default function LogInForm({ loginState, handleClose }: Props) {
 
   const { handleAdviserSignIn } = useAdviserAuth();
 
-  const router = useRouter();
+  const { router } = useQueryString();
 
   useEffect(() => {
     setSignInFormState({

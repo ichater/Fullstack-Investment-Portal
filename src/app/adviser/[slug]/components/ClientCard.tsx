@@ -16,7 +16,7 @@ export default function ClientCard({
 }: Props) {
   return (
     <Link
-      href={`/adviser/${slug}/clients/${clientSlug}`}
+      href={`/adviser/${slug}/clients/${clientSlug}?view=profile`}
       passHref
       legacyBehavior
       className="next-link_No_Decoration"

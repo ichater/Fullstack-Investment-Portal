@@ -2,7 +2,6 @@ import { AdviserSignUpState } from "@/types";
 import axios from "axios";
 import { AdviserAuthContext } from "@/context/AdviserAuthContext";
 import { useContext } from "react";
-import { redirect } from "next/navigation";
 
 export const useAdviserAuth = () => {
   const { setAuthState } = useContext(AdviserAuthContext);

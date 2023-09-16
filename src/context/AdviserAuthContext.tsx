@@ -81,7 +81,7 @@ export default function AdviserAuthContextProvider({
   useEffect(() => {
     fetchData();
     console.log(authState);
-  }, [handleAdviserSignUp, handleAdviserSignIn, handleAdviserSignOut]);
+  }, []);
 
   return (
     <AdviserAuthContext.Provider value={{ authState, setAuthState, fetchData }}>

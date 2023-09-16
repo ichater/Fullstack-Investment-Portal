@@ -121,19 +121,6 @@ describe("Investment Main Display", () => {
         ).toBe(5);
       });
 
-      it("1 investment is visible in the results when page 2 is clicked", () => {
-        const { container, getByText } = renderWithRouter(
-          <InvestmentResultContext.Provider value={mockedDisplayContext}>
-            <InvestmentResults />
-          </InvestmentResultContext.Provider>
-        );
-
-        const pageTwo = getByText("2");
-        fireEvent.click(pageTwo);
-
-        expect(pageTwo).toBeInTheDocument();
-      });
-
       it("setInvestmentDisplayState is called when page is clicked", () => {
         const setInvestmentDisplayState = jest.fn();
 

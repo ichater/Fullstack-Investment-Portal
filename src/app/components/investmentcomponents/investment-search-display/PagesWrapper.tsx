@@ -1,9 +1,9 @@
+import React from "react";
 import { arrayFromNumber } from "@/lib/utils/arrayFromNumber";
 import { DisplayFund, DisplayShare } from "@/types";
-import React, { useCallback } from "react";
 import PageNumber from "./PageNumber";
 import { useInvestmentDisplayContext } from "@/hooks";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useQueryString } from "@/hooks/useQueryString";
 
 export type Props = {
   data: DisplayShare[][] | DisplayFund[][];
@@ -16,21 +16,8 @@ export default function PagesWrapper({
   data,
   setCurrentInvestmentDisplay,
 }: Props) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const { pushQueryString } = useQueryString();
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(
-        searchParams ? searchParams.toString() : ""
-      );
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
   const { setInvestmentDisplayState } = useInvestmentDisplayContext();
 
   const onClick = (pageNumber: number) => {
@@ -42,9 +29,7 @@ export default function PagesWrapper({
       },
     }));
     setCurrentInvestmentDisplay(data[pageNumber - 1]);
-    router.push(
-      pathname + "?" + createQueryString("page", pageNumber.toString())
-    );
+    pushQueryString([{ name: "page", value: pageNumber.toString() }]);
   };
   return (
     <div className="page-number_wrapper">

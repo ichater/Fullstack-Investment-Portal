@@ -5,8 +5,8 @@ import ClientAccounts from "./ClientAccounts";
 import { ACCESS } from "@prisma/client";
 import { AccountReturnData, ClientView } from "@/types";
 import Link from "next/link";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useAdviserAuthContext } from "@/hooks/useContextHooks";
+import { useQueryString } from "@/hooks/useQueryString";
 
 export default function ClientMainDisplay({
   slug,
@@ -29,17 +29,15 @@ export default function ClientMainDisplay({
   profileImage: string;
   parsedAccountInformation: AccountReturnData[];
 }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
+  const { pushQueryString, searchParams } = useQueryString();
 
   const display = (searchParams?.get("view") as ClientView) || "profile";
 
   const [displayState, setDisplayState] = useState<ClientView>(display);
 
-  const handleClick = (setPage: "profile" | "accounts") => {
+  const handleClick = (setPage: ClientView) => {
     setDisplayState(setPage);
-    router.push(pathname + `?view=${setPage}`);
+    pushQueryString([{ name: "view", value: `${setPage}` }]);
   };
 
   const { authState } = useAdviserAuthContext();
