@@ -12,8 +12,6 @@ import { InvestmentDisplayContext } from "@/types/context";
 import { InvestmentResultContext } from "@/context/InvestmentDisplayContext";
 import { InvestmentSearchContext } from "@/context/InvestmentFormContext";
 import { mockFundResults } from "@/lib/test-utils/investment-utils/InvestmentDataMocks";
-import InvestmentSearchForm from "../InvestmentSearchForm";
-import InvestmentSearchResults from "../InvestmentSearchResults";
 
 describe("Investment Main Display", () => {
   const setSearch = jest.fn();

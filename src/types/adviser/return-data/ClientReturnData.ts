@@ -1,4 +1,4 @@
-import { ACCESS } from "@prisma/client";
+import { ACCESS, ROLE } from "@prisma/client";
 import { AccountReturnData } from "./AccountReturnData";
 
 export type ClientReturnData = {
@@ -11,5 +11,6 @@ export type ClientReturnData = {
   password: string;
   bio: string;
   access: ACCESS;
+  role: ROLE;
   accounts: AccountReturnData[];
 };

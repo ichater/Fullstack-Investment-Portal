@@ -18,11 +18,13 @@ export default function PagesWrapper({
 }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams()!;
+  const searchParams = useSearchParams();
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams as any);
+      const params = new URLSearchParams(
+        searchParams ? searchParams.toString() : ""
+      );
       params.set(name, value);
 
       return params.toString();

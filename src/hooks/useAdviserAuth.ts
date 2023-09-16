@@ -2,6 +2,7 @@ import { AdviserSignUpState } from "@/types";
 import axios from "axios";
 import { AdviserAuthContext } from "@/context/AdviserAuthContext";
 import { useContext } from "react";
+import { redirect } from "next/navigation";
 
 export const useAdviserAuth = () => {
   const { setAuthState } = useContext(AdviserAuthContext);
@@ -16,6 +17,11 @@ export const useAdviserAuth = () => {
     password,
     confirmPassword,
   }: AdviserSignUpState) => {
+    setAuthState({
+      data: null,
+      loading: true,
+      error: null,
+    });
     try {
       const res = await axios.post(
         "http://localhost:3000/api/auth/advisorsignup",
@@ -33,7 +39,13 @@ export const useAdviserAuth = () => {
       );
       console.log(res.data);
       return res;
-    } catch (error) {
+    } catch (error: any) {
+      console.log(error.response.data.errorMessage);
+      setAuthState({
+        data: null,
+        loading: false,
+        error: "error",
+      });
       return error;
     }
   };
@@ -57,12 +69,6 @@ export const useAdviserAuth = () => {
           password,
         })
         .then((res) => res.data.json());
-
-      setAuthState({
-        data: res,
-        loading: false,
-        error: null,
-      });
     } catch (error) {
       console.log(error);
       setAuthState({
@@ -75,5 +81,5 @@ export const useAdviserAuth = () => {
 
   const handleAdviserSignOut = async () => {};
 
-  return { handleAdviserSignUp, handleAdviserSignIn };
+  return { handleAdviserSignUp, handleAdviserSignIn, handleAdviserSignOut };
 };

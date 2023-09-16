@@ -8,6 +8,7 @@ import {
 } from "@/types";
 import { getCookie } from "cookies-next";
 import axios from "axios";
+import { useAdviserAuth } from "@/hooks/useAdviserAuth";
 
 export const AdviserAuthContext = createContext<AuthType>({
   authState: {
@@ -29,6 +30,9 @@ export default function AdviserAuthContextProvider({
     loading: false,
     error: null,
   });
+
+  const { handleAdviserSignUp, handleAdviserSignIn, handleAdviserSignOut } =
+    useAdviserAuth();
 
   const fetchData = async () => {
     setAuthState({
@@ -77,7 +81,7 @@ export default function AdviserAuthContextProvider({
   useEffect(() => {
     fetchData();
     console.log(authState);
-  }, []);
+  }, [handleAdviserSignUp, handleAdviserSignIn, handleAdviserSignOut]);
 
   return (
     <AdviserAuthContext.Provider value={{ authState, setAuthState, fetchData }}>

@@ -146,7 +146,6 @@ describe("Investment Main Display", () => {
         const pageTwo = getByText("2");
         fireEvent.click(pageTwo);
 
-        screen.debug();
         expect(setInvestmentDisplayState).toHaveBeenCalled();
       });
     });

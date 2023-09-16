@@ -1,5 +1,11 @@
 import { INVESTMENTCATEGORY } from "@prisma/client";
 
+export type ManagedInvestmentInAccountShallow = {
+  accountId: string;
+  investmentId: string;
+  value: number;
+};
+
 export interface ManagedInvestmentInAccountParsed {
   id: string;
   name: string;

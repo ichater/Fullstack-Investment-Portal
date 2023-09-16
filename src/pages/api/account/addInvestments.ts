@@ -35,14 +35,6 @@ export default async function handler(
       return res.status(404).json({ error: "account not found" });
     }
 
-    // const sharesExist =
-    //   purchasedShares.length &&
-    //   (await prisma.shareInAccount.findMany({
-    //     where: {
-    //       accountId: account.id,
-    //     },
-    //   }));
-
     const addedShares =
       purchasedShares.length &&
       (await prisma.shareInAccount.createMany({
