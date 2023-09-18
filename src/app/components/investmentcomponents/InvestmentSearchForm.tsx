@@ -12,7 +12,6 @@ import { InvestmentType } from "@/types";
 import { useInvestmentFormContext } from "@/hooks";
 
 export default function InvestmentSearchForm() {
-  console.log("Search form render");
   const { investmentFormState, setInvestmentFormState } =
     useInvestmentFormContext();
 

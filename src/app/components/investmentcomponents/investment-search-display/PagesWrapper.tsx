@@ -18,7 +18,8 @@ export default function PagesWrapper({
 }: Props) {
   const { pushQueryString } = useQueryString();
 
-  const { setInvestmentDisplayState } = useInvestmentDisplayContext();
+  const { setInvestmentDisplayState, investmentDisplayState } =
+    useInvestmentDisplayContext();
 
   const onClick = (pageNumber: number) => {
     setInvestmentDisplayState((state) => ({
@@ -34,7 +35,12 @@ export default function PagesWrapper({
   return (
     <div className="page-number_wrapper">
       {arrayFromNumber(data.length).map((_, i) => (
-        <PageNumber onClick={onClick} key={i} pageNumber={i + 1} />
+        <PageNumber
+          onClick={onClick}
+          key={i}
+          pageNumber={i + 1}
+          activePage={investmentDisplayState.pageData.pageNumber === i + 1}
+        />
       ))}
     </div>
   );

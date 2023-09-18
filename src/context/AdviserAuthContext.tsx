@@ -8,7 +8,7 @@ import {
 } from "@/types";
 import { getCookie } from "cookies-next";
 import axios from "axios";
-import { useAdviserAuth } from "@/hooks/useAdviserAuth";
+import { useQueryString } from "@/hooks/useQueryString";
 
 export const AdviserAuthContext = createContext<AuthType>({
   authState: {
@@ -17,7 +17,8 @@ export const AdviserAuthContext = createContext<AuthType>({
     error: null,
   },
   setAuthState: () => {},
-  fetchData: async () => {},
+  triggerFetchAuth: false,
+  setTriggerFetchAuth: () => {},
 });
 
 export default function AdviserAuthContextProvider({
@@ -25,14 +26,14 @@ export default function AdviserAuthContextProvider({
 }: {
   children: ReactNode;
 }) {
+  const { router } = useQueryString();
   const [authState, setAuthState] = useState<AdviserAuthState>({
     data: null,
     loading: false,
     error: null,
   });
 
-  const { handleAdviserSignUp, handleAdviserSignIn, handleAdviserSignOut } =
-    useAdviserAuth();
+  const [triggerFetchAuth, setTriggerFetchAuth] = useState(false);
 
   const fetchData = async () => {
     setAuthState({
@@ -40,6 +41,7 @@ export default function AdviserAuthContextProvider({
       loading: true,
       error: null,
     });
+    console.log("fetching data");
     try {
       const jwt = getCookie("jwt");
 
@@ -62,18 +64,17 @@ export default function AdviserAuthContextProvider({
       axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 
       setAuthState({
-        data: response.data as AdviserReturnData,
+        data: response.data.adviser as AdviserReturnData,
         loading: false,
         error: null,
       });
-
-      console.log("authstate from fetch", authState.data);
-    } catch (error) {
+      return response;
+    } catch (error: any) {
       console.log("error", error);
       setAuthState({
         data: null,
         loading: false,
-        error: "no response",
+        error: error.response.data.errorMessage,
       });
     }
   };
@@ -81,10 +82,19 @@ export default function AdviserAuthContextProvider({
   useEffect(() => {
     fetchData();
     console.log(authState);
-  }, []);
+    router.refresh();
+    setTriggerFetchAuth(false);
+  }, [triggerFetchAuth]);
 
   return (
-    <AdviserAuthContext.Provider value={{ authState, setAuthState, fetchData }}>
+    <AdviserAuthContext.Provider
+      value={{
+        authState,
+        setAuthState,
+        triggerFetchAuth,
+        setTriggerFetchAuth,
+      }}
+    >
       {children}
     </AdviserAuthContext.Provider>
   );

@@ -2,9 +2,10 @@ import { AdviserSignUpState } from "@/types";
 import axios from "axios";
 import { AdviserAuthContext } from "@/context/AdviserAuthContext";
 import { useContext } from "react";
+import { deleteCookie } from "cookies-next";
 
 export const useAdviserAuth = () => {
-  const { setAuthState } = useContext(AdviserAuthContext);
+  const { setAuthState, setTriggerFetchAuth } = useContext(AdviserAuthContext);
   const handleAdviserSignUp = async ({
     firstName,
     lastName,
@@ -37,6 +38,8 @@ export const useAdviserAuth = () => {
         }
       );
       console.log(res.data);
+
+      setTriggerFetchAuth(true);
       return res;
     } catch (error: any) {
       console.log(error.response.data.errorMessage);
@@ -62,12 +65,16 @@ export const useAdviserAuth = () => {
       error: null,
     });
     try {
-      const res = await axios
-        .post("http://localhost:3000/api/auth/advisorsignin", {
+      const res = await axios.post(
+        "http://localhost:3000/api/auth/advisorsignin",
+        {
           email,
           password,
-        })
-        .then((res) => res.data.json());
+        }
+      );
+
+      setTriggerFetchAuth(true);
+      return res;
     } catch (error) {
       console.log(error);
       setAuthState({
@@ -78,7 +85,10 @@ export const useAdviserAuth = () => {
     }
   };
 
-  const handleAdviserSignOut = async () => {};
+  const handleAdviserSignOut = async () => {
+    deleteCookie("jwt");
+    setTriggerFetchAuth(true);
+  };
 
   return { handleAdviserSignUp, handleAdviserSignIn, handleAdviserSignOut };
 };

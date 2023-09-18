@@ -119,10 +119,16 @@
   transition: 0.5s 0s;
 }
 
+.page-number_selected {
+  color: var(--main-light);
+  background-color: var(--adviser-blue);
+}
+
 .page-number_select:hover {
   color: var(--main-light);
   background-color: var(--adviser-blue-dark);
 }
+
 .investment-input_wrapper {
   display: flex;
   flex-direction: row;

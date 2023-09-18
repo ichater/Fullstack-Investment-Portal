@@ -3,9 +3,6 @@ import * as jose from "jose";
 
 export async function middleware(req: NextRequest, res: NextResponse) {
   const bearerToken = req.headers.get("authorization") as string;
-  console.log("MIDDLEWARE");
-  console.log(req.method);
-  console.log(req.url);
 
   if (!bearerToken) {
     return new NextResponse(
