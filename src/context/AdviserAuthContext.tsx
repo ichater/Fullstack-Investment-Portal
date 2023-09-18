@@ -3,12 +3,13 @@
 import React, { ReactNode, createContext, useState, useEffect } from "react";
 import {
   AdviserAuthState,
-  AdviserDataParsed,
+  AdviserIncomingData,
   AdviserAuthContext as AuthType,
 } from "@/types";
 import { getCookie } from "cookies-next";
 import axios from "axios";
 import { useQueryString } from "@/hooks/useQueryString";
+import { adviserDataParser } from "@/lib/utils/adviserDataParsers";
 
 export const AdviserAuthContext = createContext<AuthType>({
   authState: {
@@ -64,7 +65,7 @@ export default function AdviserAuthContextProvider({
       axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 
       setAuthState({
-        data: response.data.adviser as AdviserDataParsed,
+        data: adviserDataParser(response.data.adviser as AdviserIncomingData),
         loading: false,
         error: null,
       });
