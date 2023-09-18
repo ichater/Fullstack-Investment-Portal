@@ -5,3 +5,4 @@ export { ShareBuilder } from "./investments/shares";
 export { ManagedInvestmentBuilder } from "./investments/managedinvestment";
 export { InvestmentDisplayContextBuilder } from "./context/InvestmentDisplayContextBuilder";
 export { InvestmentFormContextBuilder } from "./context/InvestmentFormContextBuilder";
+export { AdviserAuthContextBuilder } from "./context/AdviserAuthContextBuilder";
