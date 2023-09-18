@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ClientInformation from "./ClientInformation";
 import ClientAccounts from "./ClientAccounts";
 import { ACCESS } from "@prisma/client";
-import { AccountReturnData, ClientView } from "@/types";
+import { AccountDataParsed, ClientView } from "@/types";
 import Link from "next/link";
 import { useAdviserAuthContext } from "@/hooks/useContextHooks";
 import { useQueryString } from "@/hooks/useQueryString";
@@ -27,7 +27,7 @@ export default function ClientMainDisplay({
   bio: string;
   access: ACCESS;
   profileImage: string;
-  parsedAccountInformation: AccountReturnData[];
+  parsedAccountInformation: AccountDataParsed[];
 }) {
   const { pushQueryString, searchParams } = useQueryString();
 

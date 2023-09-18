@@ -1,7 +1,7 @@
-import { AdviserReturnData } from "@/types";
+import { AdviserDataParsed } from "@/types";
 
 export type AdviserAuthState = {
-  data: AdviserReturnData | null;
+  data: AdviserDataParsed | null;
   loading: boolean;
   error: string | null;
 };

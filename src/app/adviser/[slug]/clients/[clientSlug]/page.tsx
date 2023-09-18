@@ -4,7 +4,7 @@ import {
   tempClientSallie,
   sallieAccountsTemp,
 } from "@/lib/tempdata/tempClient";
-import { AccountReturnData } from "@/types";
+import { AccountDataParsed } from "@/types";
 import ClientMainDisplay from "./components/ClientMainDisplay";
 import { Metadata } from "next";
 import AdviserAuthContextProvider from "@/context/AdviserAuthContext";
@@ -36,7 +36,7 @@ export default function page({
   const { firstName, lastName, email, bio, access, profileImage } =
     data.clientData;
 
-  const parsedAccountInformation: AccountReturnData[] = data.accountData.map(
+  const parsedAccountInformation: AccountDataParsed[] = data.accountData.map(
     (account) => ({
       ...account,
       id: account.id,

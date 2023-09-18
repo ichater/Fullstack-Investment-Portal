@@ -1,6 +1,6 @@
 import { ADVISERFEETYPE, Account } from "@prisma/client";
 import { AccountBuilder, ClientBuilder } from "../builders";
-import { AccountReturnData } from "@/types";
+import { AccountDataParsed } from "@/types";
 
 export const tempClientSallie = new ClientBuilder("Sallie")
   .setAccess("READWRITE")
@@ -9,7 +9,7 @@ export const tempClientSallie = new ClientBuilder("Sallie")
   )
   .build();
 
-export const sallieAccountsTemp: AccountReturnData[] = [
+export const sallieAccountsTemp: AccountDataParsed[] = [
   new AccountBuilder(tempClientSallie.id)
     .setValue(623450.0)
     .setInvestmentStrategy("ACTIVE")

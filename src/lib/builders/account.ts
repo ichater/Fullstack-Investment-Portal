@@ -2,13 +2,13 @@ import { ADVISERFEETYPE, INVESTMENSTRATEGY, Share } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 import { adviserFeeParser } from "../utils/adviserFeeParser";
 import {
-  AccountReturnData,
+  AccountDataParsed,
   ManagedInvestmentInAccountParsed,
   ShareInAccountParsed,
 } from "@/types";
 
 export class AccountBuilder {
-  account: AccountReturnData;
+  account: AccountDataParsed;
 
   constructor(clientId: string) {
     this.account = new AccountInstance(clientId);

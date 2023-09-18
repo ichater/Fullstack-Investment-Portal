@@ -1,15 +1,90 @@
 import {
-  AdviserReturnData,
-  ClientReturnData,
-  AccountReturnData,
+  AdviserDataParsed,
+  ClientDataParsed,
+  AccountDataParsed,
+  AccountIncomingData,
+  ClientIncomingData,
+  AdviserIncomingData,
 } from "@/types";
-import { Adviser, Account } from "@prisma/client";
 
-// export const accountDataParser = (account: any): AccountReturnData => {
-//   const { shares, managedInvestments } = account;
-//   const SMAs = managedInvestments.filter((i) => i.type);
-// };
+export const accountDataParser = ({
+  id,
+  totalValue,
+  cashAccount,
+  cashInInvestments,
+  adviserFee,
+  adviserFeeType,
+  cashInShares,
+  shares,
+  managedInvestments,
+  name,
+  slug,
+  investmentStrategy,
+}: AccountIncomingData): AccountDataParsed => {
+  return {
+    id,
+    totalValue,
+    cashAccount,
+    cashInInvestments,
+    adviserFee,
+    adviserFeeType,
+    cashInShares,
+    shares,
+    managedInvestments,
+    name,
+    slug,
+    investmentStrategy,
+  };
+};
 
-// export const clientDataParser = (data: any): ClientReturnData => {};
+export const clientDataParser = ({
+  id,
+  firstName,
+  lastName,
+  slug,
+  email,
+  profileImage,
+  bio,
+  access,
+  role,
+  accounts,
+}: ClientIncomingData): ClientDataParsed => {
+  const parsedAccounts: AccountDataParsed[] = accounts.length
+    ? accounts.map((acc) => accountDataParser(acc))
+    : [];
 
-// export const adviserDataParser = (data: any): AdviserReturnData => {};
+  return {
+    id,
+    firstName,
+    lastName,
+    slug,
+    email,
+    profileImage,
+    bio,
+    access,
+    role,
+    accounts: parsedAccounts,
+  };
+};
+
+export const adviserDataParser = (
+  data: AdviserIncomingData
+): AdviserDataParsed => {
+  const clients = data.clients
+    ? data.clients.map((client) => clientDataParser(client))
+    : [];
+
+  return {
+    id: data.id,
+    firstName: data.firstName,
+    lastName: data.lastName,
+    slug: data.slug,
+    bio: data.bio,
+    email: data.email,
+    profileImage: data.profileImage,
+    city: data.city,
+    phone: data.phone,
+    company: data.company,
+    clients,
+  };
+};

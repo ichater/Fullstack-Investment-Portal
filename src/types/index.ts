@@ -22,9 +22,9 @@ export {
   type ClientView,
 } from "./adviser";
 export {
-  type AccountReturnData,
-  type ClientReturnData,
-  type AdviserReturnData,
+  type AccountDataParsed,
+  type ClientDataParsed,
+  type AdviserDataParsed,
   type ManagedInvestmentInAccountParsed,
   type ManagedInvestmentInAccountShallow,
   type ShareInAccountParsed,
@@ -50,3 +50,9 @@ export {
 } from "./accounts";
 
 export { type ParamKeyValue } from "./generic";
+
+export {
+  type AccountIncomingData,
+  type AdviserIncomingData,
+  type ClientIncomingData,
+} from "./prisma-custom-types";

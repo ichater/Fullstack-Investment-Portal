@@ -1,8 +1,8 @@
-import { AccountReturnData, ClientReturnData } from "@/types";
+import { AccountDataParsed, ClientDataParsed } from "@/types";
 import { ACCESS, Account, Adviser, Client, ROLE } from "@prisma/client";
 
 export class ClientBuilder {
-  client: ClientReturnData;
+  client: ClientDataParsed;
   constructor(firstName: string) {
     this.client = new ClientInstance(firstName);
   }
@@ -34,7 +34,7 @@ export class ClientBuilder {
     return this;
   }
 
-  build(): ClientReturnData {
+  build(): ClientDataParsed {
     return this.client;
   }
 }
@@ -50,7 +50,7 @@ class ClientInstance {
   bio: string;
   role: ROLE;
   access: ACCESS;
-  accounts: AccountReturnData[];
+  accounts: AccountDataParsed[];
 
   constructor(
     firstName: string = "Jane",
@@ -63,7 +63,7 @@ class ClientInstance {
     profileImage: string = "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
     role: ROLE = ROLE.CLIENT,
     access: ACCESS = ACCESS.READONLY,
-    accounts: AccountReturnData[] = []
+    accounts: AccountDataParsed[] = []
   ) {
     this.id = id;
     this.firstName = firstName;

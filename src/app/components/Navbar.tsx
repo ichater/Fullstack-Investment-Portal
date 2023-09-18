@@ -28,18 +28,23 @@ export default function Navbar() {
             <AuthModal isLogIn={false} />
             <AuthModal isLogIn={true} />
           </ul>
-        ) : null}
+        ) : (
+          <ul className="nav_links nav-text">
+            <Link href={`/adviser/${authState.data.slug}`}>
+              <li>Profile</li>
+            </Link>
+            <Link href={`/adviser/${authState.data.slug}`}>
+              <li>Clients</li>
+            </Link>
+            <Link href="./investments">
+              <li>Investment Options</li>
+            </Link>
+          </ul>
+        )}
       </nav>
-      {authState.data ? (
-        <h2 className="navbar-authed_header">
-          Welcome {authState.data.firstName} {authState.data.lastName}
-        </h2>
-      ) : null}
+
       {authState.data ? (
         <>
-          <Link href={`/adviser/${authState.data.slug}`}>
-            <button className="advisor-btn">Profile</button>
-          </Link>
           <button
             className="advisor-btn"
             onClick={() => handleAdviserSignOut()}

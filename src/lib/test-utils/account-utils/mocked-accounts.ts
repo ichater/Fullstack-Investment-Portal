@@ -1,8 +1,8 @@
 import { AccountBuilder } from "@/lib/builders";
-import { AccountReturnData } from "@/types";
+import { AccountDataParsed } from "@/types";
 import { ADVISERFEETYPE } from "@prisma/client";
 
-export const mockedAccounts: AccountReturnData[] = [
+export const mockedAccounts: AccountDataParsed[] = [
   new AccountBuilder("abc123")
     .setValue(623450.0)
     .setInvestmentStrategy("ACTIVE")

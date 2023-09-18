@@ -3,7 +3,7 @@
 import React, { ReactNode, createContext, useState, useEffect } from "react";
 import {
   AdviserAuthState,
-  AdviserReturnData,
+  AdviserDataParsed,
   AdviserAuthContext as AuthType,
 } from "@/types";
 import { getCookie } from "cookies-next";
@@ -64,7 +64,7 @@ export default function AdviserAuthContextProvider({
       axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 
       setAuthState({
-        data: response.data.adviser as AdviserReturnData,
+        data: response.data.adviser as AdviserDataParsed,
         loading: false,
         error: null,
       });

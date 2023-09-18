@@ -1,16 +1,15 @@
 import { ACCESS, ROLE } from "@prisma/client";
-import { AccountReturnData } from "./AccountReturnData";
+import { AccountDataParsed } from "./AccountDataParsed";
 
-export type ClientReturnData = {
+export type ClientDataParsed = {
   id: string;
   firstName: string;
   lastName: string;
   slug: string;
   email: string;
   profileImage: string;
-  password: string;
   bio: string;
   access: ACCESS;
   role: ROLE;
-  accounts: AccountReturnData[];
+  accounts: AccountDataParsed[];
 };

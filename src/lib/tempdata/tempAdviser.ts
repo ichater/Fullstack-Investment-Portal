@@ -1,8 +1,8 @@
 import { AdviserBuilder, ClientBuilder } from "../builders";
 import { tempClientSallie } from "./tempClient";
-import { AdviserReturnData, ClientReturnData } from "@/types";
+import { AdviserDataParsed, ClientDataParsed } from "@/types";
 
-export const tempAdviser: AdviserReturnData = new AdviserBuilder("Claire")
+export const tempAdviser: AdviserDataParsed = new AdviserBuilder("Claire")
   .setId("tempAdviserId")
   .setLastName("Ruming")
   .setEmail("crum@gmail.com")
@@ -12,7 +12,7 @@ export const tempAdviser: AdviserReturnData = new AdviserBuilder("Claire")
   )
   .build();
 
-export const tempAdvisersClients: ClientReturnData[] = [
+export const tempAdvisersClients: ClientDataParsed[] = [
   tempClientSallie,
   new ClientBuilder("John").build(),
   new ClientBuilder("Brian").build(),

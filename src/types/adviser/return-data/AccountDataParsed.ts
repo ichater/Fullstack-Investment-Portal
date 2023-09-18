@@ -2,7 +2,7 @@ import { ADVISERFEETYPE, INVESTMENSTRATEGY } from "@prisma/client";
 import { ManagedInvestmentInAccountShallow } from "./ManagedInvestmentsInAccount";
 import { ShareInAccountShallow } from "./ShareInAccount";
 
-export type AccountReturnData = {
+export type AccountDataParsed = {
   id: string;
   totalValue: number;
   cashAccount: number;
@@ -13,7 +13,6 @@ export type AccountReturnData = {
   name: string;
   slug: string;
   investmentStrategy: INVESTMENSTRATEGY;
-  managedFunds: ManagedInvestmentInAccountShallow[];
-  SMAs: ManagedInvestmentInAccountShallow[];
+  managedInvestments: ManagedInvestmentInAccountShallow[];
   shares: ShareInAccountShallow[];
 };

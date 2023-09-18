@@ -1,7 +1,7 @@
-import { AdviserReturnData, ClientReturnData } from "@/types";
+import { AdviserDataParsed, ClientDataParsed } from "@/types";
 
 export class AdviserBuilder {
-  adviser: AdviserReturnData;
+  adviser: AdviserDataParsed;
   constructor(firstName: string) {
     this.adviser = new AdviserInstance(firstName);
   }
@@ -45,7 +45,7 @@ export class AdviserBuilder {
     return this;
   }
 
-  build(): AdviserReturnData {
+  build(): AdviserDataParsed {
     return this.adviser;
   }
 }
@@ -62,7 +62,7 @@ class AdviserInstance {
   city: string;
   company: string;
   profileImage: string;
-  clients: ClientReturnData[];
+  clients: ClientDataParsed[];
 
   constructor(
     firstName: string = "John",
@@ -77,7 +77,7 @@ class AdviserInstance {
     bio: string = `${firstName} ${lastName} is a seasoned financial adviser with over 10 years of experience in the industry. He is dedicated to helping individuals and families achieve their financial goals through comprehensive financial planning and investment strategies. With a strong background in wealth management, retirement planning, and risk management, John provides personalized solutions tailored to each client's unique needs and aspirations. `,
     email: string = "jsmith@finadvice.com.au",
     profileImage: string = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-    clients: ClientReturnData[] = []
+    clients: ClientDataParsed[] = []
   ) {
     this.id = id;
     this.password = password;

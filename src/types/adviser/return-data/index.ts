@@ -1,6 +1,6 @@
-export { type AccountReturnData } from "./AccountReturnData";
-export { type ClientReturnData } from "./ClientReturnData";
-export { type AdviserReturnData } from "./AdviserReturnData";
+export { type AccountDataParsed } from "./AccountDataParsed";
+export { type ClientDataParsed } from "./ClientDataparsed";
+export { type AdviserDataParsed } from "./AdviserDataParsed";
 export {
   type ManagedInvestmentInAccountParsed,
   type ManagedInvestmentInAccountShallow,

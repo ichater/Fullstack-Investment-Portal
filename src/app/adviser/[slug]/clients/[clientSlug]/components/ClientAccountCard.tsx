@@ -1,5 +1,5 @@
 import SubmitButton from "@/app/components/formcomponents/SubmitButton";
-import { AccountReturnData, ClientAccountInformation } from "@/types";
+import { AccountDataParsed, ClientAccountInformation } from "@/types";
 import Link from "next/link";
 import React from "react";
 
@@ -7,7 +7,7 @@ export default function ClientAccountCard({
   account,
   params: { slug, clientSlug },
 }: {
-  account: AccountReturnData;
+  account: AccountDataParsed;
   params: { slug: string; clientSlug: string };
 }) {
   const {

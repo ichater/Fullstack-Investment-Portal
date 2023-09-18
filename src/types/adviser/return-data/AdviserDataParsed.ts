@@ -1,16 +1,15 @@
-import { ClientReturnData } from "./ClientReturnData";
+import { ClientDataParsed } from "./ClientDataparsed";
 
-export type AdviserReturnData = {
+export type AdviserDataParsed = {
   id: string;
   firstName: string;
   lastName: string;
   slug: string;
   email: string;
   profileImage: string;
-  password: string;
   bio: string;
   company: string;
   city: string;
   phone: string;
-  clients: ClientReturnData[];
+  clients: ClientDataParsed[] | [];
 };
