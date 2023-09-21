@@ -1,7 +1,5 @@
 import {
-  DisplayShare,
   DisplayedInvestments,
-  InvestmentDisplayContextType,
   InvestmentDisplayState,
   InvestmentType,
   ManagedInvestmentFormState,

@@ -138,3 +138,7 @@
   flex-direction: row;
   gap: 0.5rem;
 }
+
+.navbar-authed_header {
+  color: var(--main-light);
+}

@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { setCookie } from "cookies-next";
 import * as jose from "jose";
 import validator from "validator";
+import { AdviserIncomingData } from "@/types";
 
 export default async function handler(
   req: NextApiRequest,
@@ -34,25 +35,31 @@ export default async function handler(
       });
     }
 
-    const advisor = await prisma.adviser.findUnique({
-      where: { email },
-      select: {
-        id: true,
-        email: true,
-        password: true,
-        firstName: true,
-        lastName: true,
-        bio: true,
-        city: true,
-        phone: true,
-        company: true,
-        role: true,
-        slug: true,
-        profileImage: true,
-        secondaryImages: true,
-        clients: true,
-      },
-    });
+    const advisor: AdviserIncomingData | null = await prisma.adviser.findUnique(
+      {
+        where: { email },
+        include: {
+          clients: {
+            include: {
+              accounts: {
+                include: {
+                  shares: {
+                    include: {
+                      share: true,
+                    },
+                  },
+                  managedInvestments: {
+                    include: {
+                      managedInvestment: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      }
+    );
 
     if (!advisor) {
       return res.status(400).json({
@@ -80,7 +87,6 @@ export default async function handler(
 
     setCookie("jwt", token, { req, res, maxAge: 60 * 6 * 24 });
     return res.status(200).json({
-      token,
       advisor,
     });
   }

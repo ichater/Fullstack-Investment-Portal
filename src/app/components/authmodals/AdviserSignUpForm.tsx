@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { AdviserSignUpState } from "@/types";
-import { adviserAuth } from "@/hooks/adviserAuth";
+import { useAdviserAuthContext, useQueryString, useAdviserAuth } from "@/hooks";
+import LoadingSpinner from "../loadingcomponents/LoadingSpinner";
+import ModalError from "../errorcomponents/ModalError";
 
-export default function AdviserSignUpForm() {
+export default function AdviserSignUpForm({
+  handleClose,
+}: {
+  handleClose: () => void;
+}) {
   const [adviserSignUp, setAdviserSignUp] = useState<AdviserSignUpState>({
     firstName: "",
     lastName: "",
@@ -29,7 +35,17 @@ export default function AdviserSignUpForm() {
     confirmPassword,
   } = adviserSignUp;
 
-  const { handleAdviserSignUp } = adviserAuth();
+  const { router } = useQueryString();
+
+  const { handleAdviserSignUp } = useAdviserAuth();
+  const { authState, setAuthState } = useAdviserAuthContext();
+
+  useEffect(() => {
+    setAuthState((state) => ({
+      ...state,
+      error: null,
+    }));
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,11 +56,24 @@ export default function AdviserSignUpForm() {
     }));
   };
 
-  const handleSubmit = () => handleAdviserSignUp(adviserSignUp);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await handleAdviserSignUp(adviserSignUp, handleClose);
+    router.refresh();
+  };
+
+  if (!!authState.loading) {
+    return (
+      <form className="auth-modal_form">
+        {" "}
+        <LoadingSpinner />
+      </form>
+    );
+  }
 
   return (
     <form className="auth-modal_form" onSubmit={handleSubmit}>
-      {" "}
+      {!!authState.error && <ModalError message={authState.error} />}{" "}
       <div className="adviser-signup-dual-input_wrapper">
         <TextField
           required

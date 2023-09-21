@@ -3,7 +3,7 @@ import React from "react";
 import InvestmentSearchForm from "../../InvestmentSearchForm";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { AppRouterContextProviderMock } from "@/lib/test-utils/AppRouterMock";
-import * as hooks from "@/hooks/contextHooks";
+import * as hooks from "@/hooks/useContextHooks";
 import { InvestmentFormContextBuilder } from "@/lib/builders/context/InvestmentFormContextBuilder";
 
 const fundContextMock = new InvestmentFormContextBuilder()

@@ -16,12 +16,21 @@ export {
   type SignInFormState,
 } from "./navbar";
 export {
-  type AdviserData,
   type AdvisorInfo,
   type AdvisorClientDisplay,
   type AdviserAddClientState,
   type ClientView,
 } from "./adviser";
+export {
+  type AccountDataParsed,
+  type ClientDataParsed,
+  type AdviserDataParsed,
+  type ManagedInvestmentInAccountParsed,
+  type ManagedInvestmentInAccountShallow,
+  type ShareInAccountParsed,
+  type ShareInAccountShallow,
+  type AdviserAuthState,
+} from "./adviser/return-data";
 export { type SlugProp } from "./nextjs";
 export {
   type BasicClientInformation,
@@ -31,11 +40,21 @@ export { type ClientAccountInformation } from "./accounts";
 export {
   type InvestmentDisplayContext as InvestmentDisplayContextType,
   type InvestmentFormContextType,
+  type AdviserAuthContext,
 } from "./context";
 
 export {
-  type ShareInAccountParsed,
   type FundInAccountParsed,
   type AccountValues,
   type TieredFee,
 } from "./accounts";
+
+export { type ParamKeyValue } from "./generic";
+
+export {
+  type AccountIncomingData,
+  type AdviserIncomingData,
+  type ClientIncomingData,
+  type ShareIncomingData,
+  type InvestmentIncomingData,
+} from "./prisma-custom-types";

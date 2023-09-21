@@ -12,6 +12,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
+    console.log("Sign up post hit");
     const { email, firstName, lastName, bio, city, phone, company, password } =
       req.body;
 
@@ -55,7 +56,7 @@ export default async function handler(
       .filter(({ valid }) => !valid)
       .map(({ errorMessage }) => errorMessage);
 
-    if (errorArr.length) {
+    if (!!errorArr.length) {
       return res.status(400).json({
         errorMessage: `${errorArr.join(", ")}`,
       });
@@ -120,7 +121,11 @@ export default async function handler(
 
     setCookie("jwt", token, { req, res, maxAge: 60 * 6 * 24 });
 
-    res.status(405).json({ adviser, token });
+    return res.status(200).json({ adviser });
   }
-  res.status(405).json({ error: "bad request" });
+
+  console.log("Sign up post not hit");
+  return res
+    .status(405)
+    .json({ errorMessage: `bad request, you're using ${req.method}` });
 }

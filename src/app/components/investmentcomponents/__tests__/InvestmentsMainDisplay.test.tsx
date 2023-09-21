@@ -1,8 +1,7 @@
 import InvestmentDisplay from "../InvestmentMainDisplay";
 import "@testing-library/jest-dom";
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import * as hooks from "@/hooks";
+import { screen } from "@testing-library/react";
 import {
   InvestmentFormContextBuilder,
   InvestmentDisplayContextBuilder,
@@ -12,8 +11,6 @@ import { InvestmentDisplayContext } from "@/types/context";
 import { InvestmentResultContext } from "@/context/InvestmentDisplayContext";
 import { InvestmentSearchContext } from "@/context/InvestmentFormContext";
 import { mockFundResults } from "@/lib/test-utils/investment-utils/InvestmentDataMocks";
-import InvestmentSearchForm from "../InvestmentSearchForm";
-import InvestmentSearchResults from "../InvestmentSearchResults";
 
 describe("Investment Main Display", () => {
   const setSearch = jest.fn();

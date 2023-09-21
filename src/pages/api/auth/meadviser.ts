@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 import { prisma } from "../../../../server/db/client";
+import { AdviserIncomingData } from "@/types";
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,18 +19,27 @@ export default async function handler(
       .json({ errorMessage: "unauthorized request no token" });
   }
 
-  const adviser = await prisma.adviser.findUnique({
+  const adviser: AdviserIncomingData | null = await prisma.adviser.findUnique({
     where: { email: payload.email },
-    select: {
-      id: true,
-      firstName: true,
-      lastName: true,
-      city: true,
-      email: true,
-      password: true,
-      phone: true,
-      bio: true,
-      role: true,
+    include: {
+      clients: {
+        include: {
+          accounts: {
+            include: {
+              shares: {
+                include: {
+                  share: true,
+                },
+              },
+              managedInvestments: {
+                include: {
+                  managedInvestment: true,
+                },
+              },
+            },
+          },
+        },
+      },
     },
   });
 

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Modal } from "@mui/material";
 import ClientAdviserToggle from "./ClientAdviserToggle";
 import AdviserSignUpForm from "./AdviserSignUpForm";
 import LogInForm from "./LogInForm";
 import { LoginState } from "@/types";
+import { useAdviserAuthContext } from "@/hooks";
 
 type Props = {
   isLogIn: boolean;
@@ -51,11 +52,16 @@ export default function AuthModal({ isLogIn }: Props) {
             {loginState.charAt(0).toLocaleUpperCase() + loginState.slice(1)}
           </h2>
 
-          {!isLogIn && <AdviserSignUpForm />}
+          {!isLogIn && <AdviserSignUpForm handleClose={handleClose} />}
 
           {isLogIn && (
             <div className="login-form_wrapper">
-              <LogInForm loginState={loginState} />
+              {loginState === "adviser" && (
+                <LogInForm handleClose={handleClose} loginState={loginState} />
+              )}
+              {loginState === "client" && (
+                <LogInForm handleClose={handleClose} loginState={loginState} />
+              )}
               <ClientAdviserToggle
                 loginState={loginState}
                 setLoginState={setLoginState}

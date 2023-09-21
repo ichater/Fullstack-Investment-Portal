@@ -1,10 +1,8 @@
-import { ACCESS, Adviser } from "@prisma/client";
+import { ACCESS } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 import validator from "validator";
 import bcrypt from "bcrypt";
-import * as jose from "jose";
 import { prisma } from "@/prismaInstance/client";
-import { setCookie } from "cookies-next";
 import { ROLE } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
@@ -122,7 +120,7 @@ export default async function handler(
       },
     });
 
-    res.status(200).json({ client, adviser });
+    return res.status(200).json({ client, adviser });
   }
-  res.status(405).json({ error: "bad request" });
+  return res.status(405).json({ error: "bad request" });
 }

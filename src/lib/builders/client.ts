@@ -1,14 +1,12 @@
+import { AccountDataParsed, ClientDataParsed } from "@/types";
 import { ACCESS, Account, Adviser, Client, ROLE } from "@prisma/client";
 
 export class ClientBuilder {
-  client: Client;
+  client: ClientDataParsed;
   constructor(firstName: string) {
     this.client = new ClientInstance(firstName);
   }
-  setAviserId(adviserId: string) {
-    this.client.adviserId = adviserId;
-    return this;
-  }
+
   setFirstName(firstName: string) {
     this.client.firstName = firstName;
     return this;
@@ -25,17 +23,9 @@ export class ClientBuilder {
     this.client.profileImage = profileImage;
     return this;
   }
-  setAdvisorId(adviserId: string) {
-    this.client.adviserId = adviserId;
-    return this;
-  }
+
   setAccess(access: ACCESS) {
     this.client.access = access;
-    return this;
-  }
-
-  setRole(role: ROLE) {
-    this.client.role = role;
     return this;
   }
 
@@ -44,7 +34,7 @@ export class ClientBuilder {
     return this;
   }
 
-  build(): Client {
+  build(): ClientDataParsed {
     return this.client;
   }
 }
@@ -58,10 +48,9 @@ class ClientInstance {
   password: string;
   profileImage: string;
   bio: string;
-  adviserId: string;
   role: ROLE;
   access: ACCESS;
-  accounts: Account[];
+  accounts: AccountDataParsed[];
 
   constructor(
     firstName: string = "Jane",
@@ -72,10 +61,9 @@ class ClientInstance {
     bio: string = "Investing for the monies!",
     email: string = "jDoe@pleb.com.au",
     profileImage: string = "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
-    adviserId: string = "",
     role: ROLE = ROLE.CLIENT,
     access: ACCESS = ACCESS.READONLY,
-    accounts: Account[] = []
+    accounts: AccountDataParsed[] = []
   ) {
     this.id = id;
     this.firstName = firstName;
@@ -85,7 +73,6 @@ class ClientInstance {
     this.bio = bio;
     this.email = email;
     this.profileImage = profileImage;
-    this.adviserId = adviserId;
     this.role = role;
     this.access = access;
     this.accounts = accounts;
