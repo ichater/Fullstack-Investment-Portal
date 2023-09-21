@@ -23,7 +23,7 @@ export const useQueryString = () => {
   const createQueryString = (
     nameValuesAdd: ParamKeyValue[],
     clearParams: boolean = false
-  ) => {
+  ): string => {
     const params = new URLSearchParams(
       searchParams ? searchParams.toString() : ""
     );
@@ -39,10 +39,15 @@ export const useQueryString = () => {
   const pushQueryString = (
     nameValuesAdd: ParamKeyValue[],
     clearParams: boolean = false
-  ) =>
-    router.push(pathname + "?" + createQueryString(nameValuesAdd, clearParams));
+  ) => {
+    const queryString = !!createQueryString(nameValuesAdd, clearParams)
+      ? `?${createQueryString(nameValuesAdd, clearParams)}`
+      : "";
+    return router.push(pathname + queryString);
+  };
 
   return {
+    createQueryString,
     generateNameValues,
     pushQueryString,
     searchParams,
