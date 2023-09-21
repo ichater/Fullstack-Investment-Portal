@@ -6,6 +6,7 @@
 @import "./adviser/client-page.css";
 @import "./adviser/account-page.css";
 @import "./client/accountpage.css";
+@import "./globalcomponents/loadingspinner.css";
 
 /* imported fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
@@ -119,4 +120,21 @@ body {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+
+.error-text {
+  border: 1px solid hsl(0, 63%, 52%);
+  background-color: hsl(0, 63%, 52%);
+  color: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding: 0.75rem;
+}
+
+.error-text h2 {
+  margin: 0px;
+  font-size: 1.25rem;
+}
+
+.error-text p {
+  margin-top: 0px;
 }

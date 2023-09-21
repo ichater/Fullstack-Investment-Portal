@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { LoginState, SignInFormState } from "@/types";
 import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
-import { useAdviserAuth } from "@/hooks/useAdviserAuth";
 import { useQueryString } from "@/hooks/useQueryString";
+import { useAdviserAuthContext, useAdviserAuth } from "@/hooks";
+import LoadingSpinner from "../loadingcomponents/LoadingSpinner";
+import ModalError from "../errorcomponents/ModalError";
 
 type Props = {
   loginState: LoginState;
@@ -18,8 +20,18 @@ export default function LogInForm({ loginState, handleClose }: Props) {
   const { email, password } = signInFormState;
 
   const { handleAdviserSignIn } = useAdviserAuth();
+  const { authState: adviserAuthState, setAuthState } = useAdviserAuthContext();
 
   const { router } = useQueryString();
+
+  const isAdviser: boolean = loginState === "adviser";
+
+  useEffect(() => {
+    setAuthState((state) => ({
+      ...state,
+      error: null,
+    }));
+  }, []);
 
   useEffect(() => {
     setSignInFormState({
@@ -38,16 +50,26 @@ export default function LogInForm({ loginState, handleClose }: Props) {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (loginState === "adviser") {
-      await handleAdviserSignIn(signInFormState);
+    if (isAdviser) {
+      await handleAdviserSignIn(signInFormState, handleClose);
       router.refresh();
     }
-    handleClose();
   };
+
+  if (!!adviserAuthState.loading) {
+    return (
+      <form className="auth-modal_form">
+        {" "}
+        <LoadingSpinner />
+      </form>
+    );
+  }
 
   return (
     <form className="auth-modal_form" onSubmit={handleSubmit}>
-      {" "}
+      {!!adviserAuthState.error && isAdviser && (
+        <ModalError message={adviserAuthState.error} />
+      )}{" "}
       <TextField
         className="single-row_input"
         required

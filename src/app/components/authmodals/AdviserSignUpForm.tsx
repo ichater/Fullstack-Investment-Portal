@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { AdviserSignUpState } from "@/types";
-import { useAdviserAuth } from "@/hooks/useAdviserAuth";
-import { useQueryString } from "@/hooks/useQueryString";
+import { useAdviserAuthContext, useQueryString, useAdviserAuth } from "@/hooks";
+import LoadingSpinner from "../loadingcomponents/LoadingSpinner";
+import ModalError from "../errorcomponents/ModalError";
 
 export default function AdviserSignUpForm({
   handleClose,
@@ -37,6 +38,14 @@ export default function AdviserSignUpForm({
   const { router } = useQueryString();
 
   const { handleAdviserSignUp } = useAdviserAuth();
+  const { authState, setAuthState } = useAdviserAuthContext();
+
+  useEffect(() => {
+    setAuthState((state) => ({
+      ...state,
+      error: null,
+    }));
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -49,14 +58,22 @@ export default function AdviserSignUpForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await handleAdviserSignUp(adviserSignUp);
+    await handleAdviserSignUp(adviserSignUp, handleClose);
     router.refresh();
-    handleClose();
   };
+
+  if (!!authState.loading) {
+    return (
+      <form className="auth-modal_form">
+        {" "}
+        <LoadingSpinner />
+      </form>
+    );
+  }
 
   return (
     <form className="auth-modal_form" onSubmit={handleSubmit}>
-      {" "}
+      {!!authState.error && <ModalError message={authState.error} />}{" "}
       <div className="adviser-signup-dual-input_wrapper">
         <TextField
           required

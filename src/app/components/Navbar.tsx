@@ -10,6 +10,7 @@ import { useAdviserAuth } from "@/hooks/useAdviserAuth";
 export default function Navbar() {
   const { authState } = useAdviserAuthContext();
   const { handleAdviserSignOut } = useAdviserAuth();
+
   return (
     <div className="navbar_wrapper">
       <Image

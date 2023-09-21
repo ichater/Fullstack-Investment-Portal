@@ -6,23 +6,25 @@ import { deleteCookie } from "cookies-next";
 
 export const useAdviserAuth = () => {
   const { setAuthState, setTriggerFetchAuth } = useContext(AdviserAuthContext);
-  const handleAdviserSignUp = async ({
-    firstName,
-    lastName,
-    email,
-    bio,
-    city,
-    company,
-    phone,
-    password,
-    confirmPassword,
-  }: AdviserSignUpState) => {
+  const handleAdviserSignUp = async (
+    {
+      firstName,
+      lastName,
+      email,
+      bio,
+      city,
+      company,
+      phone,
+      password,
+      confirmPassword,
+    }: AdviserSignUpState,
+    handleClose: () => void = () => {}
+  ) => {
     setAuthState({
       data: null,
       loading: true,
       error: null,
     });
-    console.log("sign up hook hit");
     try {
       const res = await axios.post(
         "http://localhost:3000/api/auth/advisorsignup",
@@ -38,34 +40,37 @@ export const useAdviserAuth = () => {
           confirmPassword,
         }
       );
-      console.log("data", res.data);
 
       setAuthState({
-        data: res.data,
+        data: res.data.adviser,
         loading: false,
         error: null,
       });
 
+      handleClose();
+
       setTriggerFetchAuth(true);
       return res;
     } catch (error: any) {
-      console.log("error:", error.response);
       setAuthState({
         data: null,
         loading: false,
-        error: "error",
+        error: error.response.data.errorMessage as string,
       });
-      return error;
+      return error.response.data.errorMessage;
     }
   };
 
-  const handleAdviserSignIn = async ({
-    email,
-    password,
-  }: {
-    email: string;
-    password: string;
-  }) => {
+  const handleAdviserSignIn = async (
+    {
+      email,
+      password,
+    }: {
+      email: string;
+      password: string;
+    },
+    handleClose: () => void = () => {}
+  ) => {
     setAuthState({
       data: null,
       loading: true,
@@ -79,15 +84,20 @@ export const useAdviserAuth = () => {
           password,
         }
       );
+      setAuthState({
+        data: res.data.advisor,
+        loading: false,
+        error: null,
+      });
 
       setTriggerFetchAuth(true);
+      handleClose();
       return res;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
       setAuthState({
         data: null,
         loading: false,
-        error: "no response",
+        error: error.response.data.errorMessage as string,
       });
     }
   };
