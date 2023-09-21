@@ -55,4 +55,6 @@ export {
   type AccountIncomingData,
   type AdviserIncomingData,
   type ClientIncomingData,
+  type ShareIncomingData,
+  type InvestmentIncomingData,
 } from "./prisma-custom-types";

@@ -6,8 +6,16 @@ export type AdviserIncomingData = Prisma.AdviserGetPayload<{
       include: {
         accounts: {
           include: {
-            shares: true;
-            managedInvestments: true;
+            shares: {
+              include: {
+                share: true;
+              };
+            };
+            managedInvestments: {
+              include: {
+                managedInvestment: true;
+              };
+            };
           };
         };
       };

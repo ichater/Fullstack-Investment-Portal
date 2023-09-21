@@ -5,7 +5,53 @@ import {
   AccountIncomingData,
   ClientIncomingData,
   AdviserIncomingData,
+  ShareInAccountParsed,
+  ShareIncomingData,
+  InvestmentIncomingData,
+  ManagedInvestmentInAccountParsed,
 } from "@/types";
+
+export const shareInAccountParser = (
+  share: ShareIncomingData
+): ShareInAccountParsed => {
+  const { id, asxCode, name, category } = share.share;
+
+  return {
+    id,
+    asxCode,
+    name,
+    category,
+    value: share.value,
+  };
+};
+
+export const investmentInAccountParser = (
+  investment: InvestmentIncomingData
+): ManagedInvestmentInAccountParsed => {
+  const { id, name, apir, nabOwned, mer, category } =
+    investment.managedInvestment;
+  return { id, name, apir, nabOwned, mer, category, value: investment.value };
+};
+
+export const fundSmaDivider = (
+  investments: InvestmentIncomingData[]
+): {
+  managedFunds: ManagedInvestmentInAccountParsed[];
+  sma: ManagedInvestmentInAccountParsed[];
+} => {
+  const parsedInvestments: ManagedInvestmentInAccountParsed[] = investments.map(
+    (investment) => investmentInAccountParser(investment)
+  );
+
+  return {
+    managedFunds: parsedInvestments.filter(
+      (investment) => investment.category === "FUND"
+    ),
+    sma: parsedInvestments.filter(
+      (investment) => investment.category === "SMA"
+    ),
+  };
+};
 
 export const accountDataParser = ({
   id,
@@ -21,6 +67,9 @@ export const accountDataParser = ({
   slug,
   investmentStrategy,
 }: AccountIncomingData): AccountDataParsed => {
+  const parsedShares = shares.map((share) => shareInAccountParser(share));
+  const { managedFunds, sma } = fundSmaDivider(managedInvestments);
+
   return {
     id,
     totalValue,
@@ -29,8 +78,9 @@ export const accountDataParser = ({
     adviserFee,
     adviserFeeType,
     cashInShares,
-    shares,
-    managedInvestments,
+    shares: parsedShares,
+    managedFunds,
+    sma,
     name,
     slug,
     investmentStrategy,

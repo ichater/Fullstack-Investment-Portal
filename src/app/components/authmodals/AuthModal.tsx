@@ -51,7 +51,7 @@ export default function AuthModal({ isLogIn }: Props) {
             {loginState.charAt(0).toLocaleUpperCase() + loginState.slice(1)}
           </h2>
 
-          {!isLogIn && <AdviserSignUpForm />}
+          {!isLogIn && <AdviserSignUpForm handleClose={handleClose} />}
 
           {isLogIn && (
             <div className="login-form_wrapper">

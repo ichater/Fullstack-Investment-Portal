@@ -39,7 +39,6 @@ export default function LogInForm({ loginState, handleClose }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (loginState === "adviser") {
-      console.log("logging in as aviser");
       await handleAdviserSignIn(signInFormState);
       router.refresh();
     }

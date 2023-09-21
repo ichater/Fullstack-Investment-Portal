@@ -22,6 +22,7 @@ export const useAdviserAuth = () => {
       loading: true,
       error: null,
     });
+    console.log("sign up hook hit");
     try {
       const res = await axios.post(
         "http://localhost:3000/api/auth/advisorsignup",
@@ -37,12 +38,18 @@ export const useAdviserAuth = () => {
           confirmPassword,
         }
       );
-      console.log(res.data);
+      console.log("data", res.data);
+
+      setAuthState({
+        data: res.data,
+        loading: false,
+        error: null,
+      });
 
       setTriggerFetchAuth(true);
       return res;
     } catch (error: any) {
-      console.log(error.response.data.errorMessage);
+      console.log("error:", error.response);
       setAuthState({
         data: null,
         loading: false,

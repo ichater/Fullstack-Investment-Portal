@@ -2,7 +2,15 @@ import { Prisma } from "@prisma/client";
 
 export type AccountIncomingData = Prisma.AccountGetPayload<{
   include: {
-    shares: true;
-    managedInvestments: true;
+    shares: {
+      include: {
+        share: true;
+      };
+    };
+    managedInvestments: {
+      include: {
+        managedInvestment: true;
+      };
+    };
   };
 }>;

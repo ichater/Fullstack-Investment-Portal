@@ -1,6 +1,6 @@
 import { ADVISERFEETYPE, INVESTMENSTRATEGY } from "@prisma/client";
-import { ManagedInvestmentInAccountShallow } from "./ManagedInvestmentsInAccount";
-import { ShareInAccountShallow } from "./ShareInAccount";
+import { ManagedInvestmentInAccountParsed } from "./ManagedInvestmentsInAccount";
+import { ShareInAccountParsed } from "./ShareInAccount";
 
 export type AccountDataParsed = {
   id: string;
@@ -13,6 +13,7 @@ export type AccountDataParsed = {
   name: string;
   slug: string;
   investmentStrategy: INVESTMENSTRATEGY;
-  managedInvestments: ManagedInvestmentInAccountShallow[];
-  shares: ShareInAccountShallow[];
+  managedFunds: ManagedInvestmentInAccountParsed[];
+  sma: ManagedInvestmentInAccountParsed[];
+  shares: ShareInAccountParsed[];
 };

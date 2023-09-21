@@ -1,8 +1,7 @@
 import InvestmentDisplay from "../InvestmentMainDisplay";
 import "@testing-library/jest-dom";
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import * as hooks from "@/hooks";
+import { screen } from "@testing-library/react";
 import {
   InvestmentFormContextBuilder,
   InvestmentDisplayContextBuilder,

@@ -4,8 +4,16 @@ export type ClientIncomingData = Prisma.ClientGetPayload<{
   include: {
     accounts: {
       include: {
-        shares: true;
-        managedInvestments: true;
+        shares: {
+          include: {
+            share: true;
+          };
+        };
+        managedInvestments: {
+          include: {
+            managedInvestment: true;
+          };
+        };
       };
     };
   };

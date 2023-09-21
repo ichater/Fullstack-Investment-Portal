@@ -3,8 +3,13 @@ import { TextField } from "@mui/material";
 import SubmitButton from "../formcomponents/SubmitButton";
 import { AdviserSignUpState } from "@/types";
 import { useAdviserAuth } from "@/hooks/useAdviserAuth";
+import { useQueryString } from "@/hooks/useQueryString";
 
-export default function AdviserSignUpForm() {
+export default function AdviserSignUpForm({
+  handleClose,
+}: {
+  handleClose: () => void;
+}) {
   const [adviserSignUp, setAdviserSignUp] = useState<AdviserSignUpState>({
     firstName: "",
     lastName: "",
@@ -29,6 +34,8 @@ export default function AdviserSignUpForm() {
     confirmPassword,
   } = adviserSignUp;
 
+  const { router } = useQueryString();
+
   const { handleAdviserSignUp } = useAdviserAuth();
 
   const handleChange = (
@@ -43,6 +50,8 @@ export default function AdviserSignUpForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await handleAdviserSignUp(adviserSignUp);
+    router.refresh();
+    handleClose();
   };
 
   return (

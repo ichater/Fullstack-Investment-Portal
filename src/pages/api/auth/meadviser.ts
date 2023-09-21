@@ -26,8 +26,16 @@ export default async function handler(
         include: {
           accounts: {
             include: {
-              shares: true,
-              managedInvestments: true,
+              shares: {
+                include: {
+                  share: true,
+                },
+              },
+              managedInvestments: {
+                include: {
+                  managedInvestment: true,
+                },
+              },
             },
           },
         },
