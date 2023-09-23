@@ -12,6 +12,7 @@ interface Props extends ClientDataParsed {
 }
 
 export default function ClientMainDisplay({
+  id,
   advisorSlug,
   slug,
   firstName,
@@ -49,6 +50,7 @@ export default function ClientMainDisplay({
       </div>
       {displayState === "profile" && (
         <ClientInformation
+          id={id}
           firstName={firstName}
           lastName={lastName}
           email={email}

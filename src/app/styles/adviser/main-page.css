@@ -95,6 +95,8 @@
 .adviser-submit-btn_wrapper {
   margin-left: 10rem;
   margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .adviser-bio-edit {

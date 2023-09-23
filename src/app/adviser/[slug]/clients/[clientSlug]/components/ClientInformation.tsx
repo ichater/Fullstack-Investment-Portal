@@ -4,8 +4,10 @@ import ClientInformationDisplay from "./ClientInformationDisplay";
 import ClientInformationEdit from "./ClientInformationEdit";
 import SubmitButton from "@/app/components/formcomponents/SubmitButton";
 import Image from "next/image";
+import { useClientUpdates, useQueryString } from "@/hooks";
 
 export default function ClientInformation({
+  id,
   firstName,
   lastName,
   email,
@@ -20,6 +22,9 @@ export default function ClientInformation({
     access,
   });
 
+  const { updateClientDetails } = useClientUpdates();
+  const { router } = useQueryString();
+
   const handleChange = (
     event:
       | React.ChangeEvent<HTMLInputElement>
@@ -31,8 +36,19 @@ export default function ClientInformation({
     }));
   };
 
-  const handleClick = () => {
+  const submit = async () => {
+    await updateClientDetails({ ...editFormState, id });
+    setEditState(false);
+    router.refresh();
+  };
+
+  const toggleEdit = () => {
     if (editState) {
+      setEditFormState({
+        email,
+        bio,
+        access,
+      });
       setEditState(false);
     } else {
       setEditState(true);
@@ -72,7 +88,7 @@ export default function ClientInformation({
 
       <div className="adviser-submit-btn_wrapper">
         <SubmitButton
-          text={editState ? "Submit" : "Edit"}
+          text={editState ? "Back" : "Edit"}
           backgroundColor="rgba(57, 229, 235, 0.8)"
           height={3}
           width={7}
@@ -81,8 +97,22 @@ export default function ClientInformation({
             fontSize: 1.75,
             backgroundColor: "rgba(12, 121, 255, 0.8)",
           }}
-          onClick={handleClick}
-        />
+          onClick={toggleEdit}
+        />{" "}
+        {editState && (
+          <SubmitButton
+            text="Submit"
+            backgroundColor="rgba(57, 229, 235, 0.8)"
+            height={3}
+            width={7}
+            onHover={{
+              // border: "1px solid rgba(54, 172, 71, 0.2)",
+              fontSize: 1.75,
+              backgroundColor: "rgba(12, 121, 255, 0.8)",
+            }}
+            onClick={submit}
+          />
+        )}
       </div>
     </div>
   );

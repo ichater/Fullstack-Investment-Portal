@@ -31,7 +31,7 @@ export const useClientUpdates = () => {
 
       return clientDataParser(res);
     } catch (error: any) {
-      return error.response.data.errorMessage;
+      return error.response;
     }
   };
 
