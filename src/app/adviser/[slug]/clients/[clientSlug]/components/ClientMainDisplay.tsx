@@ -4,7 +4,6 @@ import ClientInformation from "./ClientInformation";
 import ClientAccounts from "./ClientAccounts";
 import { ClientDataParsed, ClientView } from "@/types";
 import Link from "next/link";
-import { useAdviserAuthContext } from "@/hooks/useContextHooks";
 import { useQueryString } from "@/hooks/useQueryString";
 
 interface Props extends ClientDataParsed {
