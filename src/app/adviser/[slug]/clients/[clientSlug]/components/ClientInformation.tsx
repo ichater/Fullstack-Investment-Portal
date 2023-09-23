@@ -33,7 +33,6 @@ export default function ClientInformation({
 
   const handleClick = () => {
     if (editState) {
-      // alert("api call will be here");
       setEditState(false);
     } else {
       setEditState(true);

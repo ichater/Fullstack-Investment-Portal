@@ -10,7 +10,7 @@ const genericClientData: AdvisorClientDisplay = {
   lastName: "Whittaker",
   email: "Reaper@ufc.com.au",
   profileImage: "/profileImage",
-  slug: "Au",
+  advisorSlug: "Au",
   clientSlug: "robert-whittaker",
   bio: "Just another UFC fighter doing what he can to survive",
 };

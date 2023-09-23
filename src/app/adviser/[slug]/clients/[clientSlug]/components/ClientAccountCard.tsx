@@ -5,10 +5,10 @@ import React from "react";
 
 export default function ClientAccountCard({
   account,
-  params: { slug, clientSlug },
+  params: { advisorSlug, slug },
 }: {
   account: AccountDataParsed;
-  params: { slug: string; clientSlug: string };
+  params: { advisorSlug: string; slug: string };
 }) {
   const {
     totalValue,
@@ -22,7 +22,7 @@ export default function ClientAccountCard({
   } = account;
   return (
     <Link
-      href={`/adviser/${slug}/clients/${clientSlug}/account/${accountSlug}`}
+      href={`/adviser/${advisorSlug}/clients/${slug}/account/${accountSlug}`}
       passHref
       legacyBehavior
     >

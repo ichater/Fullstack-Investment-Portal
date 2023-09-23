@@ -1,50 +1,33 @@
 import React from "react";
 import { SlugProp } from "@/types";
-import { tempAdviser, tempAdvisersClients } from "@/lib/tempdata/tempAdviser";
 import MainDisplay from "./components/MainDisplay";
+import { fetchAdviserData } from "@/lib/api/fetchAdviserData";
+import { cookies } from "next/headers";
 
-const getData = (slug: string) => {
-  return (
-    tempAdviser.slug === slug && {
-      tempAdviser,
-      clientData: tempAdvisersClients,
-    }
-  );
-};
+async function getData(jwt: string) {
+  return await fetchAdviserData(jwt);
+}
+export default async function page({ params: { slug } }: SlugProp) {
+  const cookie = cookies();
+  const jwt = cookie.get("jwt");
 
-export default function page({ params: { slug } }: SlugProp) {
-  const data = getData(slug);
+  if (!jwt) {
+    return <div>No auth detected</div>;
+  }
+
+  const data = await getData(jwt.value);
 
   if (!data) {
     return <div>Nothing to see here</div>;
   }
 
-  const { tempAdviser, clientData } = data;
-  const { firstName, lastName, profileImage, email, city, phone, bio } =
-    tempAdviser;
+  if (data.slug !== slug) {
+    return <div>Incorrect credentials</div>;
+  }
 
-  const clients = clientData.map((client) => ({
-    firstName: client.firstName,
-    lastName: client.lastName,
-    clientSlug: client.slug,
-    email: client.email,
-    profileImage: client.profileImage,
-    slug: slug,
-    bio: client.bio,
-    id: client.id,
-  }));
   return (
     <>
-      <MainDisplay
-        firstName={firstName}
-        lastName={lastName}
-        profileImage={profileImage}
-        email={email}
-        city={city}
-        phone={phone}
-        bio={bio}
-        clients={clients}
-      />
+      <MainDisplay {...data} />
     </>
   );
 }

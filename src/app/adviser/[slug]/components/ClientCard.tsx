@@ -10,13 +10,13 @@ export default function ClientCard({
   lastName,
   email,
   profileImage,
-  slug,
+  advisorSlug,
   clientSlug,
   bio,
 }: Props) {
   return (
     <Link
-      href={`/adviser/${slug}/clients/${clientSlug}?view=profile`}
+      href={`/adviser/${advisorSlug}/clients/${clientSlug}?view=profile`}
       passHref
       legacyBehavior
       className="next-link_No_Decoration"

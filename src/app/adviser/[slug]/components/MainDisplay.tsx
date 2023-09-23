@@ -2,26 +2,7 @@
 import React, { useState } from "react";
 import AdviserInformation from "./AdviserInformation";
 import ClientDisplay from "./ClientDisplay";
-
-type Props = {
-  firstName: string;
-  lastName: string;
-  profileImage: string;
-  email: string;
-  city: string;
-  phone: string;
-  bio: string;
-  clients: {
-    firstName: string;
-    lastName: string;
-    clientSlug: string;
-    email: string;
-    profileImage: string;
-    slug: string;
-    bio: string;
-    id: string;
-  }[];
-};
+import { AdviserDataParsed } from "@/types";
 
 export default function MainDisplay({
   firstName,
@@ -31,8 +12,9 @@ export default function MainDisplay({
   city,
   phone,
   bio,
+  slug,
   clients,
-}: Props) {
+}: AdviserDataParsed) {
   const [displayState, setDisplayState] = useState<"advisor" | "client">(
     "advisor"
   );
@@ -60,7 +42,9 @@ export default function MainDisplay({
           bio={bio}
         />
       )}
-      {displayState === "client" && <ClientDisplay clients={clients} />}
+      {displayState === "client" && clients.length && (
+        <ClientDisplay clients={clients} advisorSlug={slug} />
+      )}
     </div>
   );
 }

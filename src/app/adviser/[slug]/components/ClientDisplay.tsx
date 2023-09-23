@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import ClientCard from "./ClientCard";
-import { AdvisorClientDisplay } from "@/types";
+import { ClientDataParsed } from "@/types";
 import SubmitButton from "@/app/components/formcomponents/SubmitButton";
 import AddClient from "./AddClient";
 
 type Props = {
-  clients: AdvisorClientDisplay[];
+  clients: ClientDataParsed[];
+  advisorSlug: string;
 };
 
-export default function ClientDisplay({ clients }: Props) {
+export default function ClientDisplay({ clients, advisorSlug }: Props) {
   const [displayState, setDisplayState] = useState<
     "addclient" | "displayclients"
   >("displayclients");
@@ -42,10 +43,10 @@ export default function ClientDisplay({ clients }: Props) {
               id={client.id}
               firstName={client.firstName}
               lastName={client.lastName}
-              slug={client.slug}
+              advisorSlug={advisorSlug}
               email={client.email}
               profileImage={client.profileImage}
-              clientSlug={client.clientSlug}
+              clientSlug={client.slug}
               bio={client.bio}
             />
           </div>

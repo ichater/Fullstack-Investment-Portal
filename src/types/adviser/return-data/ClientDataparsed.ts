@@ -1,7 +1,7 @@
 import { ACCESS, ROLE } from "@prisma/client";
 import { AccountDataParsed } from "./AccountDataParsed";
 
-export type ClientDataParsed = {
+export interface ClientDataParsed {
   id: string;
   firstName: string;
   lastName: string;
@@ -12,4 +12,4 @@ export type ClientDataParsed = {
   access: ACCESS;
   role: ROLE;
   accounts: AccountDataParsed[];
-};
+}

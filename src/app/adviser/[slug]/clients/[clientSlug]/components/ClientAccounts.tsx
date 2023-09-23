@@ -6,7 +6,7 @@ type Props = {
   firstName: string;
   lastName: string;
   accounts: AccountDataParsed[];
-  params: { slug: string; clientSlug: string };
+  params: { advisorSlug: string; slug: string };
 };
 
 export default function ClientAccounts({

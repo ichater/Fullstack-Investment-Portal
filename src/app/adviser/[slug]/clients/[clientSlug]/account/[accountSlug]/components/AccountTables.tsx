@@ -8,7 +8,7 @@ export default function AccountTables({
 }: {
   accountValues: AccountValues;
 }) {
-  const { totalValue, cashAccount, shares, funds, sma } = accountValues;
+  const { cashAccount, shares, funds, sma } = accountValues;
 
   return (
     <table className="client-account_table">

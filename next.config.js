@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn-icons-png.flaticon.com",
       },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn0.gstatic.com",
+      },
     ],
     modularizeImports: {
       "@mui/icons-material": {

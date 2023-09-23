@@ -1,34 +1,46 @@
 import React from "react";
 import NavigationTabs from "./components/NavigationTabs";
-
 import AccountTables from "./components/AccountTables";
-import {
-  sallieAccountsTemp,
-  tempAdviser,
-  tempClientSallie,
-  tempShares,
-  tempFunds,
-  tempSMAs,
-} from "@/lib/tempdata";
 import FeeDisplay from "./components/FeeDisplay";
+import { fetchAccountByClient } from "@/lib/api/fetchAdviserData";
+import { cookies } from "next/headers";
 
-const getData = (accountSlug: string) => {
-  return {
-    clientData: tempClientSallie,
-    accountData: sallieAccountsTemp[0],
-    adviserData: tempAdviser,
-  };
+const getData = async (
+  jwt: string,
+  clientSlug: string,
+  accountSlug: string
+) => {
+  return await fetchAccountByClient(jwt, clientSlug, accountSlug);
 };
 
-export default function page({
+export default async function page({
   params: { slug, clientSlug, accountSlug },
 }: {
   params: { slug: string; clientSlug: string; accountSlug: string };
 }) {
-  const { accountData } = getData(accountSlug);
+  const cookie = cookies();
+  const jwt = cookie.get("jwt");
 
-  const { totalValue, cashAccount, cashInShares, cashInInvestments } =
-    accountData;
+  if (!jwt) {
+    return <div>No auth detected</div>;
+  }
+
+  const data = await getData(jwt.value, clientSlug, accountSlug);
+
+  if (!data || !data.account) {
+    return <div>Nothing to see here</div>;
+  }
+
+  const {
+    totalValue,
+    cashAccount,
+    cashInShares,
+    cashInInvestments,
+    shares,
+    managedFunds,
+    sma,
+  } = data.account;
+
   return (
     <div className="account-display_wrapper">
       <NavigationTabs slug={slug} clientSlug={clientSlug} />
@@ -39,9 +51,9 @@ export default function page({
             cashAccount: cashAccount,
             cashinShares: cashInShares,
             cashInInvestments: cashInInvestments,
-            shares: tempShares,
-            funds: tempFunds,
-            sma: tempSMAs,
+            shares: shares,
+            funds: managedFunds,
+            sma: sma,
           }}
         />
         <FeeDisplay

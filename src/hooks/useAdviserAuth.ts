@@ -1,5 +1,5 @@
-import { AdviserSignUpState } from "@/types";
-import axios from "axios";
+import { AdviserSignUpState, AdviserDataParsed } from "@/types";
+import axios, { AxiosResponse } from "axios";
 import { AdviserAuthContext } from "@/context/AdviserAuthContext";
 import { useContext } from "react";
 import { deleteCookie } from "cookies-next";
@@ -26,9 +26,8 @@ export const useAdviserAuth = () => {
       error: null,
     });
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/auth/advisorsignup",
-        {
+      const res = await axios
+        .post("http://localhost:3000/api/auth/advisorsignup", {
           firstName,
           lastName,
           email,
@@ -38,11 +37,11 @@ export const useAdviserAuth = () => {
           phone,
           password,
           confirmPassword,
-        }
-      );
+        })
+        .then((res) => res.data);
 
       setAuthState({
-        data: res.data.adviser,
+        data: res.advisor,
         loading: false,
         error: null,
       });

@@ -7,3 +7,5 @@ export {
 export { useAdviserAuth } from "./useAdviserAuth";
 
 export { useQueryString } from "./useQueryString";
+
+export { useClientUpdates } from "./useClientUpdates";
