@@ -1,10 +1,10 @@
-import { Adviser } from "@prisma/client";
+import { AdviserIncomingDataShallow } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
-  adviser: Adviser;
+  adviser: AdviserIncomingDataShallow;
 };
 
 export default function AdviserCard({ adviser }: Props) {

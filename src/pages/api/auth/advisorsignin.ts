@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import { setCookie } from "cookies-next";
 import * as jose from "jose";
 import validator from "validator";
-import { AdviserIncomingData } from "@/types";
+import { AdviserIncomingDataFull } from "@/types";
 
 export default async function handler(
   req: NextApiRequest,
@@ -35,8 +35,8 @@ export default async function handler(
       });
     }
 
-    const advisor: AdviserIncomingData | null = await prisma.adviser.findUnique(
-      {
+    const advisor: AdviserIncomingDataFull | null =
+      await prisma.adviser.findUnique({
         where: { email },
         include: {
           clients: {
@@ -58,8 +58,7 @@ export default async function handler(
             },
           },
         },
-      }
-    );
+      });
 
     if (!advisor) {
       return res.status(400).json({

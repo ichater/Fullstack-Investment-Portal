@@ -4,7 +4,7 @@ import {
   AccountDataParsed,
   AccountIncomingData,
   ClientIncomingData,
-  AdviserIncomingData,
+  AdviserIncomingDataFull,
   ShareInAccountParsed,
   ShareIncomingData,
   InvestmentIncomingData,
@@ -118,7 +118,7 @@ export const clientDataParser = ({
 };
 
 export const adviserDataParser = (
-  data: AdviserIncomingData
+  data: AdviserIncomingDataFull
 ): AdviserDataParsed => {
   const clients = data.clients
     ? data.clients.map((client) => clientDataParser(client))

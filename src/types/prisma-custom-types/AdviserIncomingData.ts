@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 
-export type AdviserIncomingData = Prisma.AdviserGetPayload<{
+export type AdviserIncomingDataFull = Prisma.AdviserGetPayload<{
   include: {
     clients: {
       include: {
@@ -20,5 +20,20 @@ export type AdviserIncomingData = Prisma.AdviserGetPayload<{
         };
       };
     };
+  };
+}>;
+
+export type AdviserIncomingDataShallow = Prisma.AdviserGetPayload<{
+  select: {
+    id: true;
+    firstName: true;
+    lastName: true;
+    slug: true;
+    bio: true;
+    email: true;
+    city: true;
+    phone: true;
+    company: true;
+    profileImage: true;
   };
 }>;

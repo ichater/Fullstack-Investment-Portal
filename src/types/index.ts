@@ -53,7 +53,8 @@ export { type ParamKeyValue } from "./generic";
 
 export {
   type AccountIncomingData,
-  type AdviserIncomingData,
+  type AdviserIncomingDataFull,
+  type AdviserIncomingDataShallow,
   type ClientIncomingData,
   type ShareIncomingData,
   type InvestmentIncomingData,
