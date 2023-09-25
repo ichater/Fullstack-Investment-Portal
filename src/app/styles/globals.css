@@ -7,6 +7,7 @@
 @import "./adviser/account-page.css";
 @import "./client/accountpage.css";
 @import "./globalcomponents/loadingspinner.css";
+@import "./unauthed/login-fail.css";
 
 /* imported fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
@@ -18,6 +19,7 @@
   --adviser-blue: hsl(192, 75%, 33%);
   --adviser-blue-dark: hsl(189, 100%, 13%);
   --adviser-blue-light: hsl(195, 50%, 53%);
+  --adviser-blue-very-light: hsl(201, 20%, 73%);
   --adviser-blue-gradient: linear-gradient(
     180deg,
     hsl(195, 50%, 53%) 0%,
@@ -137,4 +139,5 @@ body {
 
 .error-text p {
   margin-top: 0px;
+  color: rgb(255, 255, 255);
 }

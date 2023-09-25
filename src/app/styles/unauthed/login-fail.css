@@ -1,0 +1,26 @@
+.login-fail_wrapper {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-fail-modal_wrapper {
+  font-size: 1.5rem;
+  border: 1px solid var(--adviser-blue-light);
+  border-radius: 8px;
+  display: flex;
+  padding: 0.5rem;
+  gap: 0.25rem;
+  background-color: var(--adviser-blue-very-light);
+}
+
+.login-fail-modal_wrapper li {
+  color: var(--adviser-blue);
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.login-fail-modal_wrapper li:hover {
+  color: var(--adviser-blue-dark);
+}

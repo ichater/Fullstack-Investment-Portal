@@ -6,7 +6,6 @@ import ClientAdviserToggle from "./ClientAdviserToggle";
 import AdviserSignUpForm from "./AdviserSignUpForm";
 import LogInForm from "./LogInForm";
 import { LoginState } from "@/types";
-import { useAdviserAuthContext } from "@/hooks";
 
 type Props = {
   isLogIn: boolean;
