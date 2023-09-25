@@ -5,10 +5,8 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   const bearerToken = req.headers.get("authorization") as string;
 
   if (!bearerToken) {
-    return new NextResponse(
-      JSON.stringify({ errorMessage: "unauthorized request no token" }),
-      { status: 401, headers: { "Content-Type": "application/json" } }
-    );
+    console.log("No token!");
+    return NextResponse.redirect(new URL("/log-in", req.url));
   }
 
   const token = bearerToken.split(" ")[1];
@@ -34,5 +32,5 @@ export async function middleware(req: NextRequest, res: NextResponse) {
 }
 
 export const config = {
-  matcher: ["/api/auth/meadviser"],
+  matcher: ["/api/auth/meadviser", "/adviser/:path*"],
 };

@@ -62,6 +62,3 @@ export default function InvestmentFormContext({
     </InvestmentSearchContext.Provider>
   );
 }
-
-// export const useInvestmentFormContext = () =>
-//   useContext(InvestmentSearchContext);
