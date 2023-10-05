@@ -7,6 +7,7 @@
   padding: 1rem 2rem;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .advisor-card-profile-name_wrapper {
@@ -15,13 +16,12 @@
   align-items: center;
   flex-direction: column;
   gap: 0.25rem;
+  max-width: 25%;
 }
 
 .advisor-card-profile-name_wrapper h3 {
   font-size: 1.25rem;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .advisor-card_text {

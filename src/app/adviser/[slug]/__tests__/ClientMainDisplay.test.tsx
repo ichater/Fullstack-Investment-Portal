@@ -81,6 +81,19 @@ describe("Client Main Display", () => {
     expect(screen.getByText(client.email)).toBeInTheDocument();
     expect(screen.getByText(client.bio)).toBeInTheDocument();
   });
+  it("renders Log in and Sign up if no adviser data is passed in", () => {
+    const funct=jest.fn()
+    const data = new ContextBuilder().setInitialState("foo").setFunct(funct).build();
+
+    render(
+      <Context.Provider value={data}>
+        <Navbar />
+      </Context.Provider>
+    );
+    expect(screen.getByText("foo")).toBeInTheDocument()
+    const btn = screen.getByRole('button')
+    fireEvent.click(btn)
+    expect(funct).toHaveBeenCalled()
 
   // it("When account button is clicked client display is no longer visible", () => {
   //   renderWithRouter(

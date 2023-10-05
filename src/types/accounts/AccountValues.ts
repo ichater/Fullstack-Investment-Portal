@@ -1,4 +1,4 @@
-import { ShareInAccountParsed } from "./ShareInAccount";
+import { ShareInAccountParsed } from "@/types";
 import { FundInAccountParsed } from "./FundInAccount";
 
 export type AccountValues = {

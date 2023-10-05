@@ -24,7 +24,7 @@ export default function AdviserCard({ adviser }: Props) {
       </div>
 
       <div className="advisor-card_text">
-        <p>{adviser.bio}</p>
+        <p>{adviser.bio ? adviser.bio : "No bio written yet"}</p>
       </div>
       <div className="advisor-card-btn_wrapper">
         <Link href={`/advisers/${adviser.slug}`}>
