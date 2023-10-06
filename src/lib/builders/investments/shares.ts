@@ -1,9 +1,9 @@
 import { generateString } from "@/lib/utils/randomstringgenerator";
-import { Share } from "@prisma/client";
+import { DisplayShare } from "@/types";
 import { v4 as uuidv4 } from "uuid";
 
 export class ShareBuilder {
-  share: Share;
+  share: DisplayShare;
   constructor(name: string) {
     this.share = new ShareInstance(name);
   }

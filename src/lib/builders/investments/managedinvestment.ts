@@ -1,8 +1,9 @@
-import { INVESTMENTCATEGORY, ManagedInvestment } from "@prisma/client";
+import { DisplayFund } from "@/types";
+import { INVESTMENTCATEGORY } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
 export class ManagedInvestmentBuilder {
-  managedInvestment: ManagedInvestment;
+  managedInvestment: DisplayFund;
   constructor(name: string) {
     this.managedInvestment = new ManagedInvestmentInstance(name);
   }
