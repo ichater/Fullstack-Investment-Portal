@@ -10,12 +10,21 @@ import GenericSearchDisplay from "./investment-search-form/GenericSearchDisplay"
 import InvestmentSubmitBtn from "./investment-search-form/InvestmentSubmitBtn";
 import { InvestmentType } from "@/types";
 import { useInvestmentFormContext } from "@/hooks";
+import { emptyInvestmentFormState } from "@/context/utils/InvestmentContextUtils";
 
 export default function InvestmentSearchForm() {
   const { investmentFormState, setInvestmentFormState } =
     useInvestmentFormContext();
 
   const handleChange = (event: SelectChangeEvent) => {
+    if (event.target.value === "") {
+      localStorage.setItem(
+        "investmentFormState",
+        JSON.stringify(emptyInvestmentFormState)
+      );
+      setInvestmentFormState(emptyInvestmentFormState);
+    }
+
     setInvestmentFormState((state) => ({
       ...state,
       investmentType: event.target.value as InvestmentType,

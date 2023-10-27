@@ -1,6 +1,9 @@
-import { AccountDataParsed, ClientAccountInformation } from "@/types";
+import { AccountDataParsed } from "@/types";
 import React from "react";
 import ClientAccountCard from "./ClientAccountCard";
+import SubmitButton from "@/app/components/formcomponents/SubmitButton";
+import Link from "next/link";
+import { useQueryString } from "@/hooks";
 
 type Props = {
   firstName: string;
@@ -15,10 +18,13 @@ export default function ClientAccounts({
   accounts,
   params,
 }: Props) {
+  const { pathname } = useQueryString();
   return (
     <div className="client-accounts_wrapper">
-      <div>
+      <div className="client-accounts_header">
         <h1>{firstName + " " + lastName + "'s"} accounts:</h1>
+
+        <SubmitButton text="Add Account" width={12} />
       </div>
       {accounts.map((account, i) => (
         <ClientAccountCard key={i} account={account} params={params} />

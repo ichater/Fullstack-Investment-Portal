@@ -3,6 +3,7 @@ import { AdviserIncomingDataShallow } from "@/types";
 export async function fetchAdvisers(): Promise<
   AdviserIncomingDataShallow[] | string
 > {
+  console.log("FETCHIGN ADVISORS!");
   try {
     const data: { advisers: AdviserIncomingDataShallow[] } = await fetch(
       "http://localhost:3000/api/advisor/getadvisers"

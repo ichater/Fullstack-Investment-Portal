@@ -6,4 +6,4 @@ export const queryParamParserApi = (
 
 export const queryParamParserPageState = (
   param: string | null | undefined
-): PageState => (!!param ? parseInt(param) : 10) as PageState;
+): PageState | null => (!!param ? (parseInt(param) as PageState) : null);

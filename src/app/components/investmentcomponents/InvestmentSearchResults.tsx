@@ -35,7 +35,6 @@ export default function InvestmentResults() {
     if (investmentType === "shares") getShares(shareState);
     if (investmentType === "funds") getManagedInvestments(fundState);
 
-    console.log("triggered");
     setTriggerSearch(false);
   }, [triggerSearch]);
 

@@ -9,7 +9,7 @@ export default function InvestmentSubmitBtn() {
 
   const { investmentFormState, setInvestmentFormState } =
     useInvestmentFormContext();
-  const { setInvestmentDisplayState, setTriggerSearch } =
+  const { setInvestmentDisplayState, setTriggerSearch, triggerSearch } =
     useInvestmentDisplayContext();
 
   const { investmentType, shareState, fundState, pageData } =
@@ -55,12 +55,18 @@ export default function InvestmentSubmitBtn() {
     setParamState([...investmentKeyValueArr, ...pageKeyValueArr]);
   }, [investmentFormState, setInvestmentFormState]);
 
+  useEffect(() => {
+    pushQueryString(paramState, true);
+    setTriggerSearch(false);
+  }, [triggerSearch]);
+
   function handleSubmit() {
     investmentType === "shares" &&
       setInvestmentDisplayState((state) => ({
         ...state,
         shareState,
       }));
+
     investmentType === "funds" &&
       setInvestmentDisplayState((state) => ({
         ...state,
@@ -72,8 +78,6 @@ export default function InvestmentSubmitBtn() {
       investmentType,
     }));
 
-    pushQueryString(paramState, true);
-
     setInvestmentFormState((state) => ({
       ...state,
       pageData: {
@@ -81,6 +85,11 @@ export default function InvestmentSubmitBtn() {
         pageNumber: 1,
       },
     }));
+
+    localStorage.setItem(
+      "investmentFormState",
+      JSON.stringify(investmentFormState)
+    );
 
     setInvestmentDisplayState((state) => ({
       ...state,
