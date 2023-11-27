@@ -37,3 +37,5 @@ next-env.d.ts
 # D3Yj2NId1U4q4BJe
 
 .vscode/
+.github
+.husky
